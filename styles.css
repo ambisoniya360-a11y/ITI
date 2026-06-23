@@ -3536,381 +3536,630 @@ p {
 .logo-wipro { font-family: var(--font-sans); font-weight: 600; text-transform: uppercase; letter-spacing: 2px; }
 .logo-suzuki { font-weight: 900; font-size: 16px; letter-spacing: -0.5px; }
 
-/* 3. Dual Impact & India Map Section */
-.impact-section-new {
-  padding: 60px 5%;
-  max-width: 1280px;
-  margin: 0 auto;
+/* 3. Futuristic National Impact & Platform Scale Section */
+.impact-section-futuristic {
   position: relative;
+  background: linear-gradient(135deg, #f8fbff 0%, #eef4ff 50%, #f7f5ff 100%);
+  padding: 120px 0;
+  overflow: hidden;
   z-index: 10;
 }
 
-.impact-split-container-new {
+[data-theme="dark"] .impact-section-futuristic {
+  background: linear-gradient(135deg, #090d16 0%, #0d1527 50%, #0b0f19 100%);
+}
+
+.section-container-futuristic {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 40px;
+}
+
+.impact-split-futuristic {
   display: grid;
-  grid-template-columns: 1.15fr 1fr;
+  grid-template-columns: 1.1fr 1fr;
   gap: 48px;
   align-items: start;
 }
 
-.impact-stats-grid-new {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 20px;
+/* Floating mesh glow backgrounds and particles */
+.impact-section-futuristic::before {
+  content: '';
+  position: absolute;
+  top: 10%;
+  left: 5%;
+  width: 400px;
+  height: 400px;
+  background: radial-gradient(circle, rgba(16, 98, 254, 0.06) 0%, transparent 70%);
+  filter: blur(60px);
+  pointer-events: none;
 }
 
-.card-new {
-  background: var(--surface-glass);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  border: 1px solid var(--border);
-  border-radius: var(--radius-md);
-  box-shadow: var(--shadow-md);
-  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+.impact-section-futuristic::after {
+  content: '';
+  position: absolute;
+  bottom: 10%;
+  right: 5%;
+  width: 500px;
+  height: 500px;
+  background: radial-gradient(circle, rgba(139, 92, 246, 0.05) 0%, transparent 70%);
+  filter: blur(80px);
+  pointer-events: none;
+}
+
+/* Left Grid Column */
+.impact-grid-left {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24px;
+}
+
+/* Premium White Glass Metric Card */
+.card-glass-metric {
   position: relative;
+  background: rgba(255, 255, 255, 0.6);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.7);
+  border-radius: var(--radius-lg);
+  padding: 36px 30px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 250px;
+  box-shadow: 0 10px 30px -10px rgba(0, 27, 110, 0.04), 0 1px 3px rgba(0, 0, 0, 0.02);
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
   overflow: hidden;
 }
 
-.card-new:hover {
-  transform: translateY(-4px);
-  border-color: var(--border-strong);
-  box-shadow: var(--shadow-lg);
+[data-theme="dark"] .card-glass-metric {
+  background: rgba(15, 21, 36, 0.4);
+  border-color: rgba(255, 255, 255, 0.06);
+  box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.3);
 }
 
-.impact-stat-card-new {
-  padding: 24px;
-  display: flex;
-  flex-direction: column;
+.card-glass-metric:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 24px 48px -12px rgba(16, 98, 254, 0.08), 0 2px 8px rgba(16, 98, 254, 0.02);
+  border-color: rgba(16, 98, 254, 0.15);
 }
 
-.impact-icon-wrapper-new {
-  width: 44px;
-  height: 44px;
-  border-radius: 12px;
+[data-theme="dark"] .card-glass-metric:hover {
+  box-shadow: 0 24px 48px -12px rgba(0, 0, 0, 0.5);
+  border-color: rgba(59, 130, 246, 0.2);
+}
+
+/* Card Themes & Lighting Glows */
+.blue-theme-card:hover { --card-glow-color: rgba(37, 99, 235, 0.15); }
+.orange-theme-card:hover { --card-glow-color: rgba(249, 115, 22, 0.15); }
+.green-theme-card:hover { --card-glow-color: rgba(16, 185, 129, 0.15); }
+.purple-theme-card:hover { --card-glow-color: rgba(139, 92, 246, 0.15); }
+
+.card-glass-metric::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(120px circle at var(--mouse-x, 0) var(--mouse-y, 0), var(--card-glow-color, transparent) 0%, transparent 100%);
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.card-glass-metric:hover::before {
+  opacity: 1;
+}
+
+/* Card Top Icon Box */
+.card-icon-box {
+  width: 50px;
+  height: 50px;
+  border-radius: var(--radius-md);
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-bottom: 20px;
+  margin-bottom: 24px;
+  position: relative;
+  z-index: 2;
 }
 
-.impact-icon-wrapper-new svg {
-  stroke-width: 2;
+.blue-box { background: rgba(37, 99, 235, 0.08); color: #2563EB; }
+.orange-box { background: rgba(249, 115, 22, 0.08); color: #F97316; }
+.green-box { background: rgba(16, 185, 129, 0.08); color: #10B981; }
+.purple-box { background: rgba(139, 92, 246, 0.08); color: #8B5CF6; }
+
+[data-theme="dark"] .blue-box { background: rgba(37, 99, 235, 0.15); color: #60a5fa; }
+[data-theme="dark"] .orange-box { background: rgba(249, 115, 22, 0.15); color: #fb923c; }
+[data-theme="dark"] .green-box { background: rgba(16, 185, 129, 0.15); color: #34d399; }
+[data-theme="dark"] .purple-box { background: rgba(139, 92, 246, 0.15); color: #a78bfa; }
+
+/* Dot Pattern decoration */
+.dot-pattern-dec {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  width: 50px;
+  height: 50px;
+  background-image: radial-gradient(var(--text-light) 1px, transparent 1px);
+  background-size: 8px 8px;
+  opacity: 0.15;
+  pointer-events: none;
 }
 
-.impact-icon-wrapper-new.blue-new { background: rgba(37, 99, 235, 0.08); color: #2563EB; }
-.impact-icon-wrapper-new.orange-new { background: rgba(249, 115, 22, 0.08); color: #F97316; }
-.impact-icon-wrapper-new.green-new { background: rgba(16, 185, 129, 0.08); color: #10B981; }
-.impact-icon-wrapper-new.purple-new { background: rgba(139, 92, 246, 0.08); color: #8B5CF6; }
+/* Metric text values */
+.metric-num-box {
+  margin-bottom: 12px;
+  position: relative;
+  z-index: 2;
+}
 
-.impact-stat-card-new h3 {
-  font-size: 34px;
-  font-weight: 800;
+.metric-value {
   font-family: var(--font-display);
+  font-size: 38px;
+  font-weight: 800;
   color: var(--text-main);
   line-height: 1.1;
-  margin-bottom: 6px;
+  letter-spacing: -0.02em;
 }
 
-.stat-tagline-new {
+.metric-title {
   font-size: 14px;
-  font-weight: 700;
-  color: var(--text-main);
-  margin-bottom: 6px;
-}
-
-.stat-description-new {
-  font-size: 12.5px;
-  line-height: 1.5;
+  font-weight: 600;
   color: var(--text-muted);
+  margin-top: 4px;
 }
 
-/* Nationwide Impact Card & Map styling */
-.national-map-card-new {
-  padding: 32px;
-  display: flex;
-  flex-direction: column;
-}
-
-.map-card-header-new span {
-  margin-bottom: 8px;
-}
-
-.map-card-header-new h3 {
-  font-size: 24px;
-  font-weight: 800;
-  color: var(--text-main);
-  margin-bottom: 6px;
-}
-
-.map-card-header-new p {
+.metric-desc {
   font-size: 13px;
-  color: var(--text-muted);
+  color: var(--text-light);
+  line-height: 1.4;
   margin-bottom: 20px;
-}
-
-.map-layout-split-new {
-  display: grid;
-  grid-template-columns: 1.15fr 1fr;
-  gap: 20px;
-  align-items: center;
-}
-
-.map-svg-container-new {
-  width: 100%;
   position: relative;
+  z-index: 2;
+}
+
+/* Bottom wave background dec */
+.wave-dec-box {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 48px;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.wave-svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+/* Circular Arrow Floating Button */
+.circle-arrow-btn {
+  position: absolute;
+  bottom: 24px;
+  right: 24px;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: 1px solid var(--border-strong);
+  background: var(--surface);
   display: flex;
   align-items: center;
   justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  z-index: 3;
 }
 
-#india-map-new {
+.circle-arrow-btn svg {
+  transition: transform 0.3s;
+}
+
+.circle-arrow-btn:hover svg {
+  transform: translateX(3px);
+}
+
+.circle-arrow-btn.btn-blue { color: #2563EB; }
+.circle-arrow-btn.btn-orange { color: #F97316; }
+.circle-arrow-btn.btn-green { color: #10B981; }
+.circle-arrow-btn.btn-purple { color: #8B5CF6; }
+
+.circle-arrow-btn:hover {
+  background: var(--primary);
+  color: #FFFFFF !important;
+  border-color: var(--primary);
+  box-shadow: 0 4px 12px rgba(16, 98, 254, 0.25);
+}
+
+[data-theme="dark"] .circle-arrow-btn {
+  background: var(--surface-hover);
+  border-color: rgba(255, 255, 255, 0.1);
+}
+
+/* Right Column: Deep Blue Dashboard Container */
+.card-futuristic-dashboard {
+  position: relative;
+  background: linear-gradient(180deg, #001b6e 0%, #00144a 100%);
+  border-radius: 40px;
+  padding: 48px;
+  min-height: 524px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  overflow: hidden;
+  box-shadow: 0 30px 60px -15px rgba(0, 27, 110, 0.3), 0 0 40px rgba(59, 130, 246, 0.15);
+}
+
+/* Neon glow border effect */
+.neon-glow-border {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border: 1px solid rgba(59, 130, 246, 0.3);
+  border-radius: 40px;
+  pointer-events: none;
+  box-shadow: inset 0 0 20px rgba(59, 130, 246, 0.15);
+  z-index: 2;
+}
+
+/* Top Meta Header */
+.db-header-futuristic {
+  position: relative;
+  z-index: 3;
+  margin-bottom: 24px;
+}
+
+.badge-pill-scale {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  color: #FFFFFF;
+  padding: 6px 12px;
+  border-radius: var(--radius-full);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.badge-icon-trend {
+  animation: float 2s ease-in-out infinite;
+}
+
+.db-title-futuristic {
+  font-family: var(--font-display);
+  font-size: 38px;
+  font-weight: 800;
+  color: #FFFFFF;
+  margin-top: 16px;
+  line-height: 1.1;
+  letter-spacing: -0.01em;
+}
+
+.gradient-text-white-blue {
+  background: linear-gradient(90deg, #FFFFFF 30%, #a5c3ff 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.db-subtext-futuristic {
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.65);
+  margin-top: 8px;
+  line-height: 1.4;
+}
+
+/* Split content area */
+.db-split-layout-futuristic {
+  display: grid;
+  grid-template-columns: 1.1fr 1fr;
+  gap: 32px;
+  align-items: center;
+  flex-grow: 1;
+}
+
+/* India Map Area */
+.map-wrapper-futuristic {
+  position: relative;
   width: 100%;
-  max-width: 250px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 280px;
+}
+
+.map-mesh-glow {
+  position: absolute;
+  width: 180px;
+  height: 180px;
+  background: radial-gradient(circle, rgba(59, 130, 246, 0.25) 0%, transparent 70%);
+  filter: blur(30px);
+  pointer-events: none;
+  z-index: 1;
+}
+
+#india-network-map {
+  width: 100%;
+  max-width: 280px;
   height: auto;
   overflow: visible;
+  position: relative;
+  z-index: 2;
 }
 
-.map-dot {
-  fill: #2563EB;
-  opacity: 0.15;
-  transition: all 0.35s ease;
+/* Dots and network styles */
+.net-dot {
+  fill: rgba(255, 255, 255, 0.15);
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.map-dot.dot-maharashtra { fill: #2563EB; opacity: 0.2; }
-.map-dot.dot-gujarat { fill: #F97316; opacity: 0.2; }
-.map-dot.dot-karnataka { fill: #10B981; opacity: 0.2; }
-.map-dot.dot-tamilnadu { fill: #EC4899; opacity: 0.2; }
-.map-dot.dot-up { fill: #8B5CF6; opacity: 0.2; }
-
-/* Active dot highlight */
-.map-dot.active-dot {
-  opacity: 0.95;
-  r: 4px;
+.net-dot.active-dot {
+  fill: #FFFFFF !important;
+  opacity: 1 !important;
+  filter: drop-shadow(0 0 4px #3b82f6);
 }
 
 .state-node-new {
-  fill: #2563EB;
-  fill-opacity: 0.1;
-  stroke: #2563EB;
-  stroke-width: 1.2;
+  fill: transparent;
+  stroke: transparent;
   cursor: pointer;
-  transition: all 0.3s ease;
+  pointer-events: all;
+  transition: all 0.3s;
 }
 
-.state-node-new.active,
-.state-node-new:hover {
-  fill-opacity: 0.8;
-  stroke-width: 2.5;
-  stroke: #1D4ED8;
+.state-node-new:hover, .state-node-new.active {
+  fill: rgba(59, 130, 246, 0.15);
+  stroke: rgba(59, 130, 246, 0.4);
+  stroke-width: 1.5px;
 }
 
-.state-node-new[data-state="Gujarat"] { fill: #F97316; stroke: #F97316; }
-.state-node-new[data-state="Gujarat"].active,
-.state-node-new[data-state="Gujarat"]:hover { fill-opacity: 0.8; }
-
-.state-node-new[data-state="Karnataka"] { fill: #10B981; stroke: #10B981; }
-.state-node-new[data-state="Karnataka"].active,
-.state-node-new[data-state="Karnataka"]:hover { fill-opacity: 0.8; }
-
-.state-node-new[data-state="Tamil Nadu"] { fill: #EC4899; stroke: #EC4899; }
-.state-node-new[data-state="Tamil Nadu"].active,
-.state-node-new[data-state="Tamil Nadu"]:hover { fill-opacity: 0.8; }
-
-.state-node-new[data-state="Uttar Pradesh"] { fill: #8B5CF6; stroke: #8B5CF6; }
-.state-node-new[data-state="Uttar Pradesh"].active,
-.state-node-new[data-state="Uttar Pradesh"]:hover { fill-opacity: 0.8; }
-
-/* Pulse animations */
 .state-pulse-new {
   fill: none;
   stroke-width: 1;
   pointer-events: none;
-  transform-origin: 50% 50%;
+  transform-origin: center;
   animation: pulseGlowCircle-new 2s infinite;
-  display: none;
 }
-
-#pulse-maharashtra { stroke: #2563EB; display: block; }
-#pulse-gujarat { stroke: #F97316; }
-#pulse-karnataka { stroke: #10B981; }
-#pulse-tamilnadu { stroke: #EC4899; }
-#pulse-up { stroke: #8B5CF6; }
 
 @keyframes pulseGlowCircle-new {
   0% {
-    r: 10px;
+    transform: scale(0.6);
     opacity: 0.8;
   }
   100% {
-    r: 28px;
+    transform: scale(1.6);
     opacity: 0;
   }
 }
 
-/* State metrics list styling */
-.state-metrics-panel-new {
+/* State Stack Column */
+.state-cards-stack-futuristic {
   display: flex;
   flex-direction: column;
-  gap: 8px;
-  width: 100%;
+  gap: 12px;
+  position: relative;
+  z-index: 3;
 }
 
-.metric-row-new {
+/* State Glass Card */
+.state-card-glass {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: var(--radius-md);
+  padding: 16px 20px;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 10px 14px;
-  border-radius: 8px;
-  border: 1px solid var(--border);
-  background: var(--surface-glass);
   cursor: pointer;
   transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.metric-row-new.active,
-.metric-row-new:hover {
-  border-color: #2563EB;
-  background: rgba(37, 99, 235, 0.05);
+.state-card-glass:hover, .state-card-glass.active-state-card {
+  background: rgba(255, 255, 255, 0.12);
+  border-color: rgba(255, 255, 255, 0.2);
+  transform: translateX(6px);
+}
+
+.state-card-inner {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.state-logo-box {
+  width: 36px;
+  height: 36px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #FFFFFF;
+}
+
+.blue-gradient-glow { background: linear-gradient(135deg, #3B82F6 0%, #1D4ED8 100%); }
+.orange-gradient-glow { background: linear-gradient(135deg, #F97316 0%, #C2410C 100%); }
+.green-gradient-glow { background: linear-gradient(135deg, #10B981 0%, #047857 100%); }
+.pink-gradient-glow { background: linear-gradient(135deg, #EC4899 0%, #BE185D 100%); }
+.purple-gradient-glow { background: linear-gradient(135deg, #8B5CF6 0%, #6D28D9 100%); }
+
+.state-card-meta {
+  display: flex;
+  flex-direction: column;
+}
+
+.state-card-name {
+  font-size: 14px;
+  font-weight: 700;
+  color: #FFFFFF;
+}
+
+.state-card-count {
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.5);
+  margin-top: 2px;
+}
+
+.state-card-arrow {
+  color: rgba(255, 255, 255, 0.4);
+  transition: transform 0.3s;
+}
+
+.state-card-glass:hover .state-card-arrow,
+.state-card-glass.active-state-card .state-card-arrow {
+  color: #FFFFFF;
+  transform: translateX(2px);
+}
+
+.more-states-text-link {
+  text-align: center;
+  font-size: 13px;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.5);
+  padding: 8px 0;
+  cursor: pointer;
+  transition: color 0.3s;
+}
+
+.more-states-text-link:hover {
+  color: #FFFFFF;
+}
+
+/* Bottom Neon Map CTA Button - 80px tall */
+.db-footer-cta-box-futuristic {
+  margin-top: 40px;
+  position: relative;
+  z-index: 3;
+}
+
+.btn-premium-neon-map {
+  width: 100%;
+  height: 80px;
+  background: linear-gradient(90deg, #2563eb 0%, #1d4ed8 50%, #4f46e5 100%);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 20px;
+  color: #FFFFFF;
+  font-family: var(--font-sans);
+  font-size: 16px;
+  font-weight: 700;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 10px 30px -10px rgba(37, 99, 235, 0.5), 0 0 15px rgba(37, 99, 235, 0.2);
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.btn-premium-neon-map:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 16px 40px -10px rgba(37, 99, 235, 0.65), 0 0 25px rgba(37, 99, 235, 0.4);
+}
+
+.btn-premium-neon-map:active {
+  transform: translateY(-1px);
+}
+
+/* Sweep reflection animation */
+.sweep-light-effect {
+  position: absolute;
+  top: 0;
+  left: -150%;
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.25) 50%,
+    transparent 100%
+  );
+  transform: skewX(-25deg);
+  pointer-events: none;
+  animation: sweepLight 6s ease-in-out infinite;
+}
+
+@keyframes sweepLight {
+  0% { left: -150%; }
+  50%, 100% { left: 150%; }
+}
+
+.btn-inner-content {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.globe-icon-neon {
+  animation: spinSlow 12s linear infinite;
+}
+
+@keyframes spinSlow {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.arrow-sweep {
+  transition: transform 0.3s;
+}
+
+.btn-premium-neon-map:hover .arrow-sweep {
   transform: translateX(4px);
 }
 
-.metric-row-new[data-state="Gujarat"].active,
-.metric-row-new[data-state="Gujarat"]:hover { border-color: #F97316; background: rgba(249, 115, 22, 0.05); }
-
-.metric-row-new[data-state="Karnataka"].active,
-.metric-row-new[data-state="Karnataka"]:hover { border-color: #10B981; background: rgba(16, 185, 129, 0.05); }
-
-.metric-row-new[data-state="Tamil Nadu"].active,
-.metric-row-new[data-state="Tamil Nadu"]:hover { border-color: #EC4899; background: rgba(236, 72, 153, 0.05); }
-
-.metric-row-new[data-state="Uttar Pradesh"].active,
-.metric-row-new[data-state="Uttar Pradesh"]:hover { border-color: #8B5CF6; background: rgba(139, 92, 246, 0.05); }
-
-.state-name-new {
-  font-size: 13px;
-  font-weight: 600;
-  color: var(--text-main);
+/* Responsive Queries for Futuristic Section */
+@media (max-width: 1280px) {
+  .section-container-futuristic {
+    max-width: 100%;
+    padding: 0 30px;
+  }
 }
 
-.state-val-new {
-  font-size: 12px;
-  font-weight: 700;
-  color: var(--text-muted);
-}
-
-.metric-row-new.active .state-val-new,
-.metric-row-new:hover .state-val-new {
-  color: var(--text-main);
-}
-
-.metric-row-more-new {
-  text-align: center;
-  padding: 8px;
-  font-size: 12px;
-  font-weight: 600;
-  color: var(--text-light);
-}
-
-.map-card-footer-new {
-  margin-top: 24px;
-}
-
-/* 4. Responsive Media Queries */
 @media (max-width: 1024px) {
-  .hero-container {
-    grid-template-columns: 1fr;
-    gap: 40px;
-    text-align: center;
+  .impact-section-futuristic {
+    padding: 80px 0;
   }
   
-  .hero-left {
-    align-items: center;
+  .impact-split-futuristic {
+    grid-template-columns: 1fr;
+    gap: 48px;
+  }
+  
+  .card-futuristic-dashboard {
+    padding: 36px;
+    border-radius: 30px;
+  }
+  
+  .neon-glow-border {
+    border-radius: 30px;
+  }
+}
+
+@media (max-width: 768px) {
+  .impact-grid-left {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+  
+  .db-split-layout-futuristic {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+  
+  .state-cards-stack-futuristic {
     max-width: 100%;
   }
   
-  .hero-title-new {
-    font-size: 54px;
-  }
-  
-  .hero-sub-new {
-    max-width: 550px;
-    margin-left: auto;
-    margin-right: auto;
-  }
-  
-  .hero-ctas-new {
-    justify-content: center;
-  }
-  
-  .hero-trust-badges-new {
-    max-width: 500px;
-    margin: 0 auto;
-  }
-  
-  .hero-right {
-    max-width: 600px;
-    margin: 0 auto;
-  }
-  
-  .impact-split-container-new {
-    grid-template-columns: 1fr;
-    gap: 32px;
-  }
-  
-  .national-map-card-new {
-    max-width: 600px;
-    margin: 0 auto;
-    width: 100%;
+  .btn-premium-neon-map {
+    height: 70px;
+    border-radius: 16px;
   }
 }
 
-@media (max-width: 640px) {
-  .new-landing-hero {
-    padding-top: 40px;
-  }
-  
-  .hero-title-new {
-    font-size: 38px;
-  }
-  
-  .hero-ctas-new {
-    flex-direction: column;
-    width: 100%;
-    max-width: 320px;
-    margin-left: auto;
-    margin-right: auto;
-  }
-  
-  .hero-ctas-new .btn {
-    width: 100%;
-  }
-  
-  .hero-trust-badges-new {
-    grid-template-columns: 1fr;
-    gap: 12px;
-  }
-  
-  .floating-card {
-    display: none; /* Hide floating cards on mobile to reduce clutter */
-  }
-  
-  .macbook-screen-new {
-    border-width: 6px;
-  }
-  
-  .dashboard-mock-new {
-    grid-template-columns: 1fr; /* Hide mock sidebar on mobile screen size */
-  }
-  
-  .dash-mock-sidebar-new {
-    display: none;
-  }
-  
-  .impact-stats-grid-new {
-    grid-template-columns: 1fr;
-  }
-  
-  .map-layout-split-new {
-    grid-template-columns: 1fr;
-    gap: 24px;
-  }
-}

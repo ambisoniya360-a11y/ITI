@@ -617,9 +617,9 @@ document.addEventListener("DOMContentLoaded", async () => {
 // --- Dotted India Map Interactivity ---
 function initNewLandingMap() {
   const stateNodes = document.querySelectorAll(".state-node-new");
-  const metricRows = document.querySelectorAll(".metric-row-new");
+  const stateCards = document.querySelectorAll(".state-card-glass");
   const allPulses = document.querySelectorAll(".state-pulse-new");
-  const mapDots = document.querySelectorAll(".map-dot");
+  const mapDots = document.querySelectorAll(".net-dot");
 
   function highlightStateDots(stateName) {
     mapDots.forEach(dot => dot.classList.remove("active-dot"));
@@ -645,7 +645,7 @@ function initNewLandingMap() {
   function activateState(stateName) {
     stateNodes.forEach(node => node.classList.remove("active"));
     allPulses.forEach(pulse => pulse.style.display = "none");
-    metricRows.forEach(row => row.classList.remove("active"));
+    stateCards.forEach(card => card.classList.remove("active-state-card"));
 
     if (!stateName) {
       highlightStateDots(null);
@@ -655,8 +655,8 @@ function initNewLandingMap() {
     const activeNode = document.querySelector(`.state-node-new[data-state="${stateName}"]`);
     if (activeNode) activeNode.classList.add("active");
 
-    const activeRow = document.querySelector(`.metric-row-new[data-state="${stateName}"]`);
-    if (activeRow) activeRow.classList.add("active");
+    const activeCard = document.querySelector(`.state-card-glass[data-state="${stateName}"]`);
+    if (activeCard) activeCard.classList.add("active-state-card");
 
     const pulseIdMap = {
       "Maharashtra": "pulse-maharashtra",
@@ -681,20 +681,33 @@ function initNewLandingMap() {
     });
   });
 
-  metricRows.forEach(row => {
-    row.addEventListener("mouseenter", () => {
-      const stateName = row.getAttribute("data-state");
+  stateCards.forEach(card => {
+    card.addEventListener("mouseenter", () => {
+      const stateName = card.getAttribute("data-state");
       activateState(stateName);
     });
   });
 
-  const mapContainer = document.querySelector(".map-layout-split-new");
+  const mapContainer = document.querySelector(".db-split-layout-futuristic");
   if (mapContainer) {
     mapContainer.addEventListener("mouseleave", () => {
       activateState("Maharashtra");
     });
   }
+
+  // Card Hover Glow effect tracking
+  const metricCards = document.querySelectorAll(".card-glass-metric");
+  metricCards.forEach(card => {
+    card.addEventListener("mousemove", (e) => {
+      const rect = card.getBoundingClientRect();
+      const x = e.clientX - rect.left;
+      const y = e.clientY - rect.top;
+      card.style.setProperty("--mouse-x", `${x}px`);
+      card.style.setProperty("--mouse-y", `${y}px`);
+    });
+  });
 }
+
 
 // --- Theme Management ---
 function initTheme() {
