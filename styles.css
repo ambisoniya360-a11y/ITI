@@ -646,7 +646,7 @@ p {
 
 /* Section Styling */
 .section-container {
-  padding: 80px 5%;
+  padding: 120px 5%;
   max-width: 1200px;
   margin: 0 auto;
   width: 100%;
@@ -2697,7 +2697,7 @@ p {
 /* 1. Hero Layout & Background */
 .new-landing-hero {
   position: relative;
-  padding: 24px 5% 40px 5%;
+  padding: 60px 5% 80px 5%;
   overflow: visible;
   z-index: 5;
 }
@@ -3483,7 +3483,7 @@ p {
   background: var(--surface);
   border-top: 1px solid var(--border);
   border-bottom: 1px solid var(--border);
-  padding: 28px 5%;
+  padding: 40px 5%;
   text-align: center;
   position: relative;
   z-index: 10;
