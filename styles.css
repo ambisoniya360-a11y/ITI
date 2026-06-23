@@ -3,12 +3,14 @@
   Style Inspiration: Apple, Stripe, Notion, Linear
 */
 
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800&family=Manrope:wght@600;700;800&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap');
+@import url('https://api.fontshare.com/v2/css?f[]=satoshi@700,800,900&display=swap');
 
 /* CSS Variables for Light Theme (Default) */
 :root {
   --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-  --font-display: 'Outfit', var(--font-sans);
+  --font-display: 'Satoshi', 'Plus Jakarta Sans', var(--font-sans);
+  --font-stat: 'Manrope', var(--font-sans);
 
   /* Brand Colors */
   --primary: #1062FE; /* Royal Blue */
@@ -632,7 +634,7 @@ p {
   font-size: 32px;
   font-weight: 800;
   color: var(--primary);
-  font-family: var(--font-display);
+  font-family: var(--font-stat);
 }
 .stat-item-num-accent {
   color: var(--accent);
@@ -787,7 +789,7 @@ p {
   font-size: 18px;
   font-weight: 700;
   color: var(--text-main);
-  font-family: var(--font-display);
+  font-family: var(--font-stat);
 }
 
 .passport-stat-lbl {
@@ -971,7 +973,7 @@ p {
 .price-text {
   font-size: 40px;
   font-weight: 800;
-  font-family: var(--font-display);
+  font-family: var(--font-stat);
   color: var(--text-main);
   margin-top: 12px;
 }
@@ -2918,7 +2920,7 @@ p {
 }
 
 .float-val-new {
-  font-family: var(--font-display);
+  font-family: var(--font-stat);
   font-size: 18px;
   font-weight: 800;
   color: var(--text-main);
@@ -3696,7 +3698,7 @@ p {
 }
 
 .metric-value {
-  font-family: var(--font-display);
+  font-family: var(--font-stat);
   font-size: 38px;
   font-weight: 800;
   color: var(--text-main);
