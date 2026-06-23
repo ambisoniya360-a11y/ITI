@@ -2697,10 +2697,7 @@ p {
 /* 1. Hero Layout & Background */
 .new-landing-hero {
   position: relative;
-  padding: 80px 5% 40px 5%;
-  min-height: 85vh;
-  display: flex;
-  align-items: center;
+  padding: 24px 5% 40px 5%;
   overflow: visible;
   z-index: 5;
 }
