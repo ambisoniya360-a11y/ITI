@@ -1,0 +1,2537 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SkillBridge India - ITI Skill Passport, Apprenticeships & ERP Ecosystem</title>
+  <meta name="description" content="India's largest skill, apprenticeship, placement and workforce ecosystem connecting ITI Institutes, Students, and Companies.">
+  
+  <!-- Styling and Design Tokens -->
+  <link rel="stylesheet" href="styles.css">
+  
+  <!-- Chart.js CDN for beautiful analytics visual dashboards -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+
+  <!-- Background decorative design structures (Stripe & Linear inspired) -->
+  <div class="decor-grid"></div>
+  <div class="decor-glow-1"></div>
+  <div class="decor-glow-2"></div>
+
+  <!-- Interactive Demo Switcher Panel (Sticky floating controller) -->
+  <div class="demo-control-bar">
+    <span class="demo-title">SkillBridge Demo</span>
+    <button class="demo-btn active" data-view="landing-page" id="nav-btn-landing">
+      <i data-lucide="home"></i> Landing Page
+    </button>
+    <button class="demo-btn" data-view="student-portal" style="display: none;" id="nav-btn-student">
+      <i data-lucide="user"></i> Student Passport
+    </button>
+    <button class="demo-btn" data-view="institute-erp" style="display: none;" id="nav-btn-institute">
+      <i data-lucide="school"></i> Institute ERP
+    </button>
+    <button class="demo-btn" data-view="company-dashboard" style="display: none;" id="nav-btn-company">
+      <i data-lucide="building-2"></i> Company Hiring
+    </button>
+    <button class="demo-btn" data-view="admin-panel" style="display: none;" id="nav-btn-admin">
+      <i data-lucide="shield-check"></i> Admin Panel
+    </button>
+    <button class="demo-btn" data-view="login-page" style="display: none;" id="nav-btn-login">
+      <i data-lucide="log-in"></i> Login Page
+    </button>
+    <button class="demo-btn" data-view="mobile-app" id="nav-btn-mobile">
+      <i data-lucide="smartphone"></i> Mobile App UI
+    </button>
+    <button class="theme-toggle-btn" onclick="toggleTheme()" aria-label="Toggle Dark Mode">
+      <i data-lucide="moon"></i>
+    </button>
+  </div>
+
+  <div id="app-container">
+
+    <!-- ==========================================================================
+         VIEW 1: LANDING PAGE
+         ========================================================================== -->
+    <div id="landing-page" class="portal-view active">
+      
+      <!-- Top Sticky Navigation Bar -->
+      <header class="landing-header">
+        <div class="brand">
+          <div class="brand-icon">S</div>
+          <span>SkillBridge India</span>
+        </div>
+        <ul class="nav-links">
+          <li><a href="#problems" class="nav-link">For Partners</a></li>
+          <li><a href="#passport" class="nav-link">Skill Passport</a></li>
+          <li><a href="#marketplace" class="nav-link">Apprenticeships</a></li>
+          <li><a href="#pricing" class="nav-link">Pricing</a></li>
+          <li><a href="#impact" class="nav-link">National Impact</a></li>
+        </ul>
+        <div style="display: flex; gap: 12px; align-items: center;" id="landing-header-actions">
+          <button class="btn btn-secondary btn-sm" onclick="document.getElementById('nav-btn-login').click();">Login</button>
+          <button class="btn btn-primary btn-sm" onclick="document.getElementById('nav-btn-login').click();">Get Started</button>
+        </div>
+      </header>
+
+      <!-- Hero Section -->
+      <section class="landing-hero animate-fade-in-up">
+        <div class="hero-badge">
+          <span class="badge badge-trust">
+            <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+            Ministry of Skill Development & Industry Linked
+          </span>
+        </div>
+        <h1 class="hero-title">Connecting India's Skilled Workforce to Industry</h1>
+        <p class="hero-sub">One platform for ITI management, student skill passports, apprenticeships and industry hiring.</p>
+        
+        <div class="hero-ctas">
+          <button class="btn btn-primary" onclick="document.querySelector('[data-view=student-portal]').click();">Get Started Free</button>
+          <button class="btn btn-secondary" onclick="openModal('modal-schedule-interview')">Book Demo</button>
+        </div>
+
+        <!-- Live Dashboard Preview Cards -->
+        <div class="stats-ribbon">
+          <div class="stat-item">
+            <div class="stat-item-num" id="landing-students">1,25,000</div>
+            <div class="stat-item-lbl">Total Students</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-item-num stat-item-num-accent" id="landing-companies">1,200</div>
+            <div class="stat-item-lbl">Active Companies</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-item-num" id="landing-apprenticeships">9,250</div>
+            <div class="stat-item-lbl">Apprenticeships</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-item-num stat-item-num-accent" id="landing-placements">32,450</div>
+            <div class="stat-item-lbl">Placements Completed</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Section: Problems We Solve -->
+      <section id="problems" class="section-container" style="border-top: 1px solid var(--border); margin-top: 10px; padding-top: 40px;">
+        <div class="section-head">
+          <span class="badge badge-primary">Ecosystem Challenges</span>
+          <h2 style="margin-top: 10px;">The Problems We Solve</h2>
+          <p>Unifying the fragmented skill landscape into a single, high-trust digital network.</p>
+        </div>
+        <div class="problems-grid">
+          <div class="card problem-card">
+            <div class="problem-card-icon"><i data-lucide="school"></i></div>
+            <h3>ITI Institutes</h3>
+            <p>Manual tracking, broken communication with hiring managers, and outdated paper reports.</p>
+            <ul>
+              <li><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg> Unstructured placement trackers</li>
+              <li><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg> Slow compliance reports submission</li>
+            </ul>
+          </div>
+          <div class="card problem-card">
+            <div class="problem-card-icon problem-card-icon-accent"><i data-lucide="user"></i></div>
+            <h3>Students</h3>
+            <p>Lack of verified resumes, opaque applications, and poor discovery of apprenticeship offers.</p>
+            <ul>
+              <li><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg> Hard to prove practical skills</li>
+              <li><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg> Missing interview schedules</li>
+            </ul>
+          </div>
+          <div class="card problem-card">
+            <div class="problem-card-icon"><i data-lucide="building-2"></i></div>
+            <h3>Companies</h3>
+            <p>High recruitment costs, unverified certifications, and tedious compliance operations.</p>
+            <ul>
+              <li><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg> Fake certificates and scores</li>
+              <li><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg> Inefficient bulk hiring pipelines</li>
+            </ul>
+          </div>
+          <div class="card problem-card">
+            <div class="problem-card-icon problem-card-icon-accent"><i data-lucide="shield-check"></i></div>
+            <h3>Government</h3>
+            <p>Broken visibility into regional trade placements, lack of real-time supply maps, and audit limits.</p>
+            <ul>
+              <li><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg> Outdated skill census records</li>
+              <li><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg> Manual grant allocations</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- Section: Digital Skill Passport -->
+      <section id="passport" class="section-container" style="border-top: 1px solid var(--border);">
+        <div class="passport-showcase-split">
+          <div>
+            <span class="badge badge-accent">Secure Identity</span>
+            <h2 style="margin-top: 12px; font-size: 34px;">The Digital Skill Passport</h2>
+            <p style="margin-top: 16px;">Every student receives a secure digital profile loaded with authenticated credentials directly verified by the ITI and logged on the registry.</p>
+            
+            <div class="showcase-features-list">
+              <div class="showcase-feature-item">
+                <div class="showcase-feature-item-icon"><i data-lucide="check-circle-2"></i></div>
+                <div>
+                  <h5>Verified Trades & Skills</h5>
+                  <p style="font-size: 13px;">Instant trust via authenticated practical exam marks and attendance records.</p>
+                </div>
+              </div>
+              <div class="showcase-feature-item">
+                <div class="showcase-feature-item-icon showcase-feature-item-icon-accent"><i data-lucide="sparkles"></i></div>
+                <div>
+                  <h5>AI Employability Index</h5>
+                  <p style="font-size: 13px;">Predictive scores evaluating communication, safety standards, and practical trade mastery.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Interactive Passport Showcase Card (Amit Sharma Mockup) -->
+          <div class="passport-card-preview">
+            <span class="passport-badge-secured">
+              <i data-lucide="shield-check" style="width:14px; height:14px;"></i> Secure Registry Active
+            </span>
+            <div class="passport-header-ui">
+              <div class="passport-avatar-mock" style="background-image: url('https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?fit=crop&w=150&h=150');"></div>
+              <div class="passport-meta-info">
+                <h4>Amit Sharma</h4>
+                <p style="font-weight: 600; color: var(--primary);">Fitter Trade</p>
+                <div style="font-size: 11px; color: var(--text-light)">ID: SB-2026-045 &bull; Govt ITI Pune</div>
+              </div>
+            </div>
+            <div class="passport-stats-grid">
+              <div class="passport-stat-box">
+                <div class="passport-stat-val">92%</div>
+                <div class="passport-stat-lbl">Practical</div>
+              </div>
+              <div class="passport-stat-box">
+                <div class="passport-stat-val">91%</div>
+                <div class="passport-stat-lbl">Attendance</div>
+              </div>
+              <div class="passport-stat-box">
+                <div class="passport-stat-val">87</div>
+                <div class="passport-stat-lbl">AI Score</div>
+              </div>
+            </div>
+            <h5 style="font-size: 12px; text-transform: uppercase; color: var(--text-light); letter-spacing: 0.05em; margin-bottom: 8px;">NCVT Verified Skills</h5>
+            <div class="skills-tags-wrap">
+              <span class="skill-tag skill-tag-verified">Lathe Machine</span>
+              <span class="skill-tag skill-tag-verified">Precision Metrology</span>
+              <span class="skill-tag skill-tag-verified">Safety Gear (PPE)</span>
+              <span class="skill-tag">CNC Basics</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Section: Apprenticeship Marketplace -->
+      <section id="marketplace" class="section-container" style="border-top: 1px solid var(--border);">
+        <div class="section-head">
+          <span class="badge badge-primary">Direct Placement Channels</span>
+          <h2 style="margin-top: 10px;">Apprenticeship & Jobs Marketplace</h2>
+          <p>Verified companies posting active roles aligned directly with NCVT curriculum trades.</p>
+        </div>
+        
+        <div class="job-cards-grid" id="job-cards-container">
+          <!-- Populated dynamically via app.js -->
+        </div>
+      </section>
+
+      <!-- Feature Split: Company Hiring -->
+      <section class="section-container" style="border-top: 1px solid var(--border);">
+        <div class="feature-showcase-split">
+          <div class="card" style="padding: 10px; border-radius: var(--radius-lg); background: var(--surface); box-shadow: var(--shadow-lg);">
+            <img src="https://images.unsplash.com/photo-1531538606174-0f90ff5dce83?auto=format&fit=crop&w=700&q=80" alt="Company dashboard workspace mockup" style="width: 100%; border-radius: calc(var(--radius-lg) - 4px); display: block;">
+          </div>
+          <div>
+            <span class="badge badge-primary">For Corporates</span>
+            <h2 style="margin-top: 12px;">Corporate Talent Portal</h2>
+            <p style="margin-top: 16px;">Access thousands of qualified ITI candidates in seconds. Verify profiles instantly and filter by AI Employability Scores.</p>
+            <div class="showcase-features-list">
+              <div class="showcase-feature-item">
+                <div class="showcase-feature-item-icon"><i data-lucide="search"></i></div>
+                <div>
+                  <h5>Advanced Search & Match</h5>
+                  <p style="font-size: 13px;">Filter candidates by state, institute rating, verified trade, and physical scores.</p>
+                </div>
+              </div>
+              <div class="showcase-feature-item">
+                <div class="showcase-feature-item-icon showcase-feature-item-icon-accent"><i data-lucide="check-square"></i></div>
+                <div>
+                  <h5>Verified Credential Checks</h5>
+                  <p style="font-size: 13px;">Ditch paper copies. Every grade and training report is digitally verified.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Feature Split: Institute ERP -->
+      <section class="section-container" style="border-top: 1px solid var(--border);">
+        <div class="feature-showcase-split reverse">
+          <div>
+            <span class="badge badge-accent">For ITI Institutes</span>
+            <h2 style="margin-top: 12px;">Institute Management Suite (ERP)</h2>
+            <p style="margin-top: 16px;">Transform academic operations, attendance tracking, and place students on autopilot using integrated portals.</p>
+            <div class="showcase-features-list">
+              <div class="showcase-feature-item">
+                <div class="showcase-feature-item-icon showcase-feature-item-icon-accent"><i data-lucide="line-chart"></i></div>
+                <div>
+                  <h5>Track placement pipeline in real-time</h5>
+                  <p style="font-size: 13px;">Automated tracking of student selections, interview slots, and compliance statistics.</p>
+                </div>
+              </div>
+              <div class="showcase-feature-item">
+                <div class="showcase-feature-item-icon"><i data-lucide="users"></i></div>
+                <div>
+                  <h5>Student Portal & Alumni Roster</h5>
+                  <p style="font-size: 13px;">Keep tabs on batches even after graduation with active feedback channels.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="card" style="padding: 10px; border-radius: var(--radius-lg); background: var(--surface); box-shadow: var(--shadow-lg);">
+            <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=700&q=80" alt="Institute ERP workspace mockup" style="width: 100%; border-radius: calc(var(--radius-lg) - 4px); display: block;">
+          </div>
+        </div>
+      </section>
+
+      <!-- Section: AI Skill Assessment Visual -->
+      <section class="section-container" style="border-top: 1px solid var(--border);">
+        <div class="section-head">
+          <span class="badge badge-primary">Predictive Scoring</span>
+          <h2 style="margin-top: 10px;">AI-Driven Trade Competence Analytics</h2>
+          <p>Unbiased assessment of student performance using simulators, theory scores, and safety audits.</p>
+        </div>
+
+        <div class="dash-grid-equal" style="margin-top: 40px;">
+          <div class="card">
+            <h4>Trade Distribution Analytics</h4>
+            <p style="font-size: 12px; margin-bottom: 20px;">Distribution of current apprenticeship openings mapped by NCVT trades.</p>
+            <div class="chart-container">
+              <canvas id="chart-hiring-trades"></canvas>
+            </div>
+          </div>
+          <div class="card">
+            <h4>Candidate Evaluation Parameters</h4>
+            <p style="font-size: 12px; margin-bottom: 20px;">Aggregated performance parameters generated for candidates.</p>
+            <div style="display: flex; flex-direction: column; gap: 16px; margin-top: 10px;">
+              <div>
+                <div style="display:flex; justify-content:space-between; font-size:13px; font-weight:600; margin-bottom:6px;">
+                  <span>Practical Trade Skills</span>
+                  <span>95% Average</span>
+                </div>
+                <div style="height:8px; background:var(--border-strong); border-radius:4px; overflow:hidden;">
+                  <div style="width:95%; height:100%; background:var(--primary);"></div>
+                </div>
+              </div>
+              <div>
+                <div style="display:flex; justify-content:space-between; font-size:13px; font-weight:600; margin-bottom:6px;">
+                  <span>Industrial Safety Protocol</span>
+                  <span>97% Average</span>
+                </div>
+                <div style="height:8px; background:var(--border-strong); border-radius:4px; overflow:hidden;">
+                  <div style="width:97%; height:100%; background:var(--accent);"></div>
+                </div>
+              </div>
+              <div>
+                <div style="display:flex; justify-content:space-between; font-size:13px; font-weight:600; margin-bottom:6px;">
+                  <span>Core Theory & Calculation</span>
+                  <span>82% Average</span>
+                </div>
+                <div style="height:8px; background:var(--border-strong); border-radius:4px; overflow:hidden;">
+                  <div style="width:82%; height:100%; background:var(--success);"></div>
+                </div>
+              </div>
+              <div>
+                <div style="display:flex; justify-content:space-between; font-size:13px; font-weight:600; margin-bottom:6px;">
+                  <span>AI Employability score</span>
+                  <span>90% Median</span>
+                </div>
+                <div style="height:8px; background:var(--border-strong); border-radius:4px; overflow:hidden;">
+                  <div style="width:90%; height:100%; background:var(--warning);"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Section: Pricing -->
+      <section id="pricing" class="section-container" style="border-top: 1px solid var(--border);">
+        <div class="section-head">
+          <span class="badge badge-accent">Licensing & Tiers</span>
+          <h2 style="margin-top: 10px;">Select Your Partner Plan</h2>
+          <p>Pricing configurations built around institutional scales and corporate hiring volume.</p>
+        </div>
+
+        <div class="pricing-grid">
+          <!-- Tier 1 -->
+          <div class="card pricing-card">
+            <div class="pricing-header-ui">
+              <span class="badge badge-primary">Institute Plan</span>
+              <div class="price-text">₹0 <span>/ Free Forever</span></div>
+              <p style="font-size:12px; margin-top: 8px;">For Government & Private ITIs looking to digitize student logs.</p>
+            </div>
+            <ul class="pricing-features-list">
+              <li class="pricing-feature-item"><i data-lucide="check" style="width:16px; height:16px;"></i> Up to 500 Student Passports</li>
+              <li class="pricing-feature-item"><i data-lucide="check" style="width:16px; height:16px;"></i> Base ERP attendance tracker</li>
+              <li class="pricing-feature-item"><i data-lucide="check" style="width:16px; height:16px;"></i> Direct Placement board access</li>
+              <li class="pricing-feature-item"><i data-lucide="check" style="width:16px; height:16px;"></i> NCVT database imports</li>
+            </ul>
+            <button class="btn btn-secondary" onclick="document.querySelector('[data-view=institute-erp]').click();">Get Started Free</button>
+          </div>
+
+          <!-- Tier 2 -->
+          <div class="card pricing-card popular">
+            <div class="pricing-header-ui">
+              <span class="badge badge-accent">Company Plan</span>
+              <div class="price-text">₹4,999 <span>/ Month</span></div>
+              <p style="font-size:12px; margin-top: 8px;">For mid-size companies running apprenticeship campaigns.</p>
+            </div>
+            <ul class="pricing-features-list">
+              <li class="pricing-feature-item"><i data-lucide="check" style="width:16px; height:16px;"></i> Unlimited candidate search</li>
+              <li class="pricing-feature-item"><i data-lucide="check" style="width:16px; height:16px;"></i> Verified credential checks</li>
+              <li class="pricing-feature-item"><i data-lucide="check" style="width:16px; height:16px;"></i> Up to 25 placements per month</li>
+              <li class="pricing-feature-item"><i data-lucide="check" style="width:16px; height:16px;"></i> Built-in interview scheduler</li>
+            </ul>
+            <button class="btn btn-primary" onclick="document.querySelector('[data-view=company-dashboard]').click();">Start Trial</button>
+          </div>
+
+          <!-- Tier 3 -->
+          <div class="card pricing-card">
+            <div class="pricing-header-ui">
+              <span class="badge badge-primary">Enterprise Plan</span>
+              <div class="price-text">Custom <span>/ Quote</span></div>
+              <p style="font-size:12px; margin-top: 8px;">For MNCs, Large PSUs, and State Government departments.</p>
+            </div>
+            <ul class="pricing-features-list">
+              <li class="pricing-feature-item"><i data-lucide="check" style="width:16px; height:16px;"></i> Dedicated API & NCVT sync</li>
+              <li class="pricing-feature-item"><i data-lucide="check" style="width:16px; height:16px;"></i> Custom AI Skill model training</li>
+              <li class="pricing-feature-item"><i data-lucide="check" style="width:16px; height:16px;"></i> Multi-state reporting & audit keys</li>
+              <li class="pricing-feature-item"><i data-lucide="check" style="width:16px; height:16px;"></i> SLA Support & dedicated account team</li>
+            </ul>
+            <button class="btn btn-secondary" onclick="openModal('modal-schedule-interview')">Contact Enterprise</button>
+          </div>
+        </div>
+      </section>
+
+      <!-- Section: National Impact -->
+      <section id="impact" class="section-container" style="border-top: 1px solid var(--border); margin-bottom: 60px;">
+        <div class="section-head">
+          <span class="badge badge-primary">Scale & Progress</span>
+          <h2 style="margin-top: 10px;">Our National Footprint</h2>
+          <p>Helping transform vocational training across Indian states.</p>
+        </div>
+
+        <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; text-align: center;">
+          <div class="card">
+            <h3 style="font-size: 36px; color: var(--primary);" id="impact-students">1,25,000+</h3>
+            <p style="font-size: 13px; font-weight:600; margin-top: 8px;">Students Connected</p>
+          </div>
+          <div class="card">
+            <h3 style="font-size: 36px; color: var(--accent);" id="impact-institutes">550+</h3>
+            <p style="font-size: 13px; font-weight:600; margin-top: 8px;">Institutes Onboarded</p>
+          </div>
+          <div class="card">
+            <h3 style="font-size: 36px; color: var(--primary);" id="impact-companies">1,200+</h3>
+            <p style="font-size: 13px; font-weight:600; margin-top: 8px;">Companies Hiring</p>
+          </div>
+          <div class="card">
+            <h3 style="font-size: 36px; color: var(--accent);" id="impact-placements">32,450+</h3>
+            <p style="font-size: 13px; font-weight:600; margin-top: 8px;">Placements Completed</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Footer -->
+      <footer class="footer-wrap">
+        <div class="footer-grid">
+          <div class="footer-col-info">
+            <h4>SkillBridge India</h4>
+            <p style="font-size:13px; margin-top: 12px; max-width: 300px;">India's largest digital workforce registry connecting industrial students with placement and apprenticeships.</p>
+          </div>
+          <div class="footer-col-nav">
+            <h5>Product</h5>
+            <ul>
+              <li><a href="#problems">Partners</a></li>
+              <li><a href="#passport">Skill Passport</a></li>
+              <li><a href="#marketplace">Job Board</a></li>
+              <li><a href="#pricing">Pricing Plan</a></li>
+            </ul>
+          </div>
+          <div class="footer-col-nav">
+            <h5>Resources</h5>
+            <ul>
+              <li><a href="#">MSDE Guidelines</a></li>
+              <li><a href="#">NCVT Compliance</a></li>
+              <li><a href="#">Apprenticeship Act</a></li>
+              <li><a href="#">Knowledge Base</a></li>
+            </ul>
+          </div>
+          <div class="footer-col-nav">
+            <h5>Legal</h5>
+            <ul>
+              <li><a href="#">Privacy Policy</a></li>
+              <li><a href="#">Terms of Service</a></li>
+              <li><a href="#">National Data Code</a></li>
+              <li><a href="#">Audit Records</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <span>&copy; 2026 SkillBridge India. Approved by National Skill Registry.</span>
+          <span>Designed with Government-Grade Trust.</span>
+        </div>
+      </footer>
+
+    </div>
+
+    <!-- ==========================================================================
+         VIEW 1.5: LOGIN PORTAL
+         ========================================================================== -->
+    <div id="login-page" class="portal-view">
+      <div class="login-container">
+        <div class="login-card" id="login-card">
+          
+          <!-- Admin mode warning banner -->
+          <div class="admin-mode-banner" id="admin-banner">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+            <span>Admin Governance Portal Active</span>
+          </div>
+
+          <!-- Auth Mode Toggle (Sign In / Sign Up) -->
+          <div style="display: flex; background: var(--surface-hover); border: 1px solid var(--border); padding: 4px; border-radius: var(--radius-md); margin-bottom: 20px;" id="auth-mode-tabs">
+            <button class="role-sel-btn active" id="auth-mode-signin-btn" onclick="setAuthMode('signin')" style="flex: 1;">Sign In</button>
+            <button class="role-sel-btn" id="auth-mode-signup-btn" onclick="setAuthMode('signup')" style="flex: 1;">Sign Up</button>
+          </div>
+
+          <div class="login-header-ui">
+            <div class="brand" style="justify-content: center; margin-bottom: 12px;">
+              <div class="brand-icon">S</div>
+              <span style="font-family: var(--font-display); font-weight: 800; font-size: 20px;">SkillBridge India</span>
+            </div>
+            <h3 id="login-card-title">Sign In to Dashboard</h3>
+            <p id="login-card-subtitle">Select your role to access your verified portal.</p>
+          </div>
+
+          <!-- Role Selector Tabs -->
+          <div class="login-tabs" id="login-role-tabs">
+            <button class="role-sel-btn active" data-role="Student" onclick="setLoginRole('Student')">Student</button>
+            <button class="role-sel-btn" data-role="Institute" onclick="setLoginRole('Institute')">Institute</button>
+            <button class="role-sel-btn" data-role="Company" onclick="setLoginRole('Company')">Company</button>
+          </div>
+
+          <!-- Main Login Form -->
+          <form onsubmit="handleAuthSubmit(event)" id="login-form">
+            <!-- Name Input (Sign Up Only) -->
+            <div class="login-form-group" id="signup-name-group" style="display: none;">
+              <label for="login-name" id="login-name-label">Full Name</label>
+              <div class="login-input-wrapper">
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+                <input type="text" id="login-name" placeholder="Rahul Verma">
+              </div>
+            </div>
+
+            <!-- Email (Common) -->
+            <div class="login-form-group">
+              <label for="login-email" id="login-email-label">Student Email / UID</label>
+              <div class="login-input-wrapper">
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+                <input type="email" id="login-email" placeholder="student@skillbridge.in" required>
+              </div>
+            </div>
+
+            <!-- Password (Common) -->
+            <div class="login-form-group">
+              <label for="login-password">Password</label>
+              <div class="login-input-wrapper">
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="11" x="3" y="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+                <input type="password" id="login-password" placeholder="••••••••" required>
+              </div>
+            </div>
+
+            <!-- Student Extra fields (Sign Up Only) -->
+            <div id="signup-student-fields" style="display: none;">
+              <div class="login-form-group">
+                <label for="signup-student-trade">Trades</label>
+                <select id="signup-student-trade" class="form-input" style="padding: 10px 14px; border-radius: var(--radius-md);">
+                  <optgroup label="── Engineering Trades ──">
+                    <option value="Electrician">Electrician</option>
+                    <option value="Fitter">Fitter</option>
+                    <option value="Welder">Welder</option>
+                    <option value="Turner">Turner</option>
+                    <option value="Machinist">Machinist</option>
+                    <option value="Electronics Mechanic">Electronics Mechanic</option>
+                    <option value="Refrigeration & AC">Refrigeration & AC</option>
+                    <option value="Mechanic Diesel">Mechanic Diesel</option>
+                    <option value="Motor Mechanic (MMV)">Motor Mechanic (MMV)</option>
+                    <option value="Wireman">Wireman</option>
+                    <option value="Surveyor">Surveyor</option>
+                    <option value="Draughtsman Civil">Draughtsman Civil</option>
+                    <option value="Draughtsman Mechanical">Draughtsman Mechanical</option>
+                    <option value="CNC Operator">CNC Operator</option>
+                    <option value="Solar Technician">Solar Technician</option>
+                    <option value="IoT Technician">IoT Technician</option>
+                    <option value="EV Technician">EV Technician</option>
+                  </optgroup>
+                  <optgroup label="── Non-Engineering Trades ──">
+                    <option value="COPA">COPA (Computer Operator)</option>
+                    <option value="Stenographer">Stenographer</option>
+                    <option value="Dress Making">Dress Making</option>
+                    <option value="Sewing Technology">Sewing Technology</option>
+                    <option value="Health Sanitary Inspector">Health Sanitary Inspector</option>
+                    <option value="Food Production">Food Production</option>
+                    <option value="Hospitality Assistant">Hospitality Assistant</option>
+                    <option value="Digital Photographer">Digital Photographer</option>
+                  </optgroup>
+                </select>
+              </div>
+              <div class="login-form-group">
+                <label for="signup-student-inst">Select ITI Institute</label>
+                <select id="signup-student-inst" class="form-input" style="padding: 10px 14px; border-radius: var(--radius-md);">
+                  <option value="Government ITI Pune">Government ITI Pune</option>
+                  <option value="Government ITI Nashik">Government ITI Nashik</option>
+                  <option value="Government ITI Kolhapur">Government ITI Kolhapur</option>
+                  <option value="Government ITI Aurangabad">Government ITI Aurangabad</option>
+                  <option value="Government ITI Nagpur">Government ITI Nagpur</option>
+                  <option value="Government ITI Mumbai">Government ITI Mumbai</option>
+                </select>
+              </div>
+            </div>
+
+            <!-- Institute Extra fields (Sign Up Only) -->
+            <div id="signup-institute-fields" style="display: none;">
+              <div class="login-form-group">
+                <label for="signup-institute-state">State Location</label>
+                <input type="text" id="signup-institute-state" class="form-input" placeholder="e.g. Maharashtra" style="padding: 10px 14px; border-radius: var(--radius-md);">
+              </div>
+            </div>
+
+            <!-- Company Extra fields (Sign Up Only) -->
+            <div id="signup-company-fields" style="display: none;">
+              <div class="login-form-group">
+                <label for="signup-company-industry">Industry Sector</label>
+                <input type="text" id="signup-company-industry" class="form-input" placeholder="e.g. Automotive, Aerospace" style="padding: 10px 14px; border-radius: var(--radius-md);">
+              </div>
+              <div class="login-form-group">
+                <label for="signup-company-loc">Office Location</label>
+                <input type="text" id="signup-company-loc" class="form-input" placeholder="e.g. Pune, Maharashtra" style="padding: 10px 14px; border-radius: var(--radius-md);">
+              </div>
+            </div>
+
+            <button type="submit" class="btn btn-primary" id="login-submit-btn" style="width: 100%; justify-content: center; margin-top: 8px;">
+              Sign In to Portal
+            </button>
+          </form>
+
+          <!-- Autofill section for demo ease -->
+          <div class="autofill-section" id="login-autofill-sec" style="margin-top: 24px;">
+            <h5 style="margin-bottom: 10px;">Autofill Demo Credentials</h5>
+            <div class="autofill-list">
+              <button class="cred-help-btn" onclick="autofillDemoCredentials(event)">
+                <span id="autofill-desc">Rahul Verma (Student)</span>
+                <code>Autofill</code>
+              </button>
+            </div>
+          </div>
+
+          <!-- Footer with discreet admin switch -->
+          <div class="login-card-footer">
+            <span>Approved by National Skill Registry</span>
+            <button class="admin-lock-btn" id="admin-lock-btn" onclick="toggleAdminMode()" title="Toggle Admin Login Portal">
+              <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="11" x="3" y="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+            </button>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+
+    <!-- ==========================================================================
+         VIEW 2: STUDENT PORTAL
+         ========================================================================== -->
+    <div id="student-portal" class="portal-view">
+      <div class="dash-shell">
+        
+        <!-- Sidebar -->
+        <aside class="dash-sidebar">
+          <div class="dash-sidebar-header">
+            <div class="brand">
+              <div class="brand-icon">S</div>
+              <span>Student Hub</span>
+            </div>
+          </div>
+          <ul class="dash-sidebar-menu">
+            <li class="dash-menu-item">
+              <a href="#" class="dash-menu-link active" id="student-side-link-dashboard" onclick="switchStudentTab('dashboard', event)">
+                <i data-lucide="layout-dashboard"></i> Dashboard
+              </a>
+            </li>
+            <li class="dash-menu-item">
+              <a href="#" class="dash-menu-link" id="student-side-link-passport" onclick="switchStudentTab('passport', event)">
+                <i data-lucide="user-check"></i> Skill Passport
+              </a>
+            </li>
+            <li class="dash-menu-item">
+              <a href="#" class="dash-menu-link" id="student-side-link-applications" onclick="switchStudentTab('applications', event)">
+                <i data-lucide="briefcase"></i> Job Applications
+              </a>
+            </li>
+            <li class="dash-menu-item">
+              <a href="#" class="dash-menu-link" id="student-side-link-certs" onclick="switchStudentTab('certs', event)">
+                <i data-lucide="award"></i> Certifications
+              </a>
+            </li>
+            <li class="dash-menu-item">
+              <a href="#" class="dash-menu-link" id="student-side-link-resume" onclick="switchStudentTab('resume', event)">
+                <i data-lucide="file-text"></i> Resume Builder
+              </a>
+            </li>
+            <li class="dash-menu-item">
+              <a href="#" class="dash-menu-link" id="student-side-link-inbox" onclick="switchStudentTab('inbox', event)">
+                <i data-lucide="message-square"></i> Inbox <span class="badge badge-accent inbox-unread-count" style="display: none; font-size: 8px; padding: 2px 5px; margin-left: auto; border-radius: 50%;">0</span>
+              </a>
+            </li>
+          </ul>
+          <div class="sidebar-logout-container">
+            <a href="#" class="logout-sidebar-link" onclick="handleLogout(event)">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg> Logout
+            </a>
+          </div>
+          <div class="dash-sidebar-footer" id="student-sidebar-footer">
+            Logged in as Student Portal
+          </div>
+        </aside>
+
+        <!-- Main Workspace -->
+        <div class="dash-main">
+          <header class="dash-header">
+            <div class="dash-header-title">My Digital Skill Passport</div>
+            <div class="dash-header-actions">
+              <button class="btn btn-secondary btn-sm" onclick="showToast('Link Copied', 'Your public verified profile link was copied to your clipboard.')">
+                <i data-lucide="share-2" style="width:14px; height:14px;"></i> Share Passport Link
+              </button>
+              <div class="dash-user-pill">
+                <div class="dash-user-avatar">RV</div>
+                <span style="font-size: 13px; font-weight:600;">Rahul Verma</span>
+              </div>
+            </div>
+          </header>
+
+          <div class="dash-content">
+
+            <!-- STUDENT TAB 1: DASHBOARD -->
+            <div id="student-view-dashboard" class="student-tab-content">
+              <div style="display: grid; grid-template-columns: 320px 1fr; gap: 24px; align-items: start;">
+                <!-- Radial Score Preview Card -->
+                <div class="card card-glowing" style="padding: 24px; text-align: center; display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 380px;">
+                  <div class="passport-verified-ring" style="margin-bottom: 20px;">
+                    <div id="student-score-radial" class="passport-score-radial"></div>
+                    <div class="passport-score-num">
+                      <h5 id="student-score-num" style="font-size: 36px; font-weight: 800; font-family: var(--font-display); color: var(--text-main);">92</h5>
+                      <span style="font-size: 11px; text-transform: uppercase; color: var(--text-light); font-weight: 600;">AI Index</span>
+                    </div>
+                  </div>
+                  <h4 style="font-family: var(--font-display); font-size: 20px; font-weight: 800; margin-bottom: 6px;">Employability Rating</h4>
+                  <p style="font-size: 13px; color: var(--text-muted); max-width: 240px; line-height: 1.4; margin-bottom: 16px;">This index represents your aggregate trade mastery, safety rating, and workshop attendance.</p>
+                  <span class="badge badge-success" style="font-size: 11px; padding: 6px 12px; border-radius: 20px;">✓ Secured Profile</span>
+                </div>
+
+                <!-- Stats and Overview -->
+                <div style="display: flex; flex-direction: column; gap: 24px;">
+                  <div class="card" style="padding: 24px;">
+                    <h4 style="font-family: var(--font-display); font-size: 18px; font-weight: 800; margin-bottom: 16px;">NCVT Verification Stats</h4>
+                    <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px;">
+                      <div class="stat-box-student" style="background: var(--surface-hover); border: 1px solid var(--border); padding: 16px; border-radius: var(--radius-md); text-align: center; transition: var(--transition);">
+                        <div id="student-stat-attendance" style="font-size: 24px; font-weight: 800; color: var(--primary);">94%</div>
+                        <div style="font-size: 10px; color: var(--text-light); text-transform: uppercase; margin-top: 6px; font-weight: 600;">Attendance</div>
+                      </div>
+                      <div class="stat-box-student" style="background: var(--surface-hover); border: 1px solid var(--border); padding: 16px; border-radius: var(--radius-md); text-align: center; transition: var(--transition);">
+                        <div id="student-stat-practical" style="font-size: 24px; font-weight: 800; color: var(--success);">96/100</div>
+                        <div style="font-size: 10px; color: var(--text-light); text-transform: uppercase; margin-top: 6px; font-weight: 600;">Practical Exam</div>
+                      </div>
+                      <div class="stat-box-student" style="background: var(--surface-hover); border: 1px solid var(--border); padding: 16px; border-radius: var(--radius-md); text-align: center; transition: var(--transition);">
+                        <div id="student-stat-theory" style="font-size: 24px; font-weight: 800; color: var(--warning);">88/100</div>
+                        <div style="font-size: 10px; color: var(--text-light); text-transform: uppercase; margin-top: 6px; font-weight: 600;">Theory Exam</div>
+                      </div>
+                      <div class="stat-box-student" style="background: var(--surface-hover); border: 1px solid var(--border); padding: 16px; border-radius: var(--radius-md); text-align: center; transition: var(--transition);">
+                        <div id="student-stat-safety" style="font-size: 24px; font-weight: 800; color: var(--accent);">98/100</div>
+                        <div style="font-size: 10px; color: var(--text-light); text-transform: uppercase; margin-top: 6px; font-weight: 600;">Safety Index</div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- Quick Quick Start Guide -->
+                  <div class="card" style="padding: 24px; background: linear-gradient(135deg, rgba(var(--primary-rgb), 0.05) 0%, rgba(var(--accent-rgb), 0.05) 100%); border-color: rgba(var(--primary-rgb), 0.15);">
+                    <h4 style="font-family: var(--font-display); font-size: 18px; font-weight: 800; color: var(--text-main); margin-bottom: 8px;">Welcome to your Skill Passport Dashboard!</h4>
+                    <p style="font-size: 13px; line-height: 1.5; color: var(--text-muted); margin-bottom: 16px;">Your Skill Passport is a secure digital identity linked with the Ministry of Skill Development. Navigate using the sidebar menu to view your secure card, apply for active openings, or export verified trade credentials.</p>
+                    <div style="display: flex; gap: 12px;">
+                      <button class="btn btn-primary btn-sm" onclick="switchStudentTab('passport', event)">View Digital Passport</button>
+                      <button class="btn btn-secondary btn-sm" onclick="switchStudentTab('applications', event)">Browse Jobs</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- STUDENT TAB 2: SKILL PASSPORT -->
+            <div id="student-view-passport" class="student-tab-content" style="display: none;">
+              <div style="display: grid; grid-template-columns: 420px 1fr; gap: 32px; align-items: start;">
+                
+                <!-- EXTREMELY PREMIUM EYE-CATCHING PASSPORT BADGE CARD -->
+                <div class="passport-container-3d">
+                  <div class="premium-passport-card">
+                    <!-- Top Security Hologram Bar -->
+                    <div class="passport-security-header">
+                      <div class="govt-emblem-small">
+                        <span style="font-size: 7px; font-weight: 800; color: gold;">NCVT</span>
+                      </div>
+                      <div class="chip-hologram"></div>
+                      <div style="text-align: right;">
+                        <span style="font-size: 8px; font-weight: 700; color: #FFF; letter-spacing: 1px; display: block; text-transform: uppercase;">SECURE PASS</span>
+                        <span style="font-size: 6px; color: rgba(255,255,255,0.7); display: block;">SKILLBRIDGE DIGITAL IDENTITY</span>
+                      </div>
+                    </div>
+
+                    <!-- Inner Body -->
+                    <div class="passport-card-inner-body">
+                      <!-- Left Side Details -->
+                      <div style="flex-grow: 1;">
+                        <div class="passport-identity-block">
+                          <h3 id="student-pass-name" style="font-size: 22px; font-weight: 800; color: #FFF; font-family: var(--font-display); letter-spacing: 0.5px;">Rahul Verma</h3>
+                          <p id="student-pass-trade" style="color: var(--accent); font-size: 13px; font-weight: 700; text-transform: uppercase; margin-top: 2px; letter-spacing: 1px;">Electrician Trade</p>
+                        </div>
+                        <div class="passport-metadata-rows">
+                          <div class="passport-meta-row">
+                            <span class="lbl">ID NUMBER</span>
+                            <span class="val" id="student-pass-id">SB-2026-081</span>
+                          </div>
+                          <div class="passport-meta-row">
+                            <span class="lbl">ISSUING AUTHORITY</span>
+                            <span class="val" id="student-pass-inst">Government ITI Pune</span>
+                          </div>
+                        </div>
+                      </div>
+
+                      <!-- Profile Avatar Right Side -->
+                      <div class="passport-avatar-container">
+                        <div class="passport-avatar-mock" style="background-image: url('https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?auto=format&fit=crop&w=150&h=150');"></div>
+                        <div class="passport-security-seal">
+                          <svg viewBox="0 0 100 100" width="100%" height="100%">
+                            <circle cx="50" cy="50" r="45" fill="none" stroke="gold" stroke-width="1.5" stroke-dasharray="4 2"></circle>
+                            <text font-size="8" fill="gold" font-weight="bold">
+                              <textPath href="#circlePath">VERIFIED &bull; SKILLBRIDGE &bull; VERIFIED &bull;</textPath>
+                            </text>
+                            <path id="circlePath" d="M 50,50 m -35,0 a 35,35 0 1,1 70,0 a 35,35 0 1,1 -70,0" fill="none"></path>
+                            <polygon points="50,25 57,40 73,43 62,55 65,71 50,63 35,71 38,55 27,43 43,40" fill="gold"></polygon>
+                          </svg>
+                        </div>
+                      </div>
+                    </div>
+
+                    <!-- Footer Details -->
+                    <div class="passport-card-footer-details">
+                      <!-- Digital QR Code -->
+                      <div class="passport-qr-code-wrap">
+                        <div class="passport-qr-dots">
+                          <div class="qr-block-corner top-left"></div>
+                          <div class="qr-block-corner top-right"></div>
+                          <div class="qr-block-corner bottom-left"></div>
+                        </div>
+                        <span style="font-size: 7px; color: #fff; text-transform: uppercase; font-weight:700; margin-top: 4px; display:block;">Scan to Verify</span>
+                      </div>
+                      
+                      <!-- Trust indicators -->
+                      <div style="flex-grow: 1; display: flex; flex-direction: column; justify-content: flex-end; align-items: flex-end;">
+                        <div class="blockchain-verified-badge">
+                          <span class="pulse-dot"></span>
+                          <span>Secured Blockchain Hash</span>
+                        </div>
+                        <div style="font-size: 9px; color: rgba(255,255,255,0.4); margin-top: 6px;">SEC-ID: MSDE-10928-SKB</div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Verified Skills details -->
+                <div class="card" style="padding: 24px;">
+                  <h4 style="font-family: var(--font-display); font-size: 18px; font-weight: 800; margin-bottom: 12px;">Verified Trade Skills</h4>
+                  <p style="font-size: 13px; color: var(--text-muted); margin-bottom: 20px;">Skills listed here are dynamically synchronized with the NCVT database registry and signed by your instructors. Add skills below to boost your Employability Score.</p>
+                  
+                  <div class="skills-tags-wrap" id="student-skills-list" style="margin-bottom: 24px;">
+                    <!-- Rendered via app.js -->
+                  </div>
+
+                  <div style="border-top: 1px solid var(--border); padding-top: 20px; display:flex; justify-content:space-between; align-items:center;">
+                    <span style="font-size:12px; color:var(--text-light); font-weight:600;">Need a new skill evaluation?</span>
+                    <button class="btn btn-primary btn-sm" onclick="showAddSkillModal()">Request Practical Test</button>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+
+            <!-- STUDENT TAB 3: JOB APPLICATIONS -->
+            <div id="student-view-applications" class="student-tab-content" style="display: none;">
+              <div style="display: flex; flex-direction: column; gap: 32px;">
+                <!-- Application Tracker Table -->
+                <div class="card" style="padding: 24px;">
+                  <h4 style="font-family: var(--font-display); font-size: 18px; font-weight: 800; margin-bottom: 16px;">Active Applications Tracker</h4>
+                  <div class="dash-table-wrap">
+                    <table class="dash-table">
+                      <thead>
+                        <tr>
+                          <th>Company & Job</th>
+                          <th>Type</th>
+                          <th>Applied Date</th>
+                          <th>Status</th>
+                        </tr>
+                      </thead>
+                      <tbody id="student-applications-table">
+                        <!-- Populated dynamically via app.js -->
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+
+                <!-- Matching Job Openings -->
+                <div class="card" style="padding: 24px;">
+                  <h4 style="font-family: var(--font-display); font-size: 18px; font-weight: 800; margin-bottom: 16px;">Recommended Openings</h4>
+                  <p style="font-size: 13px; color: var(--text-muted); margin-bottom: 20px;">These roles match your Electrician trade certification and physical skill passport.</p>
+                  <div id="student-job-board">
+                    <!-- Populated dynamically via app.js -->
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- STUDENT TAB 4: CERTIFICATIONS -->
+            <div id="student-view-certs" class="student-tab-content" style="display: none;">
+              <div class="card" style="padding: 24px;">
+                <h4 style="font-family: var(--font-display); font-size: 18px; font-weight: 800; margin-bottom: 12px;">Verification Vault</h4>
+                <p style="font-size: 13px; color: var(--text-muted); margin-bottom: 24px;">Your digital vault contains cryptographically sealed trade certifications issued by the National Council for Vocational Training (NCVT).</p>
+                <div id="student-certs-list" style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px;">
+                  <!-- Rendered via app.js -->
+                </div>
+              </div>
+            </div>
+
+            <!-- STUDENT TAB 5: RESUME BUILDER -->
+            <div id="student-view-resume" class="student-tab-content" style="display: none;">
+              <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 32px; align-items: start;">
+                
+                <!-- Left Panel: Form Editor -->
+                <div class="card" style="padding: 24px;">
+                  <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+                    <h4 style="font-family: var(--font-display); font-size: 18px; font-weight: 800;">Resume Editor</h4>
+                    <span style="font-size: 11px; color: var(--success); font-weight: 700; background: rgba(16, 185, 129, 0.1); padding: 4px 8px; border-radius: 4px; border: 1px solid rgba(16, 185, 129, 0.2);">
+                      ✓ Verified Data Connected
+                    </span>
+                  </div>
+                  
+                  <form id="resume-form" style="display: flex; flex-direction: column; gap: 16px;">
+                    <!-- Contact Info -->
+                    <div>
+                      <h5 style="font-size: 12px; text-transform: uppercase; color: var(--primary); letter-spacing: 0.5px; margin-bottom: 8px; font-weight: 700;">1. Personal & Contact Details</h5>
+                      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px;">
+                        <div class="form-group" style="margin-bottom: 0;">
+                          <label style="font-size: 11px; margin-bottom: 4px;">Full Name</label>
+                          <input type="text" id="resume-input-name" class="form-input" style="padding: 8px 12px; font-size:12px;" value="Rahul Verma" oninput="updateLiveResume()">
+                        </div>
+                        <div class="form-group" style="margin-bottom: 0;">
+                          <label style="font-size: 11px; margin-bottom: 4px;">Professional Title</label>
+                          <input type="text" id="resume-input-title" class="form-input" style="padding: 8px 12px; font-size:12px;" value="Electrician Specialist" oninput="updateLiveResume()">
+                        </div>
+                      </div>
+                      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 10px;">
+                        <div class="form-group" style="margin-bottom: 0;">
+                          <label style="font-size: 11px; margin-bottom: 4px;">Email Address</label>
+                          <input type="email" id="resume-input-email" class="form-input" style="padding: 8px 12px; font-size:12px;" value="rahul.verma@skillbridge.in" oninput="updateLiveResume()">
+                        </div>
+                        <div class="form-group" style="margin-bottom: 0;">
+                          <label style="font-size: 11px; margin-bottom: 4px;">Phone Number</label>
+                          <input type="text" id="resume-input-phone" class="form-input" style="padding: 8px 12px; font-size:12px;" value="+91 98765 43210" oninput="updateLiveResume()">
+                        </div>
+                      </div>
+                      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 10px;">
+                        <div class="form-group" style="margin-bottom: 0;">
+                          <label style="font-size: 11px; margin-bottom: 4px;">Portfolio / Link</label>
+                          <input type="text" id="resume-input-link" class="form-input" style="padding: 8px 12px; font-size:12px;" value="skillbridge.in/passport/rahul-verma" oninput="updateLiveResume()">
+                        </div>
+                        <div class="form-group" style="margin-bottom: 0;">
+                          <label style="font-size: 11px; margin-bottom: 4px;">Address Location</label>
+                          <input type="text" id="resume-input-address" class="form-input" style="padding: 8px 12px; font-size:12px;" value="Pune, Maharashtra" oninput="updateLiveResume()">
+                        </div>
+                      </div>
+                    </div>
+
+                    <!-- Professional Summary -->
+                    <div style="border-top: 1px solid var(--border); padding-top: 16px;">
+                      <h5 style="font-size: 12px; text-transform: uppercase; color: var(--primary); letter-spacing: 0.5px; margin-bottom: 8px; font-weight: 700;">2. Professional Summary</h5>
+                      <div class="form-group" style="margin-bottom: 0;">
+                        <textarea id="resume-input-summary" class="form-input" style="padding: 8px 12px; font-size:12px; min-height: 80px; resize: vertical;" oninput="updateLiveResume()">Detail-oriented and safety-conscious Electrician certified by NCVT with hands-on training in industrial wiring, solar PV installation, and electrical system diagnostics. Proven capability to manage workshop equipment and comply with safety procedures.</textarea>
+                      </div>
+                    </div>
+
+                    <!-- Work Experience -->
+                    <div style="border-top: 1px solid var(--border); padding-top: 16px;">
+                      <h5 style="font-size: 12px; text-transform: uppercase; color: var(--primary); letter-spacing: 0.5px; margin-bottom: 8px; font-weight: 700;">3. Practical Projects & Experience</h5>
+                      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px;">
+                        <div class="form-group" style="margin-bottom: 0;">
+                          <label style="font-size: 11px; margin-bottom: 4px;">Project Title</label>
+                          <input type="text" id="resume-input-proj-title" class="form-input" style="padding: 8px 12px; font-size:12px;" value="Solar PV Inverter Setup" oninput="updateLiveResume()">
+                        </div>
+                        <div class="form-group" style="margin-bottom: 0;">
+                          <label style="font-size: 11px; margin-bottom: 4px;">Role/Company</label>
+                          <input type="text" id="resume-input-proj-role" class="form-input" style="padding: 8px 12px; font-size:12px;" value="Workshop Lead (Govt ITI)" oninput="updateLiveResume()">
+                        </div>
+                      </div>
+                      <div class="form-group" style="margin-top: 10px; margin-bottom: 0;">
+                        <label style="font-size: 11px; margin-bottom: 4px;">Project Details</label>
+                        <textarea id="resume-input-proj-desc" class="form-input" style="padding: 8px 12px; font-size:12px; min-height: 60px; resize: vertical;" oninput="updateLiveResume()">Led a team of 4 to design and install a 5KW off-grid solar panel setup in the institute workshop, troubleshooting inverter connections and wiring diagrams.</textarea>
+                      </div>
+                    </div>
+                  </form>
+                </div>
+
+                <!-- Right Panel: Live PDF Preview -->
+                <div style="display: flex; flex-direction: column; gap: 16px;">
+                  <div class="card" style="padding: 16px; display: flex; justify-content: space-between; align-items: center;">
+                    <span style="font-size: 13px; font-weight: 600; color: var(--text-main);">Live Document Preview</span>
+                    <button class="btn btn-primary btn-sm" onclick="downloadResumePDF()">
+                      <i data-lucide="download" style="width: 14px; height: 14px; margin-right: 4px;"></i> Download PDF
+                    </button>
+                  </div>
+
+                  <!-- A4 Document Simulator Box -->
+                  <div class="resume-preview-page">
+                    <div id="resume-preview-document" class="resume-preview-document-inner">
+                      <!-- Header Section -->
+                      <div class="resume-header">
+                        <div>
+                          <h1 id="resume-preview-name">Rahul Verma</h1>
+                          <p id="resume-preview-title">Electrician Specialist</p>
+                        </div>
+                        <div class="resume-contact">
+                          <div id="resume-preview-email">rahul.verma@skillbridge.in</div>
+                          <div id="resume-preview-phone">+91 98765 43210</div>
+                          <div id="resume-preview-link">skillbridge.in/passport/rahul-verma</div>
+                          <div id="resume-preview-address">Pune, Maharashtra</div>
+                        </div>
+                      </div>
+
+                      <!-- Summary -->
+                      <div class="resume-section">
+                        <h3 class="resume-section-title">Professional Summary</h3>
+                        <p id="resume-preview-summary" style="font-size: 12px; color: #334155;">Detail-oriented and safety-conscious Electrician certified by NCVT with hands-on training in industrial wiring, solar PV installation, and electrical system diagnostics. Proven capability to manage workshop equipment and comply with safety procedures.</p>
+                      </div>
+
+                      <!-- NCVT Credentials -->
+                      <div class="resume-section">
+                        <h3 class="resume-section-title">Verified NCVT Registry Metrics</h3>
+                        <div class="resume-grid">
+                          <div>
+                            <strong>Institute:</strong> <span id="resume-preview-inst">Government ITI Pune</span><br>
+                            <strong>Course Trade:</strong> <span id="resume-preview-trade">Electrician</span>
+                          </div>
+                          <div>
+                            <strong>Attendance:</strong> <span class="stat-badge" id="resume-preview-attendance">94%</span> &bull; 
+                            <strong>Practical:</strong> <span class="stat-badge" id="resume-preview-practical">96/100</span><br>
+                            <strong>Theory:</strong> <span class="stat-badge" id="resume-preview-theory">88/100</span> &bull; 
+                            <strong>Safety Score:</strong> <span class="stat-badge" id="resume-preview-safety">98/100</span>
+                          </div>
+                        </div>
+                      </div>
+
+                      <!-- Projects & Experience -->
+                      <div class="resume-section">
+                        <h3 class="resume-section-title">Practical Trade Projects</h3>
+                        <div class="resume-item">
+                          <div style="display:flex; justify-content:space-between; align-items:center;">
+                            <h4 id="resume-preview-proj-title">Solar PV Inverter Setup</h4>
+                            <span id="resume-preview-proj-role" style="font-size: 11px; font-weight:700; color: #1062FE;">Workshop Lead (Govt ITI)</span>
+                          </div>
+                          <p id="resume-preview-proj-desc" style="font-size: 12px; color: #334155; margin-top: 4px;">Led a team of 4 to design and install a 5KW off-grid solar panel setup in the institute workshop, troubleshooting inverter connections and wiring diagrams.</p>
+                        </div>
+                      </div>
+
+                      <!-- Verified Skills -->
+                      <div class="resume-section" style="margin-bottom: 0;">
+                        <h3 class="resume-section-title">NCVT Verified Practical Skills</h3>
+                        <div class="skills-list" id="resume-preview-skills">
+                          <!-- Populated dynamically via skills list in app.js -->
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                
+              </div>
+            </div>
+
+            <!-- STUDENT TAB 6: INBOX -->
+            <div id="student-view-inbox" class="student-tab-content" style="display: none;">
+              <div class="card" style="padding: 0; overflow: hidden; border-radius: var(--radius-md);">
+                <div class="whatsapp-container">
+                  <div class="whatsapp-threads">
+                    <div class="whatsapp-search">
+                      <input type="text" placeholder="Search chats..." oninput="filterChatThreads('Student', this.value)">
+                    </div>
+                    <div class="whatsapp-thread-list" id="student-inbox-thread-list">
+                      <!-- Populated via JS -->
+                    </div>
+                  </div>
+                  <div class="whatsapp-chat-area">
+                    <div class="whatsapp-chat-header">
+                      <div class="whatsapp-chat-header-title" id="student-inbox-chat-header">Select a conversation to start messaging</div>
+                    </div>
+                    <div class="whatsapp-messages" id="student-inbox-messages-container">
+                      <div style="display:flex; flex-direction:column; align-items:center; justify-content:center; height:100%; color: var(--text-muted);">
+                        <i data-lucide="message-square" style="width: 48px; height: 48px; margin-bottom: 12px; opacity: 0.3;"></i>
+                        <p>Select a message thread on the left to read correspondence.</p>
+                      </div>
+                    </div>
+                    <div class="whatsapp-chat-input-bar" id="student-inbox-chat-input-bar" style="display: none;">
+                      <textarea placeholder="Type a message..." id="student-inbox-message-textarea"></textarea>
+                      <button class="btn btn-primary btn-sm" onclick="sendInboxMessage('Student')" style="padding: 10px 14px; border-radius: var(--radius-sm);">
+                        <i data-lucide="send" style="width: 14px; height: 14px;"></i>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+    </div>
+
+
+    <!-- ==========================================================================
+         VIEW 3: INSTITUTE ERP DASHBOARD
+         ========================================================================== -->
+    <div id="institute-erp" class="portal-view">
+      <div class="dash-shell">
+        
+        <!-- Sidebar -->
+        <aside class="dash-sidebar">
+          <div class="dash-sidebar-header">
+            <div class="brand">
+              <div class="brand-icon">S</div>
+              <span>Institute ERP</span>
+            </div>
+          </div>
+          <ul class="dash-sidebar-menu">
+            <li class="dash-menu-item">
+              <a href="#" class="dash-menu-link active" id="inst-side-link-home" onclick="switchInstTab('home', event)">
+                <i data-lucide="layout-dashboard"></i> ERP Home
+              </a>
+            </li>
+            <li class="dash-menu-item">
+              <a href="#" class="dash-menu-link" id="inst-side-link-registry" onclick="switchInstTab('registry', event)">
+                <i data-lucide="database"></i> Student Registry
+              </a>
+            </li>
+            <li class="dash-menu-item">
+              <a href="#" class="dash-menu-link" id="inst-side-link-companies" onclick="switchInstTab('companies', event)">
+                <i data-lucide="building-2"></i> Corporate Directory
+              </a>
+            </li>
+            <li class="dash-menu-item">
+              <a href="#" class="dash-menu-link" id="inst-side-link-inbox" onclick="switchInstTab('inbox', event)">
+                <i data-lucide="message-square"></i> ERP Inbox <span class="badge badge-accent inbox-unread-count" style="display: none; font-size: 8px; padding: 2px 5px; margin-left: auto; border-radius: 50%;">0</span>
+              </a>
+            </li>
+          </ul>
+          <div class="sidebar-logout-container">
+            <a href="#" class="logout-sidebar-link" onclick="handleLogout(event)">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg> Logout
+            </a>
+          </div>
+          <div class="dash-sidebar-footer" id="institute-sidebar-footer">
+            Govt ITI Pune #50211
+          </div>
+        </aside>
+
+        <!-- Main Workspace -->
+        <div class="dash-main">
+          <header class="dash-header">
+            <div class="dash-header-title" id="inst-header-title">Institute Administration Panel</div>
+            <div class="dash-header-actions" style="align-items: center; gap: 16px;">
+              <div id="inst-plan-container" style="display: flex; align-items: center; gap: 8px;">
+                <span class="plan-badge plan-badge-freemium" id="inst-plan-badge">Freemium Plan</span>
+                <button class="btn btn-glass btn-sm" onclick="upgradeActiveSession(event)" style="font-size: 11px; padding: 4px 8px; color: var(--accent); border-color: rgba(255, 90, 31, 0.3); cursor: pointer;">
+                  Upgrade Premium
+                </button>
+              </div>
+              <button class="btn btn-primary btn-sm" onclick="openModal('modal-add-student')">
+                <i data-lucide="plus-circle" style="width:14px; height:14px;"></i> Register Student
+              </button>
+              <div class="dash-user-pill">
+                <div class="dash-user-avatar">I</div>
+                <span style="font-size: 13px; font-weight:600;" id="inst-officer-name">ERP Officer (Pune)</span>
+              </div>
+            </div>
+          </header>
+
+          <div class="dash-content">
+            
+            <!-- ERP HOME VIEW -->
+            <div id="inst-view-home">
+              <!-- Summary stats - 8 cards grid -->
+              <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-bottom: 28px;">
+                <!-- 📊 Active Students -->
+                <div class="card stat-card" style="padding: 20px; position: relative; overflow: hidden;">
+                  <div style="position: absolute; top: 0; left: 0; width: 100%; height: 3px; background: linear-gradient(90deg, hsl(220, 80%, 55%), hsl(220, 80%, 70%));"></div>
+                  <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+                    <div>
+                      <div style="font-size: 11px; font-weight: 600; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 6px;">📊 Active Students</div>
+                      <div style="font-size: 28px; font-weight: 800; color: var(--text-main); font-family: var(--font-display);" id="inst-stats-total">1,250</div>
+                    </div>
+                    <div style="width: 42px; height: 42px; border-radius: 12px; background: hsla(220, 80%, 55%, 0.12); display: flex; align-items: center; justify-content: center;">
+                      <i data-lucide="users" style="color: hsl(220, 80%, 55%); width: 20px; height: 20px;"></i>
+                    </div>
+                  </div>
+                  <div style="font-size: 11px; color: var(--text-muted); margin-top: 8px;">
+                    <span style="color: var(--success); font-weight: 700;">+12%</span> vs last year
+                  </div>
+                </div>
+
+                <!-- 🏫 Partner ITIs -->
+                <div class="card stat-card" style="padding: 20px; position: relative; overflow: hidden;">
+                  <div style="position: absolute; top: 0; left: 0; width: 100%; height: 3px; background: linear-gradient(90deg, hsl(280, 65%, 55%), hsl(280, 65%, 70%));"></div>
+                  <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+                    <div>
+                      <div style="font-size: 11px; font-weight: 600; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 6px;">🏫 Partner ITIs</div>
+                      <div style="font-size: 28px; font-weight: 800; color: var(--text-main); font-family: var(--font-display);" id="inst-stats-partners">48</div>
+                    </div>
+                    <div style="width: 42px; height: 42px; border-radius: 12px; background: hsla(280, 65%, 55%, 0.12); display: flex; align-items: center; justify-content: center;">
+                      <i data-lucide="school" style="color: hsl(280, 65%, 55%); width: 20px; height: 20px;"></i>
+                    </div>
+                  </div>
+                  <div style="font-size: 11px; color: var(--text-muted); margin-top: 8px;">
+                    <span style="color: var(--success); font-weight: 700;">+6</span> new this quarter
+                  </div>
+                </div>
+
+                <!-- 🏢 Hiring Companies -->
+                <div class="card stat-card" style="padding: 20px; position: relative; overflow: hidden;">
+                  <div style="position: absolute; top: 0; left: 0; width: 100%; height: 3px; background: linear-gradient(90deg, hsl(200, 75%, 50%), hsl(200, 75%, 65%));"></div>
+                  <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+                    <div>
+                      <div style="font-size: 11px; font-weight: 600; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 6px;">🏢 Hiring Companies</div>
+                      <div style="font-size: 28px; font-weight: 800; color: var(--text-main); font-family: var(--font-display);" id="inst-stats-companies">32</div>
+                    </div>
+                    <div style="width: 42px; height: 42px; border-radius: 12px; background: hsla(200, 75%, 50%, 0.12); display: flex; align-items: center; justify-content: center;">
+                      <i data-lucide="building-2" style="color: hsl(200, 75%, 50%); width: 20px; height: 20px;"></i>
+                    </div>
+                  </div>
+                  <div style="font-size: 11px; color: var(--text-muted); margin-top: 8px;">
+                    <span style="color: var(--success); font-weight: 700;">+8</span> active recruiters
+                  </div>
+                </div>
+
+                <!-- 💼 Open Positions -->
+                <div class="card stat-card" style="padding: 20px; position: relative; overflow: hidden;">
+                  <div style="position: absolute; top: 0; left: 0; width: 100%; height: 3px; background: linear-gradient(90deg, var(--accent), hsl(25, 95%, 60%));"></div>
+                  <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+                    <div>
+                      <div style="font-size: 11px; font-weight: 600; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 6px;">💼 Open Positions</div>
+                      <div style="font-size: 28px; font-weight: 800; color: var(--text-main); font-family: var(--font-display);" id="inst-stats-positions">0</div>
+                    </div>
+                    <div style="width: 42px; height: 42px; border-radius: 12px; background: hsla(20, 90%, 52%, 0.12); display: flex; align-items: center; justify-content: center;">
+                      <i data-lucide="briefcase" style="color: var(--accent); width: 20px; height: 20px;"></i>
+                    </div>
+                  </div>
+                  <div style="font-size: 11px; color: var(--text-muted); margin-top: 8px;">
+                    Across all partner companies
+                  </div>
+                </div>
+
+                <!-- 🎓 Successful Placements -->
+                <div class="card stat-card" style="padding: 20px; position: relative; overflow: hidden;">
+                  <div style="position: absolute; top: 0; left: 0; width: 100%; height: 3px; background: linear-gradient(90deg, hsl(140, 70%, 42%), hsl(140, 70%, 58%));"></div>
+                  <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+                    <div>
+                      <div style="font-size: 11px; font-weight: 600; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 6px;">🎓 Successful Placements</div>
+                      <div style="font-size: 28px; font-weight: 800; color: var(--text-main); font-family: var(--font-display);" id="inst-stats-placed">324</div>
+                    </div>
+                    <div style="width: 42px; height: 42px; border-radius: 12px; background: hsla(140, 70%, 42%, 0.12); display: flex; align-items: center; justify-content: center;">
+                      <i data-lucide="award" style="color: hsl(140, 70%, 42%); width: 20px; height: 20px;"></i>
+                    </div>
+                  </div>
+                  <div style="font-size: 11px; color: var(--text-muted); margin-top: 8px;">
+                    <span style="color: var(--success); font-weight: 700;" id="inst-stats-rate">88%</span> placement rate
+                  </div>
+                </div>
+
+                <!-- 🔔 Opportunity Alerts -->
+                <div class="card stat-card" style="padding: 20px; position: relative; overflow: hidden;">
+                  <div style="position: absolute; top: 0; left: 0; width: 100%; height: 3px; background: linear-gradient(90deg, hsl(45, 90%, 48%), hsl(45, 90%, 60%));"></div>
+                  <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+                    <div>
+                      <div style="font-size: 11px; font-weight: 600; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 6px;">🔔 Opportunity Alerts</div>
+                      <div style="font-size: 28px; font-weight: 800; color: var(--text-main); font-family: var(--font-display);" id="inst-stats-alerts">7</div>
+                    </div>
+                    <div style="width: 42px; height: 42px; border-radius: 12px; background: hsla(45, 90%, 48%, 0.12); display: flex; align-items: center; justify-content: center;">
+                      <i data-lucide="bell-ring" style="color: hsl(45, 90%, 48%); width: 20px; height: 20px;"></i>
+                    </div>
+                  </div>
+                  <div style="font-size: 11px; color: var(--text-muted); margin-top: 8px;">
+                    <span style="color: hsl(45, 90%, 48%); font-weight: 700;">3 new</span> unread alerts
+                  </div>
+                </div>
+
+                <!-- 📅 Upcoming Drives -->
+                <div class="card stat-card" style="padding: 20px; position: relative; overflow: hidden;">
+                  <div style="position: absolute; top: 0; left: 0; width: 100%; height: 3px; background: linear-gradient(90deg, hsl(340, 70%, 50%), hsl(340, 70%, 65%));"></div>
+                  <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+                    <div>
+                      <div style="font-size: 11px; font-weight: 600; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 6px;">📅 Upcoming Drives</div>
+                      <div style="font-size: 28px; font-weight: 800; color: var(--text-main); font-family: var(--font-display);" id="inst-stats-drives">4</div>
+                    </div>
+                    <div style="width: 42px; height: 42px; border-radius: 12px; background: hsla(340, 70%, 50%, 0.12); display: flex; align-items: center; justify-content: center;">
+                      <i data-lucide="calendar-check" style="color: hsl(340, 70%, 50%); width: 20px; height: 20px;"></i>
+                    </div>
+                  </div>
+                  <div style="font-size: 11px; color: var(--text-muted); margin-top: 8px;">
+                    Next: <span style="font-weight: 700;">Tata Motors</span> — Jul 5
+                  </div>
+                </div>
+
+                <!-- 📜 Apprenticeship Programs -->
+                <div class="card stat-card" style="padding: 20px; position: relative; overflow: hidden;">
+                  <div style="position: absolute; top: 0; left: 0; width: 100%; height: 3px; background: linear-gradient(90deg, hsl(170, 60%, 42%), hsl(170, 60%, 58%));"></div>
+                  <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+                    <div>
+                      <div style="font-size: 11px; font-weight: 600; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 6px;">📜 Apprenticeship Programs</div>
+                      <div style="font-size: 28px; font-weight: 800; color: var(--text-main); font-family: var(--font-display);" id="inst-stats-apprenticeships">12</div>
+                    </div>
+                    <div style="width: 42px; height: 42px; border-radius: 12px; background: hsla(170, 60%, 42%, 0.12); display: flex; align-items: center; justify-content: center;">
+                      <i data-lucide="scroll-text" style="color: hsl(170, 60%, 42%); width: 20px; height: 20px;"></i>
+                    </div>
+                  </div>
+                  <div style="font-size: 11px; color: var(--text-muted); margin-top: 8px;">
+                    <span style="color: var(--success); font-weight: 700;">NAPS/NATS</span> registered
+                  </div>
+                </div>
+              </div>
+
+              <!-- Roster & Trend Charts -->
+              <div class="dash-grid-split">
+                <!-- Student roster -->
+                <div class="card">
+                  <h4 style="font-size: 16px; margin-bottom: 16px;">Student Enrollment Registry</h4>
+                  <div class="dash-table-wrap">
+                    <table class="dash-table">
+                      <thead>
+                        <tr>
+                          <th>Student Details</th>
+                          <th>Trade</th>
+                          <th>Status</th>
+                        </tr>
+                      </thead>
+                      <tbody id="institute-roster-body">
+                        <!-- Rendered via app.js -->
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+
+                <!-- Graphs -->
+                <div style="display:flex; flex-direction:column; gap:24px;">
+                  <div class="card">
+                    <h4 style="font-size: 16px; margin-bottom: 16px;">Placement Growth Trend</h4>
+                    <div class="chart-container">
+                      <canvas id="chart-placement-trend"></canvas>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- ERP CORPORATE DIRECTORY VIEW -->
+            <div id="inst-view-companies" style="display: none;">
+              <div class="card" style="margin-bottom: 24px;">
+                <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; margin-bottom: 16px;">
+                  <div>
+                    <h4 style="font-size: 18px;">Corporate Partners Directory</h4>
+                    <p style="font-size: 13px; color: var(--text-muted); margin-top: 4px;">Connect with verified companies and schedule apprenticeship drives.</p>
+                  </div>
+                  <span id="inst-dir-badge-header" class="plan-badge plan-badge-freemium" style="font-size: 11px;">Freemium Limit Active (5 visible)</span>
+                </div>
+
+                <div class="filter-bar" style="margin-top: 12px; padding: 0; border: none; background: transparent; display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 12px;">
+                  <div class="filter-group">
+                    <label style="font-size: 10px; font-weight: 700; margin-bottom: 4px; display: block;">Search Company Name</label>
+                    <input type="text" id="filter-comp-name" class="filter-control" placeholder="Search by name..." oninput="renderCompanyDirectory()" style="padding: 8px 12px; font-size:12px;">
+                  </div>
+                  <div class="filter-group">
+                    <label style="font-size: 10px; font-weight: 700; margin-bottom: 4px; display: block;">Sector</label>
+                    <select id="filter-comp-sector" class="filter-control" onchange="renderCompanyDirectory()" style="padding: 8px 12px; font-size:12px;">
+                      <option value="All">All Sectors</option>
+                      <option value="Automotive">Automotive</option>
+                      <option value="Infrastructure">Infrastructure</option>
+                      <option value="Renewables">Renewables</option>
+                      <option value="Engineering">Engineering</option>
+                      <option value="Conglomerate">Conglomerate</option>
+                      <option value="IT Services">IT Services</option>
+                    </select>
+                  </div>
+                  <div class="filter-group">
+                    <label style="font-size: 10px; font-weight: 700; margin-bottom: 4px; display: block;">Location/City</label>
+                    <input type="text" id="filter-comp-location" class="filter-control" placeholder="e.g. Pune, Mumbai..." oninput="renderCompanyDirectory()" style="padding: 8px 12px; font-size:12px;">
+                  </div>
+                  <div class="filter-group">
+                    <label style="font-size: 10px; font-weight: 700; margin-bottom: 4px; display: block;">Verification</label>
+                    <select id="filter-comp-verified" class="filter-control" onchange="renderCompanyDirectory()" style="padding: 8px 12px; font-size:12px;">
+                      <option value="All">All Statuses</option>
+                      <option value="Verified">NCVT Verified</option>
+                      <option value="Registered">Registered</option>
+                    </select>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Broadcast alert message panel -->
+              <div class="card broadcast-panel">
+                <h4>
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--primary)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"/><polyline points="16 6 12 2 8 6"/><line x1="12" y1="2" x2="12" y2="15"/></svg>
+                  Broadcast Campus Drive Invitation to Selected Partners
+                </h4>
+                <p style="font-size: 11px; color: var(--text-muted); margin-bottom: 12px;">Select corporate partners in the list below to broadcast student batch details, graduation dates, or job drive requests. Recorded for security audits and visible to Admin.</p>
+                <div style="display: flex; gap: 12px; align-items: start;">
+                  <textarea id="inst-broadcast-message-text" placeholder="Type campus drive invite details, graduating trades, package ranges, and tentative dates here..."></textarea>
+                  <button class="btn btn-primary" onclick="broadcastInvitationToCompanies()" style="padding: 12px 20px; font-size: 12px; height: 70px; display: flex; align-items: center; justify-content: center;">
+                    Broadcast Invite
+                  </button>
+                </div>
+              </div>
+
+              <!-- Selection controls header -->
+              <div style="margin-bottom: 16px; display: flex; justify-content: space-between; align-items: center;">
+                <label style="display: flex; align-items: center; gap: 8px; font-size: 12px; font-weight: 600; cursor: pointer; color: var(--text-main);">
+                  <input type="checkbox" id="comp-select-all-chk" onchange="toggleSelectAllCompanies(this)"> Select All Companies
+                </label>
+                <span id="selected-companies-counter" style="font-size: 11px; font-weight: 600; color: var(--primary);">0 Companies Selected</span>
+              </div>
+
+              
+              <div style="position: relative; min-height: 200px;">
+                <div class="job-cards-grid" id="inst-companies-grid">
+                  <!-- Dynamically populated via JS -->
+                </div>
+              </div>
+            </div>
+
+            <!-- ERP STUDENT REGISTRY & BULK DATABASE VIEW -->
+            <div id="inst-view-registry" style="display: none;">
+              <!-- Header -->
+              <div class="card" style="margin-bottom: 24px;">
+                <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px;">
+                  <div>
+                    <h4 style="font-size: 18px;">Student Registry & Database Management</h4>
+                    <p style="font-size: 13px; color: var(--text-muted); margin-top: 4px;">Add student details individually or import/export the registry database in bulk.</p>
+                  </div>
+                  <div style="display: flex; gap: 8px;">
+                    <button class="btn btn-secondary btn-sm" onclick="exportStudentRegistryExcel()" style="display: flex; align-items: center; gap: 6px;">
+                      <i data-lucide="file-spreadsheet" style="width: 14px; height: 14px;"></i> Export Excel (XLS)
+                    </button>
+                    <button class="btn btn-secondary btn-sm" onclick="exportStudentRegistryPDF()" style="display: flex; align-items: center; gap: 6px;">
+                      <i data-lucide="file-text" style="width: 14px; height: 14px;"></i> Export PDF
+                    </button>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Main Split Workspace -->
+              <div style="display: grid; grid-template-columns: 1fr 1.2fr; gap: 24px;">
+                
+                <!-- Manual Add Student Card -->
+                <div class="card" style="padding: 24px;">
+                  <h4 style="font-family: var(--font-display); font-size: 16px; font-weight: 700; margin-bottom: 16px; display: flex; align-items: center; gap: 8px;">
+                    <i data-lucide="user-plus" style="color: var(--primary); width: 20px; height: 20px;"></i>
+                    Add Student Profile Individually
+                  </h4>
+                  <form onsubmit="registerStudentFromRegistryTab(event)" style="display: flex; flex-direction: column; gap: 16px;">
+                    <div>
+                      <label style="font-size: 11px; font-weight: 700; margin-bottom: 6px; display: block; color: var(--text-main);">Full Name</label>
+                      <input type="text" id="reg-student-name" class="filter-control" placeholder="e.g. Aarav Sharma" required style="padding: 8px 12px; font-size: 12px;">
+                    </div>
+                    <div>
+                      <label style="font-size: 11px; font-weight: 700; margin-bottom: 6px; display: block; color: var(--text-main);">Trade Specialty</label>
+                      <select id="reg-student-trade" class="filter-control" style="padding: 8px 12px; font-size: 12px;">
+                        <option value="Electrician">Electrician</option>
+                        <optgroup label="── Engineering Trades ──">
+                          <option value="Electrician">Electrician</option>
+                          <option value="Fitter">Fitter</option>
+                          <option value="Welder">Welder</option>
+                          <option value="Turner">Turner</option>
+                          <option value="Machinist">Machinist</option>
+                          <option value="Electronics Mechanic">Electronics Mechanic</option>
+                          <option value="Refrigeration &amp; AC">Refrigeration &amp; AC</option>
+                          <option value="Mechanic Diesel">Mechanic Diesel</option>
+                          <option value="Motor Mechanic (MMV)">Motor Mechanic (MMV)</option>
+                          <option value="Wireman">Wireman</option>
+                          <option value="Surveyor">Surveyor</option>
+                          <option value="Draughtsman Civil">Draughtsman Civil</option>
+                          <option value="Draughtsman Mechanical">Draughtsman Mechanical</option>
+                          <option value="CNC Operator">CNC Operator</option>
+                          <option value="Solar Technician">Solar Technician</option>
+                          <option value="IoT Technician">IoT Technician</option>
+                          <option value="EV Technician">EV Technician</option>
+                        </optgroup>
+                        <optgroup label="── Non-Engineering Trades ──">
+                          <option value="COPA">COPA (Computer Operator)</option>
+                          <option value="Stenographer">Stenographer</option>
+                          <option value="Dress Making">Dress Making</option>
+                          <option value="Sewing Technology">Sewing Technology</option>
+                          <option value="Health Sanitary Inspector">Health Sanitary Inspector</option>
+                          <option value="Food Production">Food Production</option>
+                          <option value="Hospitality Assistant">Hospitality Assistant</option>
+                          <option value="Digital Photographer">Digital Photographer</option>
+                        </optgroup>
+                      </select>
+                    </div>
+                    <div>
+                      <label style="font-size: 11px; font-weight: 700; margin-bottom: 6px; display: block; color: var(--text-main);">Attendance Score (%)</label>
+                      <input type="number" id="reg-student-attendance" class="filter-control" placeholder="e.g. 95" min="50" max="100" required style="padding: 8px 12px; font-size: 12px;">
+                    </div>
+                    <button class="btn btn-primary" type="submit" style="width: 100%; margin-top: 8px; font-size: 12px; padding: 10px;">
+                      Register Student Profile
+                    </button>
+                  </form>
+                </div>
+
+                <!-- Bulk Import/Dump Card -->
+                <div class="card" style="padding: 24px; display: flex; flex-direction: column; justify-content: space-between;">
+                  <div>
+                    <h4 style="font-family: var(--font-display); font-size: 16px; font-weight: 700; margin-bottom: 8px; display: flex; align-items: center; gap: 8px;">
+                      <i data-lucide="upload-cloud" style="color: var(--accent); width: 20px; height: 20px;"></i>
+                      Bulk Import Student Roll
+                    </h4>
+                    <p style="font-size: 12px; color: var(--text-muted); line-height: 1.4; margin-bottom: 16px;">
+                      Instantly upload, parse, and dump student data into the SkillBridge ledger. Upload an Excel (.xlsx, .csv) class spreadsheet or a PDF register roll.
+                    </p>
+
+                    <!-- Drag & Drop Zone -->
+                    <div class="import-dropzone" onclick="document.getElementById('bulk-student-file-input').click()" style="border: 2px dashed rgba(var(--primary-rgb), 0.3); border-radius: var(--radius-md); padding: 32px 16px; text-align: center; cursor: pointer; background: rgba(var(--surface-rgb), 0.3); transition: var(--transition); margin-bottom: 16px;">
+                      <i data-lucide="file-text" style="width: 36px; height: 36px; color: var(--text-muted); margin-bottom: 12px; opacity: 0.6;"></i>
+                      <div style="font-size: 13px; font-weight: 600; color: var(--text-main);">Drag & Drop your spreadsheet/PDF here</div>
+                      <div style="font-size: 11px; color: var(--text-light); margin-top: 4px;">or click to browse local files</div>
+                      <input type="file" id="bulk-student-file-input" style="display: none;" accept=".xlsx,.csv,.pdf" onchange="handleBulkImportFile(this.files)">
+                    </div>
+
+                    <!-- Progress Bar Overlay (Simulated) -->
+                    <div id="bulk-import-progress-container" style="display: none; margin-bottom: 16px;">
+                      <div style="display: flex; justify-content: space-between; font-size: 11px; margin-bottom: 6px; font-weight: 600;">
+                        <span style="color: var(--primary);" id="bulk-import-progress-status">Uploading student_roll_2026.xlsx...</span>
+                        <span id="bulk-import-progress-percentage">0%</span>
+                      </div>
+                      <div style="width: 100%; height: 8px; background: var(--border-strong); border-radius: 4px; overflow: hidden;">
+                        <div id="bulk-import-progress-bar" style="width: 0%; height: 100%; background: var(--primary); transition: width 0.1s linear;"></div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- Template Links and Info -->
+                  <div style="background: var(--surface-hover); border: 1px solid var(--border); border-radius: var(--radius-sm); padding: 12px 16px;">
+                    <div style="font-size: 11px; font-weight: 700; color: var(--text-main); margin-bottom: 6px; text-transform: uppercase;">Standard Integration Checklists:</div>
+                    <ul style="font-size: 11px; color: var(--text-muted); padding-left: 16px; line-height: 1.5;">
+                      <li>Ensure files contain column headers: Name, Trade, Attendance.</li>
+                      <li>PDFs should be clean, computer-generated rolls for high-accuracy parsing.</li>
+                      <li><a href="#" onclick="event.preventDefault(); downloadBulkImportTemplate('xlsx');" style="color: var(--primary); font-weight: 600; text-decoration: underline;">Download Excel Roll Template</a></li>
+                    </ul>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+
+            <!-- ERP TAB 3: INBOX -->
+            <div id="inst-view-inbox" style="display: none;">
+              <div class="card" style="padding: 0; overflow: hidden; border-radius: var(--radius-md);">
+                <div class="whatsapp-container">
+                  <div class="whatsapp-threads">
+                    <div class="whatsapp-search">
+                      <input type="text" placeholder="Search chats..." oninput="filterChatThreads('Institute', this.value)">
+                    </div>
+                    <div class="whatsapp-thread-list" id="institute-inbox-thread-list">
+                      <!-- Populated via JS -->
+                    </div>
+                  </div>
+                  <div class="whatsapp-chat-area">
+                    <div class="whatsapp-chat-header">
+                      <div class="whatsapp-chat-header-title" id="institute-inbox-chat-header">Select a conversation to start messaging</div>
+                    </div>
+                    <div class="whatsapp-messages" id="institute-inbox-messages-container">
+                      <div style="display:flex; flex-direction:column; align-items:center; justify-content:center; height:100%; color: var(--text-muted);">
+                        <i data-lucide="message-square" style="width: 48px; height: 48px; margin-bottom: 12px; opacity: 0.3;"></i>
+                        <p>Select a message thread on the left to read correspondence.</p>
+                      </div>
+                    </div>
+                    <div class="whatsapp-chat-input-bar" id="institute-inbox-chat-input-bar" style="display: none;">
+                      <textarea placeholder="Type a message..." id="institute-inbox-message-textarea"></textarea>
+                      <button class="btn btn-primary btn-sm" onclick="sendInboxMessage('Institute')" style="padding: 10px 14px; border-radius: var(--radius-sm);">
+                        <i data-lucide="send" style="width: 14px; height: 14px;"></i>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+    </div>
+
+
+    <!-- ==========================================================================
+         VIEW 4: COMPANY HIRING DASHBOARD
+         ========================================================================== -->
+    <div id="company-dashboard" class="portal-view">
+      <div class="dash-shell">
+        
+        <!-- Sidebar -->
+        <aside class="dash-sidebar">
+          <div class="dash-sidebar-header">
+            <div class="brand">
+              <div class="brand-icon">S</div>
+              <span>Recruiter Pro</span>
+            </div>
+          </div>
+          <ul class="dash-sidebar-menu">
+            <li class="dash-menu-item">
+              <a href="#" class="dash-menu-link active" id="comp-side-link-candidates" onclick="switchCompTab('candidates', event)">
+                <i data-lucide="search"></i> Candidates & Sourcing
+              </a>
+            </li>
+            <li class="dash-menu-item">
+              <a href="#" class="dash-menu-link" id="comp-side-link-hiring" onclick="switchCompTab('hiring', event)">
+                <i data-lucide="briefcase"></i> Active Hiring
+              </a>
+            </li>
+            <li class="dash-menu-item">
+              <a href="#" class="dash-menu-link" id="comp-side-link-institutes" onclick="switchCompTab('institutes', event)">
+                <i data-lucide="school"></i> ITI Institutes Directory
+              </a>
+            </li>
+            <li class="dash-menu-item">
+              <a href="#" class="dash-menu-link" id="comp-side-link-inbox" onclick="switchCompTab('inbox', event)">
+                <i data-lucide="message-square"></i> Recruiter Inbox <span class="badge badge-accent inbox-unread-count" style="display: none; font-size: 8px; padding: 2px 5px; margin-left: auto; border-radius: 50%;">0</span>
+              </a>
+            </li>
+          </ul>
+          <div class="sidebar-logout-container">
+            <a href="#" class="logout-sidebar-link" onclick="handleLogout(event)">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg> Logout
+            </a>
+          </div>
+          <div class="dash-sidebar-footer" id="company-sidebar-footer">
+            Tata Motors Corporate
+          </div>
+        </aside>
+
+        <!-- Main Workspace -->
+        <div class="dash-main">
+          <header class="dash-header">
+            <div class="dash-header-title" id="comp-header-title">Candidate Sourcing & Verification</div>
+            <div class="dash-header-actions" style="align-items: center; gap: 16px;">
+              <div id="comp-plan-container" style="display: flex; align-items: center; gap: 8px;">
+                <span class="plan-badge plan-badge-freemium" id="comp-plan-badge">Freemium Plan</span>
+                <button class="btn btn-glass btn-sm" onclick="upgradeActiveSession(event)" style="font-size: 11px; padding: 4px 8px; color: var(--accent); border-color: rgba(255, 90, 31, 0.3); cursor: pointer;">
+                  Upgrade Premium
+                </button>
+              </div>
+              <div class="dash-user-pill">
+                <div class="dash-user-avatar">TM</div>
+                <span style="font-size: 13px; font-weight:600;" id="comp-recruiter-name">Tata Motors Recruitment</span>
+              </div>
+            </div>
+          </header>
+
+          <div class="dash-content">
+            
+            <!-- RECRUITER CANDIDATES VIEW -->
+            <div id="comp-view-candidates">
+              <!-- Filters Bar -->
+              <div class="filter-bar">
+                <div class="filter-group" style="flex-grow:1;">
+                  <label for="search-student-input">Search Skills or Name</label>
+                  <input type="text" id="search-student-input" class="filter-control" placeholder="e.g. TIG Welding, CNC, Electrician, Priya...">
+                </div>
+                <div class="filter-group">
+                  <label for="filter-trade">Trade</label>
+                  <select id="filter-trade" class="filter-control">
+                    <option value="All">All Trades</option>
+                    <optgroup label="── Engineering Trades ──">
+                      <option value="Electrician">Electrician</option>
+                      <option value="Fitter">Fitter</option>
+                      <option value="Welder">Welder</option>
+                      <option value="Turner">Turner</option>
+                      <option value="Machinist">Machinist</option>
+                      <option value="Electronics Mechanic">Electronics Mechanic</option>
+                      <option value="Refrigeration &amp; AC">Refrigeration &amp; AC</option>
+                      <option value="Mechanic Diesel">Mechanic Diesel</option>
+                      <option value="Motor Mechanic (MMV)">Motor Mechanic (MMV)</option>
+                      <option value="Wireman">Wireman</option>
+                      <option value="Surveyor">Surveyor</option>
+                      <option value="Draughtsman Civil">Draughtsman Civil</option>
+                      <option value="Draughtsman Mechanical">Draughtsman Mechanical</option>
+                      <option value="CNC Operator">CNC Operator</option>
+                      <option value="Solar Technician">Solar Technician</option>
+                      <option value="IoT Technician">IoT Technician</option>
+                      <option value="EV Technician">EV Technician</option>
+                    </optgroup>
+                    <optgroup label="── Non-Engineering Trades ──">
+                      <option value="COPA">COPA (Computer Operator)</option>
+                      <option value="Stenographer">Stenographer</option>
+                      <option value="Dress Making">Dress Making</option>
+                      <option value="Sewing Technology">Sewing Technology</option>
+                      <option value="Health Sanitary Inspector">Health Sanitary Inspector</option>
+                      <option value="Food Production">Food Production</option>
+                      <option value="Hospitality Assistant">Hospitality Assistant</option>
+                      <option value="Digital Photographer">Digital Photographer</option>
+                    </optgroup>
+                  </select>
+                </div>
+                <div class="filter-group">
+                  <label for="filter-score">Min AI Score (<span id="score-filter-val">70</span>)</label>
+                  <input type="range" id="filter-score" min="70" max="95" value="70" class="filter-control" style="padding: 0;">
+                </div>
+              </div>
+
+              <!-- Candidates list -->
+              <div class="card" style="margin-bottom: 32px;">
+                <h4 style="font-size: 16px; margin-bottom: 16px;">National Talent Search Results</h4>
+                <div class="dash-table-wrap">
+                  <table class="dash-table">
+                    <thead>
+                      <tr>
+                        <th>Candidate Info</th>
+                        <th>Trade</th>
+                        <th>Certified Skills</th>
+                        <th>AI Index</th>
+                        <th>Security Status</th>
+                        <th>Action</th>
+                      </tr>
+                    </thead>
+                    <tbody id="company-student-search-body">
+                      <!-- Rendered dynamically -->
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+
+              <!-- Kanban Board Pipeline -->
+              <div class="card" id="company-pipeline-sec">
+                <h4 style="font-size: 16px;">Recruiting Campaign Pipeline</h4>
+                <p style="font-size: 12px; color:var(--text-muted); margin-bottom: 20px;">Move candidates forward by clicking 'Advance'. Changes are immediately reflected back in student portals.</p>
+                
+                <div class="kanban-board">
+                  <!-- Col 1: Applied -->
+                  <div class="kanban-col">
+                    <div class="kanban-col-header">
+                      <span class="kanban-col-title">Applied</span>
+                      <span class="kanban-col-count" id="count-applied">0</span>
+                    </div>
+                    <div id="kanban-applied"></div>
+                  </div>
+
+                  <!-- Col 2: Shortlisted -->
+                  <div class="kanban-col">
+                    <div class="kanban-col-header">
+                      <span class="kanban-col-title">Shortlisted</span>
+                      <span class="kanban-col-count" id="count-shortlisted">0</span>
+                    </div>
+                    <div id="kanban-shortlisted"></div>
+                  </div>
+
+                  <!-- Col 3: Interviewing -->
+                  <div class="kanban-col">
+                    <div class="kanban-col-header">
+                      <span class="kanban-col-title">Interviewing</span>
+                      <span class="kanban-col-count" id="count-interviewing">0</span>
+                    </div>
+                    <div id="kanban-interviewing"></div>
+                  </div>
+
+                  <!-- Col 4: Offered -->
+                  <div class="kanban-col">
+                    <div class="kanban-col-header">
+                      <span class="kanban-col-title">Offered</span>
+                      <span class="kanban-col-count" id="count-offered">0</span>
+                    </div>
+                    <div id="kanban-offered"></div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Pipeline Visual Analytics -->
+              <div class="card" style="margin-top: 30px;">
+                <h4 style="font-size: 16px; margin-bottom: 16px;">National Sourcing Conversion Pipeline</h4>
+                <div class="chart-container">
+                  <canvas id="chart-placement-pipeline"></canvas>
+                </div>
+              </div>
+            </div>
+
+            <!-- RECRUITER ACTIVE HIRING VIEW -->
+            <div id="comp-view-hiring" style="display: none;">
+              
+              <!-- Post New Job Card -->
+              <div class="card" style="margin-bottom: 28px; position: relative; overflow: hidden;">
+                <div style="position: absolute; top: 0; left: 0; width: 100%; height: 4px; background: linear-gradient(90deg, var(--primary), var(--accent));"></div>
+                <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; margin-bottom: 20px;">
+                  <div>
+                    <h4 style="font-size: 18px; font-family: var(--font-display);">
+                      <i data-lucide="plus-circle" style="width: 18px; height: 18px; display: inline; vertical-align: middle; margin-right: 6px; color: var(--primary);"></i>
+                      Post a New Job Opening
+                    </h4>
+                    <p style="font-size: 12px; color: var(--text-muted); margin-top: 4px;">Create verified apprenticeship or placement positions visible to all SkillBridge registered students.</p>
+                  </div>
+                </div>
+                <form id="post-new-job-form" onsubmit="postNewJobOpening(event)" style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px;">
+                  <div>
+                    <label style="font-size: 11px; font-weight: 700; display: block; margin-bottom: 6px; color: var(--text-main);">Job Title</label>
+                    <input type="text" id="new-job-title" class="filter-control" placeholder="e.g. Junior Electrician Apprentice" required style="padding: 10px 14px; font-size: 12px;">
+                  </div>
+                  <div>
+                    <label style="font-size: 11px; font-weight: 700; display: block; margin-bottom: 6px; color: var(--text-main);">Required Trade</label>
+                    <select id="new-job-trade" class="filter-control" style="padding: 10px 14px; font-size: 12px;">
+                      <optgroup label="── Engineering Trades ──">
+                        <option value="Electrician">Electrician</option>
+                        <option value="Fitter">Fitter</option>
+                        <option value="Welder">Welder</option>
+                        <option value="Turner">Turner</option>
+                        <option value="Machinist">Machinist</option>
+                        <option value="Electronics Mechanic">Electronics Mechanic</option>
+                        <option value="Refrigeration & AC">Refrigeration & AC</option>
+                        <option value="Mechanic Diesel">Mechanic Diesel</option>
+                        <option value="Motor Mechanic (MMV)">Motor Mechanic (MMV)</option>
+                        <option value="Wireman">Wireman</option>
+                        <option value="Surveyor">Surveyor</option>
+                        <option value="Draughtsman Civil">Draughtsman Civil</option>
+                        <option value="Draughtsman Mechanical">Draughtsman Mechanical</option>
+                        <option value="CNC Operator">CNC Operator</option>
+                        <option value="Solar Technician">Solar Technician</option>
+                        <option value="IoT Technician">IoT Technician</option>
+                        <option value="EV Technician">EV Technician</option>
+                      </optgroup>
+                      <optgroup label="── Non-Engineering Trades ──">
+                        <option value="COPA">COPA (Computer Operator)</option>
+                        <option value="Stenographer">Stenographer</option>
+                        <option value="Dress Making">Dress Making</option>
+                        <option value="Sewing Technology">Sewing Technology</option>
+                        <option value="Health Sanitary Inspector">Health Sanitary Inspector</option>
+                        <option value="Food Production">Food Production</option>
+                        <option value="Hospitality Assistant">Hospitality Assistant</option>
+                        <option value="Digital Photographer">Digital Photographer</option>
+                      </optgroup>
+                    </select>
+                  </div>
+                  <div>
+                    <label style="font-size: 11px; font-weight: 700; display: block; margin-bottom: 6px; color: var(--text-main);">Location</label>
+                    <input type="text" id="new-job-location" class="filter-control" placeholder="e.g. Pune, Maharashtra" required style="padding: 10px 14px; font-size: 12px;">
+                  </div>
+                  <div>
+                    <label style="font-size: 11px; font-weight: 700; display: block; margin-bottom: 6px; color: var(--text-main);">Salary Range (₹/month)</label>
+                    <input type="text" id="new-job-salary" class="filter-control" placeholder="e.g. ₹18,000 - ₹22,000" required style="padding: 10px 14px; font-size: 12px;">
+                  </div>
+                  <div>
+                    <label style="font-size: 11px; font-weight: 700; display: block; margin-bottom: 6px; color: var(--text-main);">Job Type</label>
+                    <select id="new-job-type" class="filter-control" style="padding: 10px 14px; font-size: 12px;">
+                      <option value="Apprenticeship">Apprenticeship</option>
+                      <option value="Placement">Full-Time Placement</option>
+                      <option value="Internship">Internship</option>
+                      <option value="Contract">Contract</option>
+                    </select>
+                  </div>
+                  <div>
+                    <label style="font-size: 11px; font-weight: 700; display: block; margin-bottom: 6px; color: var(--text-main);">Duration</label>
+                    <select id="new-job-duration" class="filter-control" style="padding: 10px 14px; font-size: 12px;">
+                      <option value="6 Months">6 Months</option>
+                      <option value="12 Months">12 Months</option>
+                      <option value="Full-Time Job">Full-Time (Permanent)</option>
+                      <option value="18 Months">18 Months</option>
+                      <option value="24 Months">24 Months</option>
+                    </select>
+                  </div>
+                  <div style="grid-column: 1 / -1;">
+                    <label style="font-size: 11px; font-weight: 700; display: block; margin-bottom: 6px; color: var(--text-main);">Key Skills Required (comma-separated)</label>
+                    <input type="text" id="new-job-skills" class="filter-control" placeholder="e.g. Industrial Wiring, Control Panels, Solar PV" style="padding: 10px 14px; font-size: 12px;">
+                  </div>
+                  <div style="grid-column: 1 / -1;">
+                    <label style="font-size: 11px; font-weight: 700; display: block; margin-bottom: 6px; color: var(--text-main);">Job Description</label>
+                    <textarea id="new-job-description" class="filter-control" rows="3" placeholder="Describe the role, responsibilities, benefits, and work environment..." style="padding: 10px 14px; font-size: 12px; resize: vertical;"></textarea>
+                  </div>
+                  <div style="grid-column: 1 / -1; display: flex; justify-content: flex-end; gap: 12px;">
+                    <button type="reset" class="btn btn-secondary btn-sm" style="padding: 10px 20px; font-size: 12px;">Clear Form</button>
+                    <button type="submit" class="btn btn-primary" style="padding: 10px 24px; font-size: 13px; font-weight: 700;">
+                      <i data-lucide="zap" style="width: 14px; height: 14px; display: inline; vertical-align: middle; margin-right: 4px;"></i>
+                      Publish Job Opening
+                    </button>
+                  </div>
+                </form>
+              </div>
+
+              <!-- Hiring Summary Stats -->
+              <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-bottom: 28px;">
+                <div class="card stat-card" style="padding: 20px; text-align: center;">
+                  <div style="font-size: 28px; font-weight: 800; color: var(--primary); font-family: var(--font-display);" id="hiring-stat-active">0</div>
+                  <div style="font-size: 11px; font-weight: 600; color: var(--text-muted); margin-top: 4px; text-transform: uppercase; letter-spacing: 0.5px;">Active Openings</div>
+                </div>
+                <div class="card stat-card" style="padding: 20px; text-align: center;">
+                  <div style="font-size: 28px; font-weight: 800; color: var(--accent); font-family: var(--font-display);" id="hiring-stat-applicants">0</div>
+                  <div style="font-size: 11px; font-weight: 600; color: var(--text-muted); margin-top: 4px; text-transform: uppercase; letter-spacing: 0.5px;">Total Applicants</div>
+                </div>
+                <div class="card stat-card" style="padding: 20px; text-align: center;">
+                  <div style="font-size: 28px; font-weight: 800; color: hsl(140, 70%, 45%); font-family: var(--font-display);" id="hiring-stat-hired">0</div>
+                  <div style="font-size: 11px; font-weight: 600; color: var(--text-muted); margin-top: 4px; text-transform: uppercase; letter-spacing: 0.5px;">Hired This Month</div>
+                </div>
+                <div class="card stat-card" style="padding: 20px; text-align: center;">
+                  <div style="font-size: 28px; font-weight: 800; color: hsl(280, 60%, 55%); font-family: var(--font-display);" id="hiring-stat-trades">0</div>
+                  <div style="font-size: 11px; font-weight: 600; color: var(--text-muted); margin-top: 4px; text-transform: uppercase; letter-spacing: 0.5px;">Trades Covered</div>
+                </div>
+              </div>
+
+              <!-- Active Job Listings Table -->
+              <div class="card" style="margin-bottom: 28px;">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px; flex-wrap: wrap; gap: 12px;">
+                  <h4 style="font-size: 16px; font-family: var(--font-display);">
+                    <i data-lucide="list" style="width: 16px; height: 16px; display: inline; vertical-align: middle; margin-right: 6px; color: var(--primary);"></i>
+                    Your Active Job Listings
+                  </h4>
+                  <div style="display: flex; gap: 10px; align-items: center;">
+                    <select id="hiring-filter-status" class="filter-control" style="padding: 6px 10px; font-size: 11px; min-width: 120px;" onchange="renderActiveHiring()">
+                      <option value="All">All Status</option>
+                      <option value="Active">Active</option>
+                      <option value="Paused">Paused</option>
+                      <option value="Closed">Closed</option>
+                    </select>
+                    <select id="hiring-filter-type" class="filter-control" style="padding: 6px 10px; font-size: 11px; min-width: 120px;" onchange="renderActiveHiring()">
+                      <option value="All">All Types</option>
+                      <option value="Apprenticeship">Apprenticeship</option>
+                      <option value="Placement">Placement</option>
+                      <option value="Internship">Internship</option>
+                      <option value="Contract">Contract</option>
+                    </select>
+                  </div>
+                </div>
+                <div class="dash-table-wrap">
+                  <table class="dash-table">
+                    <thead>
+                      <tr>
+                        <th>Job Title</th>
+                        <th>Trade</th>
+                        <th>Type</th>
+                        <th>Location</th>
+                        <th>Salary</th>
+                        <th>Applicants</th>
+                        <th>Status</th>
+                        <th>Actions</th>
+                      </tr>
+                    </thead>
+                    <tbody id="hiring-jobs-table-body">
+                      <!-- Rendered dynamically -->
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+
+              <!-- Hiring Analytics Chart -->
+              <div class="card">
+                <h4 style="font-size: 16px; margin-bottom: 16px; font-family: var(--font-display);">
+                  <i data-lucide="bar-chart-3" style="width: 16px; height: 16px; display: inline; vertical-align: middle; margin-right: 6px; color: var(--accent);"></i>
+                  Hiring Analytics — Applicants by Trade
+                </h4>
+                <div class="chart-container">
+                  <canvas id="chart-hiring-analytics"></canvas>
+                </div>
+              </div>
+            </div>
+
+            <!-- RECRUITER ITI INSTITUTES VIEW -->
+            <div id="comp-view-institutes" style="display: none;">
+              <!-- Sourcing Filters & Search Header -->
+              <div class="card" style="margin-bottom: 24px;">
+                <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; margin-bottom: 16px;">
+                  <div>
+                    <h4 style="font-size: 18px;">National ITI Institutes Directory</h4>
+                    <p style="font-size: 13px; color: var(--text-muted); margin-top: 4px;">Search and contact registered ITI colleges to initiate recruitment campaigns.</p>
+                  </div>
+                  <span id="comp-dir-badge-header" class="plan-badge plan-badge-freemium" style="font-size: 11px;">Freemium Limit Active (5 visible)</span>
+                </div>
+                
+                <div class="filter-bar" style="margin-top: 12px; padding: 0; border: none; background: transparent; display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 12px;">
+                  <div class="filter-group">
+                    <label style="font-size: 10px; font-weight: 700; margin-bottom: 4px; display: block;">Search ITI Name</label>
+                    <input type="text" id="filter-inst-name" class="filter-control" placeholder="Search by name..." oninput="renderInstituteDirectory()" style="padding: 8px 12px; font-size:12px;">
+                  </div>
+                  <div class="filter-group">
+                    <label style="font-size: 10px; font-weight: 700; margin-bottom: 4px; display: block;">State</label>
+                    <select id="filter-inst-state" class="filter-control" onchange="renderInstituteDirectory()" style="padding: 8px 12px; font-size:12px;">
+                      <option value="All">All States</option>
+                      <option value="Maharashtra">Maharashtra</option>
+                      <option value="Gujarat">Gujarat</option>
+                      <option value="Delhi">Delhi</option>
+                    </select>
+                  </div>
+                  <div class="filter-group">
+                    <label style="font-size: 10px; font-weight: 700; margin-bottom: 4px; display: block;">District/City</label>
+                    <input type="text" id="filter-inst-district" class="filter-control" placeholder="e.g. Pune, Nashik..." oninput="renderInstituteDirectory()" style="padding: 8px 12px; font-size:12px;">
+                  </div>
+                  <div class="filter-group">
+                    <label style="font-size: 10px; font-weight: 700; margin-bottom: 4px; display: block;">Min Rating</label>
+                    <select id="filter-inst-rating" class="filter-control" onchange="renderInstituteDirectory()" style="padding: 8px 12px; font-size:12px;">
+                      <option value="All">All Ratings</option>
+                      <option value="A+">A+ Only</option>
+                      <option value="A">A or higher</option>
+                      <option value="B+">B+ or higher</option>
+                    </select>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Broadcast alert message panel -->
+              <div class="card broadcast-panel">
+                <h4>
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--primary)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"/><polyline points="16 6 12 2 8 6"/><line x1="12" y1="2" x2="12" y2="15"/></svg>
+                  Broadcast Placement & Job Alerts to Selected TPOs
+                </h4>
+                <p style="font-size: 11px; color: var(--text-muted); margin-bottom: 12px;">Select colleges in the list below to broadcast job requirements directly to their TPO placement cells. This communication is recorded securely for audits and is visible to Admin.</p>
+                <div style="display: flex; gap: 12px; align-items: start;">
+                  <textarea id="broadcast-message-text" placeholder="Type job opening details, apprentice count, package, and test dates here..."></textarea>
+                  <button class="btn btn-primary" onclick="broadcastNotificationToInstitutes()" style="padding: 12px 20px; font-size: 12px; height: 70px; display: flex; align-items: center; justify-content: center;">
+                    Broadcast Alert
+                  </button>
+                </div>
+              </div>
+
+              <!-- Selection controls header -->
+              <div style="margin-bottom: 16px; display: flex; justify-content: space-between; align-items: center;">
+                <label style="display: flex; align-items: center; gap: 8px; font-size: 12px; font-weight: 600; cursor: pointer; color: var(--text-main);">
+                  <input type="checkbox" id="inst-select-all-chk" onchange="toggleSelectAllInstitutes(this)"> Select All ITIs
+                </label>
+                <span id="selected-institutes-counter" style="font-size: 11px; font-weight: 600; color: var(--primary);">0 Institutes Selected</span>
+              </div>
+              
+              <div style="position: relative; min-height: 200px;">
+                <div class="job-cards-grid" id="comp-institutes-grid">
+                  <!-- Dynamically populated via JS -->
+                </div>
+              </div>
+            </div>
+
+            <!-- RECRUITER TAB 3: INBOX -->
+            <div id="comp-view-inbox" style="display: none;">
+              <div class="card" style="padding: 0; overflow: hidden; border-radius: var(--radius-md);">
+                <div class="whatsapp-container">
+                  <div class="whatsapp-threads">
+                    <div class="whatsapp-search">
+                      <input type="text" placeholder="Search candidate/ITI chats..." oninput="filterChatThreads('Company', this.value)">
+                    </div>
+                    <div class="whatsapp-thread-list" id="company-inbox-thread-list">
+                      <!-- Populated via JS -->
+                    </div>
+                  </div>
+                  <div class="whatsapp-chat-area">
+                    <div class="whatsapp-chat-header">
+                      <div class="whatsapp-chat-header-title" id="company-inbox-chat-header">Select a conversation to start messaging</div>
+                    </div>
+                    <div class="whatsapp-messages" id="company-inbox-messages-container">
+                      <div style="display:flex; flex-direction:column; align-items:center; justify-content:center; height:100%; color: var(--text-muted);">
+                        <i data-lucide="message-square" style="width: 48px; height: 48px; margin-bottom: 12px; opacity: 0.3;"></i>
+                        <p>Select a message thread on the left to read correspondence.</p>
+                      </div>
+                    </div>
+                    <div class="whatsapp-chat-input-bar" id="company-inbox-chat-input-bar" style="display: none;">
+                      <textarea placeholder="Type a message..." id="company-inbox-message-textarea"></textarea>
+                      <button class="btn btn-primary btn-sm" onclick="sendInboxMessage('Company')" style="padding: 10px 14px; border-radius: var(--radius-sm);">
+                        <i data-lucide="send" style="width: 14px; height: 14px;"></i>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+    </div>
+
+
+    <!-- ==========================================================================
+         VIEW 5: ADMIN PANEL
+         ========================================================================== -->
+    <div id="admin-panel" class="portal-view">
+      <div class="dash-shell">
+        
+        <!-- Sidebar -->
+        <aside class="dash-sidebar">
+          <div class="dash-sidebar-header">
+            <div class="brand">
+              <div class="brand-icon">S</div>
+              <span>Admin Center</span>
+            </div>
+          </div>
+          <ul class="dash-sidebar-menu">
+            <li class="dash-menu-item">
+              <a href="#" class="dash-menu-link active" id="admin-side-link-monitoring" onclick="switchAdminTab('monitoring', event)">
+                <i data-lucide="shield"></i> Monitoring
+              </a>
+            </li>
+            <li class="dash-menu-item">
+              <a href="#" class="dash-menu-link" id="admin-side-link-approvals" onclick="switchAdminTab('approvals', event)">
+                <i data-lucide="check-square"></i> Partner Approvals
+              </a>
+            </li>
+            <li class="dash-menu-item">
+              <a href="#" class="dash-menu-link" id="admin-side-link-sync" onclick="switchAdminTab('sync', event)">
+                <i data-lucide="database"></i> System Syncs
+              </a>
+            </li>
+            <li class="dash-menu-item">
+              <a href="#" class="dash-menu-link" id="admin-side-link-inbox" onclick="switchAdminTab('inbox', event)">
+                <i data-lucide="message-square"></i> System Inbox <span class="badge badge-accent inbox-unread-count" style="display: none; font-size: 8px; padding: 2px 5px; margin-left: auto; border-radius: 50%;">0</span>
+              </a>
+            </li>
+          </ul>
+          <div class="sidebar-logout-container">
+            <a href="#" class="logout-sidebar-link" onclick="handleLogout(event)">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg> Logout
+            </a>
+          </div>
+          <div class="dash-sidebar-footer" id="admin-sidebar-footer">
+            Dept. of Vocational Training
+          </div>
+        </aside>
+
+        <!-- Main Workspace -->
+        <div class="dash-main">
+          <header class="dash-header">
+            <div class="dash-header-title">National Registry Governance & Security Control</div>
+            <div class="dash-header-actions">
+              <div class="dash-user-pill">
+                <div class="dash-user-avatar">AD</div>
+                <span style="font-size: 13px; font-weight:600;">System Administrator</span>
+              </div>
+            </div>
+          </header>
+
+          <div class="dash-content">
+            
+            <!-- ADMIN TAB 1: MONITORING -->
+            <div id="admin-view-monitoring">
+              <div class="dash-grid-split">
+                <!-- Servers Status -->
+                <div class="card">
+                  <h4 style="font-size:16px; margin-bottom:16px;">System Operations Status</h4>
+                  <div style="display:flex; flex-direction:column; gap:16px;">
+                    <div style="display:flex; justify-content:space-between; align-items:center; border-bottom:1px solid var(--border); padding-bottom:12px;">
+                      <div>
+                        <strong style="font-size:14px; display:block;">NCVT Direct Registry Sync</strong>
+                        <span style="font-size:11px; color:var(--text-light)">Last sync 4 minutes ago</span>
+                      </div>
+                      <span class="badge badge-success">Online & Syncing</span>
+                    </div>
+                    <div style="display:flex; justify-content:space-between; align-items:center; border-bottom:1px solid var(--border); padding-bottom:12px;">
+                      <div>
+                        <strong style="font-size:14px; display:block;">Blockchain Credential Seal API</strong>
+                        <span style="font-size:11px; color:var(--text-light)">12,050 credentials signed today</span>
+                      </div>
+                      <span class="badge badge-success">Stable</span>
+                    </div>
+                    <div style="display:flex; justify-content:space-between; align-items:center; border-bottom:1px solid var(--border); padding-bottom:12px;">
+                      <div>
+                        <strong style="font-size:14px; display:block;">Student Evaluation Engine (AI)</strong>
+                        <span style="font-size:11px; color:var(--text-light)">Avg response latency: 120ms</span>
+                      </div>
+                      <span class="badge badge-success">Online</span>
+                    </div>
+                    <div style="display:flex; justify-content:space-between; align-items:center;">
+                      <div>
+                        <strong style="font-size:14px; display:block;">SMS/Email Placement Gateway</strong>
+                        <span style="font-size:11px; color:var(--text-light)">Queue: 0 pending</span>
+                      </div>
+                      <span class="badge badge-success">Active</span>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Audits logs -->
+                <div class="card">
+                  <h4 style="font-size:16px; margin-bottom:16px;">System Security Logs</h4>
+                  <div class="dash-table-wrap">
+                    <table class="dash-table" style="font-size:12px;">
+                      <thead>
+                        <tr>
+                          <th>Event</th>
+                          <th>Message</th>
+                          <th>Time</th>
+                          <th>Source</th>
+                        </tr>
+                      </thead>
+                      <tbody id="admin-logs-body">
+                        <!-- Populated via app.js -->
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+              
+              <div class="card" style="margin-top: 24px;">
+                <h4 style="font-size: 16px; margin-bottom:12px;">System Audits & Verification Compliance</h4>
+                <p style="font-size:13px; color: var(--text-muted); margin-bottom: 24px;">National registry auditing ensures transparency in student reports, trade logs, and corporate placement payouts.</p>
+                <div style="display:flex; gap:16px;">
+                  <button class="btn btn-primary" onclick="showToast('Compliance Audit Started', 'National compliance validation reports compiling.', 'info')">Run Compliance Audit</button>
+                  <button class="btn btn-secondary" onclick="showToast('NCVT Synchronized', 'Forced manual fetch from ministry registries complete.', 'success')">Sync NCVT Roster</button>
+                </div>
+              </div>
+            </div>
+
+            <!-- ADMIN TAB 2: APPROVALS -->
+            <div id="admin-view-approvals" style="display: none;">
+              <div class="card" style="padding: 24px; margin-bottom: 24px;">
+                <h4 style="font-size:18px; margin-bottom:12px;">Pending Partner Registrations</h4>
+                <p style="font-size:13px; color:var(--text-muted); margin-bottom:20px;">Review and approve newly registered ITI Institutes and Hiring Companies to grant secure database access credentials.</p>
+                <div class="dash-table-wrap">
+                  <table class="dash-table" style="font-size: 13px;">
+                    <thead>
+                      <tr>
+                        <th>Partner Name</th>
+                        <th>Type</th>
+                        <th>Location/Sector</th>
+                        <th>Registration Date</th>
+                        <th>Status</th>
+                        <th>Action</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td><strong>Govt ITI Nagpur</strong></td>
+                        <td><span class="badge badge-primary">Institute</span></td>
+                        <td>Nagpur, Maharashtra</td>
+                        <td>2026-06-22</td>
+                        <td><span class="badge badge-warning">Pending Audit</span></td>
+                        <td><button class="btn btn-sm btn-primary" onclick="showToast('Partner Approved', 'Govt ITI Nagpur has been approved and verified.', 'success')" style="font-size:11px; padding: 4px 8px;">Approve</button></td>
+                      </tr>
+                      <tr>
+                        <td><strong>Reliance Industries</strong></td>
+                        <td><span class="badge badge-accent">Company</span></td>
+                        <td>Jamnagar, Gujarat</td>
+                        <td>2026-06-21</td>
+                        <td><span class="badge badge-warning">Pending Audit</span></td>
+                        <td><button class="btn btn-sm btn-primary" onclick="showToast('Partner Approved', 'Reliance Industries has been approved and verified.', 'success')" style="font-size:11px; padding: 4px 8px;">Approve</button></td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+
+            <!-- ADMIN TAB 3: SYSTEM SYNCS -->
+            <div id="admin-view-sync" style="display: none;">
+              <div class="card" style="padding: 24px; margin-bottom: 24px;">
+                <h4 style="font-size:18px; margin-bottom:12px;">NCVT Direct Registry Sync</h4>
+                <p style="font-size:13px; color:var(--text-muted); margin-bottom:20px;">Sync and force reconciliations with MSDE and NCVT database gateways.</p>
+                <div style="display: flex; gap: 16px; margin-bottom: 30px;">
+                  <button class="btn btn-primary" onclick="showToast('Syncing Roster', 'Forced manual fetch from NCVT complete.', 'success')">Sync NCVT Roster</button>
+                  <button class="btn btn-secondary" onclick="showToast('Audit Started', 'Compliance validation audit reports compiled.', 'info')">Run Compliance Audit</button>
+                </div>
+                <h5 style="font-size:14px; margin-bottom:12px;">Sync History logs</h5>
+                <div class="dash-table-wrap">
+                  <table class="dash-table" style="font-size:12px;">
+                    <thead>
+                      <tr>
+                        <th>Sync Type</th>
+                        <th>Status</th>
+                        <th>Reconciled Items</th>
+                        <th>Completed Time</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>Auto Hourly NCVT Sync</td>
+                        <td><span class="badge badge-success">Success</span></td>
+                        <td>1,240 students profile scores validated</td>
+                        <td>12 mins ago</td>
+                      </tr>
+                      <tr>
+                        <td>Blockchain Block Sign</td>
+                        <td><span class="badge badge-success">Success</span></td>
+                        <td>310 digital skill passports signed</td>
+                        <td>1 hour ago</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+
+            <!-- ADMIN TAB 4: SYSTEM INBOX -->
+            <div id="admin-view-inbox" style="display: none;">
+              <div class="card" style="padding: 0; overflow: hidden; border-radius: var(--radius-md);">
+                <div class="whatsapp-container">
+                  <div class="whatsapp-threads">
+                    <div class="whatsapp-search">
+                      <input type="text" placeholder="Search system chats..." oninput="filterChatThreads('Admin', this.value)">
+                    </div>
+                    <div class="whatsapp-thread-list" id="admin-inbox-thread-list">
+                      <!-- Populated via JS -->
+                    </div>
+                  </div>
+                  <div class="whatsapp-chat-area">
+                    <div class="whatsapp-chat-header">
+                      <div class="whatsapp-chat-header-title" id="admin-inbox-chat-header">Select a conversation to monitor correspondence</div>
+                    </div>
+                    <div class="whatsapp-messages" id="admin-inbox-messages-container">
+                      <div style="display:flex; flex-direction:column; align-items:center; justify-content:center; height:100%; color: var(--text-muted);">
+                        <i data-lucide="message-square" style="width: 48px; height: 48px; margin-bottom: 12px; opacity: 0.3;"></i>
+                        <p>Select any message thread on the left. Admin has complete audit rights to review all student, company, and institute conversations.</p>
+                      </div>
+                    </div>
+                    <div class="whatsapp-chat-input-bar" id="admin-inbox-chat-input-bar" style="display: none;">
+                      <textarea placeholder="Send message as Administrator..." id="admin-inbox-message-textarea"></textarea>
+                      <button class="btn btn-primary btn-sm" onclick="sendInboxMessage('Admin')" style="padding: 10px 14px; border-radius: var(--radius-sm);">
+                        <i data-lucide="send" style="width: 14px; height: 14px;"></i>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+    </div>
+
+
+    <!-- ==========================================================================
+         VIEW 6: MOBILE APP UI
+         ========================================================================== -->
+    <div id="mobile-app" class="portal-view">
+      
+      <div class="section-container" style="padding: 40px 0;">
+        <div class="section-head">
+          <span class="badge badge-accent">On-The-Go Access</span>
+          <h2 style="margin-top: 10px;">Mobile Skill Passport App</h2>
+          <p>The student application experience designed directly for the mobile-first workforce of India.</p>
+        </div>
+
+        <div class="mobile-view-container">
+          <div class="iphone-device">
+            <div class="iphone-notch"></div>
+            <div class="iphone-screen">
+              
+              <!-- Status bar Mock -->
+              <div class="mobile-status-bar">
+                <span>10:45 AM</span>
+                <div style="display:flex; gap: 4px; align-items:center;">
+                  <i data-lucide="wifi" style="width:12px; height:12px;"></i>
+                  <i data-lucide="battery" style="width:14px; height:14px;"></i>
+                </div>
+              </div>
+
+              <!-- Mobile Application Pages -->
+              <div class="mobile-body">
+                
+                <!-- Page A: Home Page -->
+                <div id="mobile-section-home" class="mobile-app-section">
+                  <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom: 20px;">
+                    <div>
+                      <span style="font-size:10px; color:var(--text-light); text-transform:uppercase;">Student Portal</span>
+                      <h4 id="mobile-home-name" style="font-size: 16px;">Namaste, Rahul Verma</h4>
+                      <span id="mobile-home-trade" style="font-size: 11px; color: var(--primary); font-weight:600;">Electrician Student</span>
+                    </div>
+                    <div class="dash-user-avatar" style="width:36px; height:36px; border: 2px solid var(--accent)">RV</div>
+                  </div>
+
+                  <!-- Score summary card -->
+                  <div class="card card-glowing" style="padding: 16px; margin-bottom: 20px; text-align:center;">
+                    <div style="font-size:24px; font-weight:800; color:var(--accent);" id="mobile-home-score">92</div>
+                    <div style="font-size:10px; text-transform:uppercase; color:var(--text-light);">AI Employability Index</div>
+                    <div style="font-size:11px; margin-top:8px; color:var(--text-muted);">In-demand in Pune Industrial Zone</div>
+                  </div>
+
+                  <!-- Quick Stats -->
+                  <div style="background:var(--surface); border:1px solid var(--border); border-radius:12px; padding:12px; margin-bottom: 20px;">
+                    <strong style="font-size:12px; display:block; margin-bottom:8px;">NCVT Verification Status</strong>
+                    <div style="display:flex; justify-content:space-between; align-items:center;">
+                      <span style="font-size:11px; color:var(--text-muted);">NCVT Attendance Registry</span>
+                      <span class="badge badge-success" style="font-size:9px;">94%</span>
+                    </div>
+                  </div>
+
+                  <strong style="font-size:12px; display:block; margin-bottom:12px;">Active Apprenticeships for You</strong>
+                  <div id="mobile-jobs-list">
+                    <!-- Populated dynamically via app.js -->
+                  </div>
+                </div>
+
+                <!-- Page B: Passport Tab -->
+                <div id="mobile-section-passport" class="mobile-app-section" style="display:none;">
+                  <h4 style="font-size:15px; margin-bottom:12px;">Verified Passport Badge</h4>
+                  <div class="card" style="padding: 16px; text-align:center; background: radial-gradient(circle at top right, rgba(var(--primary-rgb), 0.1), transparent 60%), var(--surface);">
+                    <div style="width:60px; height:60px; border-radius:50%; background:var(--primary); margin:0 auto 12px auto; display:flex; align-items:center; justify-content:center; color:#FFF; font-weight:bold; font-size:18px;">RV</div>
+                    <h5 style="font-size: 14px;">Rahul Verma</h5>
+                    <p style="font-size: 10px; color:var(--text-light);" id="mobile-pass-id">SB-2026-081</p>
+                    <div style="border-top:1px solid var(--border); margin-top:12px; padding-top:12px; text-align:left;">
+                      <strong style="font-size:11px; display:block; margin-bottom:8px;">NCVT Verified Skills</strong>
+                      <div id="mobile-pass-skills" style="display:flex; flex-wrap:wrap; gap:4px;">
+                        <!-- Rendered via JS -->
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+
+              <!-- Navigation tab bar -->
+              <div class="mobile-tab-bar">
+                <div class="mobile-tab-item active" onclick="switchMobileTab('home', this)">
+                  <i data-lucide="home" style="width:18px; height:18px;"></i>
+                  <span>Home</span>
+                </div>
+                <div class="mobile-tab-item" onclick="switchMobileTab('passport', this)">
+                  <i data-lucide="user-check" style="width:18px; height:18px;"></i>
+                  <span>Passport</span>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+
+  <!-- Global Modals & Toasts -->
+
+  <!-- Toast Notification System -->
+  <div class="notification-toast" id="notification-toast">
+    <div class="notification-toast-icon" id="toast-icon-wrap">
+      <i data-lucide="check"></i>
+    </div>
+    <div>
+      <strong id="toast-title" style="display:block; font-size:13px; color: var(--text-main);">Notice</strong>
+      <span id="toast-message" style="font-size:12px; color: var(--text-muted);">Action completed.</span>
+    </div>
+  </div>
+
+  <!-- Modal: Register Student (ERP) -->
+  <div class="modal-overlay" id="modal-add-student">
+    <div class="card modal-card">
+      <div class="modal-header">
+        <h4 style="font-size:18px;">Register New Student</h4>
+        <button class="modal-close-btn" onclick="closeModal('modal-add-student')">
+          <i data-lucide="x"></i>
+        </button>
+      </div>
+      <form onsubmit="registerStudentFromERP(event)">
+        <div class="form-group">
+          <label for="new-student-name">Student Full Name</label>
+          <input type="text" id="new-student-name" class="form-input" placeholder="e.g. Aarav Kumar" required>
+        </div>
+        <div class="form-group">
+          <label for="new-student-trade">Trades</label>
+          <select id="new-student-trade" class="form-input">
+            <optgroup label="── Engineering Trades ──">
+              <option value="Electrician">Electrician</option>
+              <option value="Fitter">Fitter</option>
+              <option value="Welder">Welder</option>
+              <option value="Turner">Turner</option>
+              <option value="Machinist">Machinist</option>
+              <option value="Electronics Mechanic">Electronics Mechanic</option>
+              <option value="Refrigeration &amp; AC">Refrigeration &amp; AC</option>
+              <option value="Mechanic Diesel">Mechanic Diesel</option>
+              <option value="Motor Mechanic (MMV)">Motor Mechanic (MMV)</option>
+              <option value="Wireman">Wireman</option>
+              <option value="Surveyor">Surveyor</option>
+              <option value="Draughtsman Civil">Draughtsman Civil</option>
+              <option value="Draughtsman Mechanical">Draughtsman Mechanical</option>
+              <option value="CNC Operator">CNC Operator</option>
+              <option value="Solar Technician">Solar Technician</option>
+              <option value="IoT Technician">IoT Technician</option>
+              <option value="EV Technician">EV Technician</option>
+            </optgroup>
+            <optgroup label="── Non-Engineering Trades ──">
+              <option value="COPA">COPA (Computer Operator)</option>
+              <option value="Stenographer">Stenographer</option>
+              <option value="Dress Making">Dress Making</option>
+              <option value="Sewing Technology">Sewing Technology</option>
+              <option value="Health Sanitary Inspector">Health Sanitary Inspector</option>
+              <option value="Food Production">Food Production</option>
+              <option value="Hospitality Assistant">Hospitality Assistant</option>
+              <option value="Digital Photographer">Digital Photographer</option>
+            </optgroup>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="new-student-attendance">Base Class Attendance (%)</label>
+          <input type="number" id="new-student-attendance" class="form-input" min="70" max="100" value="92" required>
+        </div>
+        <div style="display:flex; justify-content:flex-end; gap:12px; margin-top:20px;">
+          <button type="button" class="btn btn-secondary btn-sm" onclick="closeModal('modal-add-student')">Cancel</button>
+          <button type="submit" class="btn btn-primary btn-sm">Confirm Enrollment</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Modal: Schedule Interview -->
+  <div class="modal-overlay" id="modal-schedule-interview">
+    <div class="card modal-card">
+      <div class="modal-header">
+        <h4 id="modal-schedule-title" style="font-size:18px;">Schedule Candidate Interview</h4>
+        <button class="modal-close-btn" onclick="closeModal('modal-schedule-interview')">
+          <i data-lucide="x"></i>
+        </button>
+      </div>
+      <form onsubmit="scheduleInterviewSubmit(event)">
+        <div class="form-group">
+          <label for="interview-date">Interview Date</label>
+          <input type="date" id="interview-date" class="form-input" required>
+        </div>
+        <div class="form-group">
+          <label for="interview-mode">Mode of Evaluation</label>
+          <select id="interview-mode" class="form-input">
+            <option value="Virtual (SkillBridge Meet)">Virtual Video Call</option>
+            <option value="In-Person (On-Site Trade Test)">In-Person (On-Site Trade Test)</option>
+            <option value="Written Practical Evaluator">Written Practical Evaluator</option>
+          </select>
+        </div>
+        <div style="display:flex; justify-content:flex-end; gap:12px; margin-top:20px;">
+          <button type="button" class="btn btn-secondary btn-sm" onclick="closeModal('modal-schedule-interview')">Cancel</button>
+          <button type="submit" class="btn btn-primary btn-sm">Schedule & Notify</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Core App JS Scripts -->
+  <script type="module" src="/app.js"></script>
+
+  <!-- Instantiate Lucide Icons on load -->
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      lucide.createIcons();
+    });
+  </script>
+</body>
+</html>
