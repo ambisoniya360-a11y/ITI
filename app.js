@@ -362,6 +362,50 @@ async function dbInsertCompany(company) {
   }
 }
 
+// --- User Authentication Supabase Helpers ---
+async function dbInsertUser(user) {
+  const isSupabaseConfigured = !!(import.meta.env.VITE_SUPABASE_URL && import.meta.env.VITE_SUPABASE_ANON_KEY);
+  if (!isSupabaseConfigured) return;
+  try {
+    const { error } = await supabase
+      .from('users')
+      .insert({
+        id: user.id,
+        name: user.name,
+        email: user.email,
+        password: user.password,
+        role: user.role,
+        tier: user.tier || 'Freemium'
+      });
+    if (error) throw error;
+    console.log("Successfully inserted user into Supabase:", user.id);
+  } catch (error) {
+    console.error("Supabase user insertion failed:", error);
+    showToast("Sync Error", "Failed to save user credentials online.", "warning");
+  }
+}
+
+async function dbFetchUserByEmail(email, role) {
+  const isSupabaseConfigured = !!(import.meta.env.VITE_SUPABASE_URL && import.meta.env.VITE_SUPABASE_ANON_KEY);
+  if (!isSupabaseConfigured) return null;
+  try {
+    const { data, error } = await supabase
+      .from('users')
+      .select('*')
+      .eq('email', email)
+      .eq('role', role)
+      .single();
+    if (error) {
+      if (error.code === 'PGRST116') return null; // No rows found
+      throw error;
+    }
+    return data;
+  } catch (error) {
+    console.error("Supabase user fetch failed:", error);
+    return null;
+  }
+}
+
 // Initialize Application UI
 document.addEventListener("DOMContentLoaded", async () => {
   // Init Theme
@@ -1795,15 +1839,52 @@ window.handleAuthSubmit = function(e) {
   }
 };
 
-window.handleLoginSubmit = function(e) {
+window.handleLoginSubmit = async function(e) {
   if (e) e.preventDefault();
 
   const email = document.getElementById("login-email")?.value;
   const password = document.getElementById("login-password")?.value;
   const currentRole = adminModeActive ? "Admin" : loginRole;
 
-  const creds = demoCredentials[currentRole];
+  if (!email || !password) {
+    showToast("Authentication Failed", "Please enter email and password.", "warning");
+    return;
+  }
 
+  // First check Supabase users table
+  const dbUser = await dbFetchUserByEmail(email, currentRole);
+
+  if (dbUser && dbUser.password === password) {
+    const db_session = {
+      loggedIn: true,
+      role: dbUser.role,
+      user: dbUser.name,
+      id: dbUser.id,
+      tier: dbUser.tier || "Freemium"
+    };
+
+    db.session = db_session;
+    localStorage.setItem("skillbridge_session", JSON.stringify(db.session));
+    window.updateNavigationUI();
+
+    const btnIdMap = {
+      "Student": "nav-btn-student",
+      "Institute": "nav-btn-institute",
+      "Company": "nav-btn-company",
+      "Admin": "nav-btn-admin"
+    };
+
+    showToast("Login Successful", `Welcome back, ${dbUser.name}! Loading portal...`, "success");
+
+    setTimeout(() => {
+      const navBtn = document.getElementById(btnIdMap[currentRole]);
+      if (navBtn) navBtn.click();
+    }, 800);
+    return;
+  }
+
+  // Fallback to demo credentials
+  const creds = demoCredentials[currentRole];
   if (email === creds.email && password === creds.password) {
     const roleTiers = {
       "Student": "Premium",
@@ -1936,6 +2017,11 @@ window.handleSignUpSubmit = function(e) {
       id,
       tier: "Freemium" // default to Freemium
     };
+  }
+
+  // Save user credentials to Supabase for persistent login
+  if (id) {
+    dbInsertUser({ id, name, email, password, role: currentRole, tier: db.session.tier });
   }
 
   localStorage.setItem("skillbridge_session", JSON.stringify(db.session));

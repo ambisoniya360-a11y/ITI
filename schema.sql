@@ -74,6 +74,18 @@ CREATE TABLE companies (
     created_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP
 );
 
+-- Users / Authentication Table
+CREATE TABLE users (
+    id VARCHAR(50) PRIMARY KEY,
+    name VARCHAR(255) NOT NULL,
+    email VARCHAR(255) NOT NULL,
+    password VARCHAR(255) NOT NULL,
+    role VARCHAR(50) NOT NULL CHECK (role IN ('Student', 'Institute', 'Company', 'Admin')),
+    tier VARCHAR(50) DEFAULT 'Freemium',
+    created_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP,
+    UNIQUE(email, role)
+);
+
 -- 3. INSERT DEMO SEED DATA
 
 -- Seed Students
@@ -158,3 +170,7 @@ CREATE POLICY "Enable insert/update for public anon during demo" ON jobs FOR ALL
 CREATE POLICY "Enable insert/update for public anon during demo" ON applications FOR ALL USING (true);
 CREATE POLICY "Enable insert/update for public anon during demo" ON institutes FOR ALL USING (true);
 CREATE POLICY "Enable insert/update for public anon during demo" ON companies FOR ALL USING (true);
+
+ALTER TABLE users ENABLE ROW LEVEL SECURITY;
+CREATE POLICY "Enable read access for all users on users" ON users FOR SELECT USING (true);
+CREATE POLICY "Enable insert/update for public anon during demo" ON users FOR ALL USING (true);
