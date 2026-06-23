@@ -610,7 +610,91 @@ document.addEventListener("DOMContentLoaded", async () => {
   setTimeout(() => {
     initCharts();
   }, 100);
+  // Init new landing map interactivity
+  initNewLandingMap();
 });
+
+// --- Dotted India Map Interactivity ---
+function initNewLandingMap() {
+  const stateNodes = document.querySelectorAll(".state-node-new");
+  const metricRows = document.querySelectorAll(".metric-row-new");
+  const allPulses = document.querySelectorAll(".state-pulse-new");
+  const mapDots = document.querySelectorAll(".map-dot");
+
+  function highlightStateDots(stateName) {
+    mapDots.forEach(dot => dot.classList.remove("active-dot"));
+    if (!stateName) return;
+    
+    // Map state names to lower-case dot classes
+    const classMap = {
+      "Maharashtra": "dot-maharashtra",
+      "Gujarat": "dot-gujarat",
+      "Karnataka": "dot-karnataka",
+      "Tamil Nadu": "dot-tamilnadu",
+      "Uttar Pradesh": "dot-up"
+    };
+    
+    const className = classMap[stateName];
+    if (className) {
+      document.querySelectorAll(`.${className}`).forEach(dot => {
+        dot.classList.add("active-dot");
+      });
+    }
+  }
+
+  function activateState(stateName) {
+    stateNodes.forEach(node => node.classList.remove("active"));
+    allPulses.forEach(pulse => pulse.style.display = "none");
+    metricRows.forEach(row => row.classList.remove("active"));
+
+    if (!stateName) {
+      highlightStateDots(null);
+      return;
+    }
+
+    const activeNode = document.querySelector(`.state-node-new[data-state="${stateName}"]`);
+    if (activeNode) activeNode.classList.add("active");
+
+    const activeRow = document.querySelector(`.metric-row-new[data-state="${stateName}"]`);
+    if (activeRow) activeRow.classList.add("active");
+
+    const pulseIdMap = {
+      "Maharashtra": "pulse-maharashtra",
+      "Gujarat": "pulse-gujarat",
+      "Karnataka": "pulse-karnataka",
+      "Tamil Nadu": "pulse-tamilnadu",
+      "Uttar Pradesh": "pulse-up"
+    };
+    const activePulse = document.getElementById(pulseIdMap[stateName]);
+    if (activePulse) activePulse.style.display = "block";
+
+    highlightStateDots(stateName);
+  }
+
+  // Set default active state
+  activateState("Maharashtra");
+
+  stateNodes.forEach(node => {
+    node.addEventListener("mouseenter", () => {
+      const stateName = node.getAttribute("data-state");
+      activateState(stateName);
+    });
+  });
+
+  metricRows.forEach(row => {
+    row.addEventListener("mouseenter", () => {
+      const stateName = row.getAttribute("data-state");
+      activateState(stateName);
+    });
+  });
+
+  const mapContainer = document.querySelector(".map-layout-split-new");
+  if (mapContainer) {
+    mapContainer.addEventListener("mouseleave", () => {
+      activateState("Maharashtra");
+    });
+  }
+}
 
 // --- Theme Management ---
 function initTheme() {
@@ -745,14 +829,22 @@ function renderLandingStats() {
 
   // National Impact metrics
   const impactStudents = document.getElementById("impact-students");
-  const impactInstitutes = document.getElementById("impact-institutes");
   const impactCompanies = document.getElementById("impact-companies");
   const impactPlacements = document.getElementById("impact-placements");
+  const impactApprenticeships = document.getElementById("impact-apprenticeships");
 
-  if (impactStudents) impactStudents.textContent = db.stats.totalStudents.toLocaleString('en-IN') + "+";
-  if (impactInstitutes) impactInstitutes.textContent = db.stats.institutesOnboarded.toLocaleString('en-IN') + "+";
-  if (impactCompanies) impactCompanies.textContent = db.stats.activeCompanies.toLocaleString('en-IN') + "+";
-  if (impactPlacements) impactPlacements.textContent = db.stats.placementsCompleted.toLocaleString('en-IN') + "+";
+  if (impactStudents) {
+    impactStudents.textContent = (db.stats.totalStudents / 100000).toFixed(2) + " Lakh+";
+  }
+  if (impactCompanies) {
+    impactCompanies.textContent = db.stats.activeCompanies.toLocaleString('en-IN') + "+";
+  }
+  if (impactPlacements) {
+    impactPlacements.textContent = db.stats.placementsCompleted.toLocaleString('en-IN') + "+";
+  }
+  if (impactApprenticeships) {
+    impactApprenticeships.textContent = db.stats.apprenticeships.toLocaleString('en-IN') + "+";
+  }
 }
 
 function renderApprenticeshipMarketplace() {

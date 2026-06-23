@@ -75,38 +75,465 @@
       </header>
 
       <!-- Hero Section -->
-      <section class="landing-hero animate-fade-in-up">
-        <div class="hero-badge">
-          <span class="badge badge-trust">
-            <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-            Ministry of Skill Development & Industry Linked
-          </span>
-        </div>
-        <h1 class="hero-title">Connecting India's Skilled Workforce to Industry</h1>
-        <p class="hero-sub">One platform for ITI management, student skill passports, apprenticeships and industry hiring.</p>
-        
-        <div class="hero-ctas">
-          <button class="btn btn-primary" onclick="document.querySelector('[data-view=student-portal]').click();">Get Started Free</button>
-          <button class="btn btn-secondary" onclick="openModal('modal-schedule-interview')">Book Demo</button>
-        </div>
+      <section class="new-landing-hero animate-fade-in-up">
+        <div class="hero-container">
+          <!-- Left Column (45%) -->
+          <div class="hero-left">
+            <div class="hero-badge">
+              <span class="badge badge-trust">
+                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="badge-icon"><rect x="4" y="2" width="16" height="20" rx="2" ry="2"/><line x1="9" y1="22" x2="9" y2="16"/><line x1="15" y1="22" x2="15" y2="16"/><line x1="9" y1="16" x2="15" y2="16"/><path d="M12 2v4"/><path d="M12 10h.01"/></svg>
+                Ministry Ready &amp; Industry Linked
+              </span>
+            </div>
+            <h1 class="hero-title-new">
+              Connecting India's <span class="gradient-text-blue">Skilled Workforce</span> to Industry
+            </h1>
+            <p class="hero-sub-new">
+              From ITI admissions to apprenticeships, placements, skill passports and industry hiring — all in one digital platform.
+            </p>
+            <div class="hero-ctas-new">
+              <button class="btn btn-primary btn-gradient-new" onclick="document.getElementById('nav-btn-login').click();">
+                Start Free <span class="arrow-icon-new">→</span>
+              </button>
+              <button class="btn btn-secondary btn-outlined-new" onclick="openModal('modal-schedule-interview')">
+                Book Demo
+              </button>
+            </div>
+            
+            <div class="hero-trust-badges-new">
+              <div class="trust-badge-item-new">
+                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18"/><path d="M3 7v1a3 3 0 0 0 6 0V7m0 1a3 3 0 0 0 6 0V7m0 1a3 3 0 0 0 6 0V7m0 1a3 3 0 0 0 6 0V7h-18"/><path d="M19 21v-4a2 2 0 0 0-2-2H7a2 2 0 0 0-2 2v4"/><path d="M9 12h6"/></svg>
+                <span>🏛 Ministry Ready</span>
+              </div>
+              <div class="trust-badge-item-new">
+                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                <span>🛡 NSDC Compatible</span>
+              </div>
+              <div class="trust-badge-item-new">
+                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+                <span>✅ Industry Verified</span>
+              </div>
+              <div class="trust-badge-item-new">
+                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="2"/><line x1="7" y1="8" x2="17" y2="8"/><line x1="7" y1="12" x2="17" y2="12"/><line x1="7" y1="16" x2="13" y2="16"/></svg>
+                <span>📄 Digital Skill Passport</span>
+              </div>
+            </div>
+          </div>
 
-        <!-- Live Dashboard Preview Cards -->
-        <div class="stats-ribbon">
-          <div class="stat-item">
-            <div class="stat-item-num" id="landing-students">1,25,000</div>
-            <div class="stat-item-lbl">Total Students</div>
+          <!-- Right Column (55%) -->
+          <div class="hero-right">
+            <!-- Connector lines (SVG Overlay) -->
+            <svg class="glowing-connectors" width="100%" height="100%" viewBox="0 0 800 600" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path class="connector-path-anim" id="path-tl" d="M100 120 C 220 120, 200 240, 310 240" stroke="url(#line-grad-blue)" stroke-width="1.5" stroke-dasharray="4, 4" />
+              <path class="connector-path-anim" id="path-bl" d="M100 480 C 220 480, 200 360, 310 360" stroke="url(#line-grad-orange)" stroke-width="1.5" stroke-dasharray="4, 4" />
+              <path class="connector-path-anim" id="path-tr" d="M700 120 C 580 120, 600 240, 490 240" stroke="url(#line-grad-green)" stroke-width="1.5" stroke-dasharray="4, 4" />
+              <path class="connector-path-anim" id="path-br" d="M700 480 C 580 480, 600 360, 490 360" stroke="url(#line-grad-red)" stroke-width="1.5" stroke-dasharray="4, 4" />
+              
+              <defs>
+                <linearGradient id="line-grad-blue" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" stop-color="#3B82F6" stop-opacity="0.8"/>
+                  <stop offset="100%" stop-color="#3B82F6" stop-opacity="0.2"/>
+                </linearGradient>
+                <linearGradient id="line-grad-orange" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" stop-color="#F97316" stop-opacity="0.8"/>
+                  <stop offset="100%" stop-color="#F97316" stop-opacity="0.2"/>
+                </linearGradient>
+                <linearGradient id="line-grad-green" x1="100%" y1="0%" x2="0%" y2="100%">
+                  <stop offset="0%" stop-color="#10B981" stop-opacity="0.8"/>
+                  <stop offset="100%" stop-color="#10B981" stop-opacity="0.2"/>
+                </linearGradient>
+                <linearGradient id="line-grad-red" x1="100%" y1="100%" x2="0%" y2="0%">
+                  <stop offset="0%" stop-color="#EF4444" stop-opacity="0.8"/>
+                  <stop offset="100%" stop-color="#EF4444" stop-opacity="0.2"/>
+                </linearGradient>
+              </defs>
+            </svg>
+
+            <!-- Floating Cards -->
+            <div class="floating-card float-tl">
+              <div class="card-glow-new"></div>
+              <div class="float-icon-new blue"><i data-lucide="users"></i></div>
+              <div class="float-meta-new">
+                <span class="float-title-new">Students</span>
+                <span class="float-val-new" id="landing-students">1,25,000</span>
+                <span class="float-desc-new">Active Students</span>
+              </div>
+              <svg class="mini-chart-new" viewBox="0 0 100 30" width="60" height="20">
+                <path d="M0,25 Q15,10 30,20 T60,5 T90,15 L100,10" fill="none" stroke="#2563EB" stroke-width="2" stroke-linecap="round"/>
+              </svg>
+            </div>
+
+            <div class="floating-card float-bl">
+              <div class="card-glow-new"></div>
+              <div class="float-icon-new orange"><i data-lucide="building-2"></i></div>
+              <div class="float-meta-new">
+                <span class="float-title-new">Companies</span>
+                <span class="float-val-new" id="landing-companies">1,200</span>
+                <span class="float-desc-new">Industry Partners</span>
+              </div>
+              <div class="mini-bars-new">
+                <div class="bar-new" style="height: 60%"></div>
+                <div class="bar-new" style="height: 40%"></div>
+                <div class="bar-new" style="height: 80%"></div>
+                <div class="bar-new" style="height: 50%"></div>
+                <div class="bar-new" style="height: 90%"></div>
+              </div>
+            </div>
+
+            <div class="floating-card float-tr">
+              <div class="card-glow-new"></div>
+              <div class="float-icon-new green"><i data-lucide="briefcase"></i></div>
+              <div class="float-meta-new">
+                <span class="float-title-new">Apprenticeships</span>
+                <span class="float-val-new" id="landing-apprenticeships">9,250</span>
+                <span class="float-desc-new">Active Opportunities</span>
+              </div>
+              <svg class="mini-chart-new" viewBox="0 0 100 30" width="60" height="20">
+                <path d="M0,20 Q20,5 40,15 T80,10 L100,5" fill="none" stroke="#10B981" stroke-width="2" stroke-linecap="round"/>
+              </svg>
+            </div>
+
+            <div class="floating-card float-br">
+              <div class="card-glow-new"></div>
+              <div class="float-icon-new red"><i data-lucide="award"></i></div>
+              <div class="float-meta-new">
+                <span class="float-title-new">Placements</span>
+                <span class="float-val-new" id="landing-placements">32,450</span>
+                <span class="float-desc-new">Successful Placements</span>
+              </div>
+              <svg class="mini-chart-new" viewBox="0 0 100 30" width="60" height="20">
+                <path d="M0,25 L20,20 L40,10 L60,18 L80,5 L100,2" fill="none" stroke="#EF4444" stroke-width="2" stroke-linecap="round"/>
+              </svg>
+            </div>
+
+            <!-- MacBook Mockup Container -->
+            <div class="macbook-mockup-new">
+              <!-- Lid Screen -->
+              <div class="macbook-screen-new">
+                <div class="screen-reflection-new"></div>
+                <!-- Student Dashboard UI -->
+                <div class="dashboard-mock-new">
+                  <!-- Sidebar -->
+                  <div class="dash-mock-sidebar-new">
+                    <div class="mock-logo-new">
+                      <span class="logo-box-new">S</span>
+                      <span class="logo-text-new">SkillBridge</span>
+                    </div>
+                    <ul class="mock-nav-new">
+                      <li class="active"><i data-lucide="layout-dashboard"></i> Dashboard</li>
+                      <li><i data-lucide="user-check"></i> Skill Passport</li>
+                      <li><i data-lucide="briefcase"></i> Apprenticeships</li>
+                      <li><i data-lucide="award"></i> Certifications</li>
+                      <li><i data-lucide="users"></i> Placements</li>
+                      <li><i data-lucide="graduation-cap"></i> Learning</li>
+                      <li><i data-lucide="message-square"></i> Messages</li>
+                      <li><i data-lucide="user"></i> Profile</li>
+                    </ul>
+                  </div>
+                  <!-- Main Body -->
+                  <div class="dash-mock-main-new">
+                    <!-- Top navigation -->
+                    <div class="dash-mock-header-new">
+                      <div class="mock-welcome-new">
+                        <h4>Welcome back, Ravi Kumar 👋</h4>
+                        <p>ITI Fitter • Maharashtra</p>
+                      </div>
+                      <div class="mock-header-actions-new">
+                        <span class="mock-bell-new"><i data-lucide="bell"></i><span class="bell-dot-new"></span></span>
+                        <div class="mock-avatar-new">RK</div>
+                      </div>
+                    </div>
+                    <!-- Body Content -->
+                    <div class="dash-mock-body-new">
+                      <!-- Grid Section -->
+                      <div class="dash-mock-grid-new">
+                        <div class="mock-left-pane-new">
+                          <!-- Stats Cards -->
+                          <div class="mock-stats-row-new">
+                            <div class="mock-stat-card-new">
+                              <span class="stat-lbl-new">Skill Passport</span>
+                              <span class="stat-val-new text-blue-new">85% <span class="sub-lbl-new">Complete</span></span>
+                            </div>
+                            <div class="mock-stat-card-new">
+                              <span class="stat-lbl-new">Certifications</span>
+                              <span class="stat-val-new">12 <span class="sub-lbl-new">Verified</span></span>
+                            </div>
+                            <div class="mock-stat-card-new">
+                              <span class="stat-lbl-new">Industry Match</span>
+                              <span class="stat-val-new text-green-new">92% <span class="sub-lbl-new">High Match</span></span>
+                            </div>
+                            <div class="mock-stat-card-new">
+                              <span class="stat-lbl-new">Placement Status</span>
+                              <span class="stat-val-new status-badge-new text-emerald-new">Placed <span class="sub-lbl-new text-emerald-new">Congrats!</span></span>
+                            </div>
+                          </div>
+                          <!-- Opportunities -->
+                          <div class="mock-opps-section-new">
+                            <h5>Recommended Opportunities</h5>
+                            <div class="mock-table-new">
+                              <div class="mock-tr-new">
+                                <div class="td-company-new">
+                                  <div class="co-logo-new blue">T</div>
+                                  <div class="co-info-new">
+                                    <span class="co-name-new">Tata Motors</span>
+                                    <span class="co-role-new">Apprentice - Fitter • Pune</span>
+                                  </div>
+                                </div>
+                                <div class="td-match-new"><span class="match-badge-new high">High Match</span></div>
+                                <div class="td-action-new"><button class="btn-apply-new active">Apply Now</button></div>
+                              </div>
+                              <div class="mock-tr-new">
+                                <div class="td-company-new">
+                                  <div class="co-logo-new navy">L</div>
+                                  <div class="co-info-new">
+                                    <span class="co-name-new">L&T Electrical</span>
+                                    <span class="co-role-new">Apprentice - Technician • Vadodara</span>
+                                  </div>
+                                </div>
+                                <div class="td-match-new"><span class="match-badge-new high">High Match</span></div>
+                                <div class="td-action-new"><button class="btn-apply-new active">Apply Now</button></div>
+                              </div>
+                              <div class="mock-tr-new">
+                                <div class="td-company-new">
+                                  <div class="co-logo-new orange">B</div>
+                                  <div class="co-info-new">
+                                    <span class="co-name-new">Bharat Forge</span>
+                                    <span class="co-role-new">Apprentice - Machinist • Pune</span>
+                                  </div>
+                                </div>
+                                <div class="td-match-new"><span class="match-badge-new med">Medium Match</span></div>
+                                <div class="td-action-new"><button class="btn-apply-new active">Apply Now</button></div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="mock-right-pane-new">
+                          <!-- Profile Strength Circular Card -->
+                          <div class="mock-progress-card-new">
+                            <h6>Your Progress</h6>
+                            <div class="circle-chart-container-new">
+                              <svg class="circle-chart-new" viewBox="0 0 36 36">
+                                <path class="circle-bg-new" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />
+                                <path class="circle-fill-new" stroke-dasharray="76, 100" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />
+                              </svg>
+                              <div class="circle-text-new">
+                                <span class="pct-new">76%</span>
+                                <span class="lbl-new">Strength</span>
+                              </div>
+                            </div>
+                            <span class="improve-link-new">Improve Now →</span>
+                          </div>
+                          <!-- Recent Activity -->
+                          <div class="mock-activity-card-new">
+                            <h6>Recent Activity</h6>
+                            <ul class="activity-list-new">
+                              <li>
+                                <span class="act-dot-new"></span>
+                                <span class="act-text-new">Certificate verified <span class="time-new">2h ago</span></span>
+                              </li>
+                              <li>
+                                <span class="act-dot-new"></span>
+                                <span class="act-text-new">Applied for L&T <span class="time-new">5h ago</span></span>
+                              </li>
+                              <li>
+                                <span class="act-dot-new"></span>
+                                <span class="act-text-new">Aptitude test cleared <span class="time-new">1d ago</span></span>
+                              </li>
+                            </ul>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!-- Keyboard Base -->
+              <div class="macbook-base-new">
+                <div class="base-notch-new"></div>
+              </div>
+            </div>
           </div>
-          <div class="stat-item">
-            <div class="stat-item-num stat-item-num-accent" id="landing-companies">1,200</div>
-            <div class="stat-item-lbl">Active Companies</div>
+        </div>
+      </section>
+
+      <!-- Company Trust Bar -->
+      <section class="company-trust-bar-new">
+        <p class="trust-title-new">Trusted by Leading ITIs &amp; Industry Partners</p>
+        <div class="trust-logos-container-new">
+          <div class="logo-item-new logo-tata">TATA</div>
+          <div class="logo-item-new logo-mahindra">Mahindra</div>
+          <div class="logo-item-new logo-lt">L&amp;T</div>
+          <div class="logo-item-new logo-forge">Bharat Forge</div>
+          <div class="logo-item-new logo-godrej">Godrej</div>
+          <div class="logo-item-new logo-tvs">TVS</div>
+          <div class="logo-item-new logo-wipro">Wipro</div>
+          <div class="logo-item-new logo-suzuki">Maruti Suzuki</div>
+        </div>
+      </section>
+
+      <!-- Section: Impact -->
+      <section id="impact" class="impact-section-new section-container-new">
+        <div class="impact-split-container-new">
+          <!-- Left Column (4 Stats Cards) -->
+          <div class="impact-stats-grid-new">
+            <div class="card-new impact-stat-card-new">
+              <div class="impact-icon-wrapper-new blue-new">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c0 2 2 3 6 3s6-1 6-3v-5"/></svg>
+              </div>
+              <h3 id="impact-students">1.25 Lakh+</h3>
+              <p class="stat-tagline-new">Students Registered</p>
+              <p class="stat-description-new">Empowering skilled talent across India</p>
+            </div>
+            
+            <div class="card-new impact-stat-card-new">
+              <div class="impact-icon-wrapper-new orange-new">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="2" width="16" height="20" rx="2" ry="2"/><line x1="9" y1="22" x2="9" y2="16"/><line x1="15" y1="22" x2="15" y2="16"/><line x1="9" y1="16" x2="15" y2="16"/><path d="M12 2v4"/><path d="M12 10h.01"/></svg>
+              </div>
+              <h3 id="impact-companies">1,200+</h3>
+              <p class="stat-tagline-new">Industry Partners</p>
+              <p class="stat-description-new">Connecting companies with skilled workforce</p>
+            </div>
+            
+            <div class="card-new impact-stat-card-new">
+              <div class="impact-icon-wrapper-new green-new">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+              </div>
+              <h3 id="impact-placements">32,450+</h3>
+              <p class="stat-tagline-new">Successful Placements</p>
+              <p class="stat-description-new">Creating meaningful careers every day</p>
+            </div>
+            
+            <div class="card-new impact-stat-card-new">
+              <div class="impact-icon-wrapper-new purple-new">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
+              </div>
+              <h3 id="impact-apprenticeships">9,250+</h3>
+              <p class="stat-tagline-new">Apprenticeships</p>
+              <p class="stat-description-new">Building industry-ready professionals</p>
+            </div>
           </div>
-          <div class="stat-item">
-            <div class="stat-item-num" id="landing-apprenticeships">9,250</div>
-            <div class="stat-item-lbl">Apprenticeships</div>
-          </div>
-          <div class="stat-item">
-            <div class="stat-item-num stat-item-num-accent" id="landing-placements">32,450</div>
-            <div class="stat-item-lbl">Placements Completed</div>
+
+          <!-- Right Column (National Impact India Map) -->
+          <div class="card-new national-map-card-new">
+            <div class="map-card-header-new">
+              <span class="badge badge-primary-new">Scale &amp; Footprint</span>
+              <h3>Nationwide Impact</h3>
+              <p>Building a skilled India, one state at a time.</p>
+            </div>
+            
+            <div class="map-layout-split-new">
+              <!-- India Dotted Map SVG -->
+              <div class="map-svg-container-new">
+                <svg id="india-map-new" viewBox="0 0 400 450" xmlns="http://www.w3.org/2000/svg">
+                  <!-- Dotted Map elements representing India -->
+                  <g class="map-dots-group">
+                    <!-- Dynamic Dots representing various parts of India -->
+                    <circle cx="190" cy="60" r="2.5" class="map-dot" />
+                    <circle cx="180" cy="70" r="2.5" class="map-dot" />
+                    <circle cx="200" cy="75" r="2.5" class="map-dot" />
+                    <circle cx="170" cy="90" r="2.5" class="map-dot" />
+                    <circle cx="190" cy="95" r="2.5" class="map-dot" />
+                    <circle cx="210" cy="90" r="2.5" class="map-dot" />
+                    <circle cx="160" cy="110" r="2.5" class="map-dot" />
+                    <circle cx="180" cy="115" r="2.5" class="map-dot" />
+                    <circle cx="200" cy="120" r="2.5" class="map-dot" />
+                    <circle cx="220" cy="115" r="2.5" class="map-dot" />
+                    <!-- Uttar Pradesh area dots -->
+                    <circle cx="210" cy="170" r="3" class="map-dot dot-up" />
+                    <circle cx="225" cy="175" r="3" class="map-dot dot-up" />
+                    <circle cx="240" cy="180" r="3" class="map-dot dot-up" />
+                    <circle cx="215" cy="185" r="3" class="map-dot dot-up" />
+                    <!-- Gujarat area dots -->
+                    <circle cx="105" cy="210" r="3" class="map-dot dot-gujarat" />
+                    <circle cx="115" cy="220" r="3" class="map-dot dot-gujarat" />
+                    <circle cx="125" cy="225" r="3" class="map-dot dot-gujarat" />
+                    <!-- Maharashtra area dots -->
+                    <circle cx="150" cy="260" r="3" class="map-dot dot-maharashtra" />
+                    <circle cx="165" cy="270" r="3" class="map-dot dot-maharashtra" />
+                    <circle cx="175" cy="265" r="3" class="map-dot dot-maharashtra" />
+                    <circle cx="160" cy="285" r="3" class="map-dot dot-maharashtra" />
+                    <circle cx="185" cy="280" r="3" class="map-dot dot-maharashtra" />
+                    <!-- Karnataka area dots -->
+                    <circle cx="145" cy="330" r="3" class="map-dot dot-karnataka" />
+                    <circle cx="155" cy="345" r="3" class="map-dot dot-karnataka" />
+                    <circle cx="165" cy="335" r="3" class="map-dot dot-karnataka" />
+                    <!-- Tamil Nadu area dots -->
+                    <circle cx="170" cy="385" r="3" class="map-dot dot-tamilnadu" />
+                    <circle cx="180" cy="395" r="3" class="map-dot dot-tamilnadu" />
+                    <circle cx="175" cy="410" r="3" class="map-dot dot-tamilnadu" />
+                    <!-- Rest of India filler dots -->
+                    <circle cx="140" cy="150" r="2.5" class="map-dot" />
+                    <circle cx="155" cy="160" r="2.5" class="map-dot" />
+                    <circle cx="175" cy="155" r="2.5" class="map-dot" />
+                    <circle cx="180" cy="180" r="2.5" class="map-dot" />
+                    <circle cx="260" cy="190" r="2.5" class="map-dot" />
+                    <circle cx="280" cy="200" r="2.5" class="map-dot" />
+                    <circle cx="300" cy="195" r="2.5" class="map-dot" />
+                    <circle cx="240" cy="220" r="2.5" class="map-dot" />
+                    <circle cx="265" cy="225" r="2.5" class="map-dot" />
+                    <circle cx="210" cy="240" r="2.5" class="map-dot" />
+                    <circle cx="230" cy="250" r="2.5" class="map-dot" />
+                    <circle cx="250" cy="260" r="2.5" class="map-dot" />
+                    <circle cx="205" cy="290" r="2.5" class="map-dot" />
+                    <circle cx="215" cy="310" r="2.5" class="map-dot" />
+                    <circle cx="225" cy="330" r="2.5" class="map-dot" />
+                    <circle cx="190" cy="320" r="2.5" class="map-dot" />
+                    <circle cx="195" cy="345" r="2.5" class="map-dot" />
+                    <circle cx="185" cy="370" r="2.5" class="map-dot" />
+                  </g>
+                  
+                  <!-- Interactive Hover Nodes -->
+                  <!-- Maharashtra -->
+                  <circle cx="165" cy="270" r="14" class="state-node-new active" data-state="Maharashtra" />
+                  <circle cx="165" cy="270" r="24" class="state-pulse-new" id="pulse-maharashtra" />
+                  <!-- Gujarat -->
+                  <circle cx="115" cy="220" r="12" class="state-node-new" data-state="Gujarat" />
+                  <circle cx="115" cy="220" r="20" class="state-pulse-new" id="pulse-gujarat" style="display:none;" />
+                  <!-- Karnataka -->
+                  <circle cx="155" cy="340" r="11" class="state-node-new" data-state="Karnataka" />
+                  <circle cx="155" cy="340" r="20" class="state-pulse-new" id="pulse-karnataka" style="display:none;" />
+                  <!-- Tamil Nadu -->
+                  <circle cx="175" cy="395" r="11" class="state-node-new" data-state="Tamil Nadu" />
+                  <circle cx="175" cy="395" r="20" class="state-pulse-new" id="pulse-tamilnadu" style="display:none;" />
+                  <!-- Uttar Pradesh -->
+                  <circle cx="225" cy="180" r="13" class="state-node-new" data-state="Uttar Pradesh" />
+                  <circle cx="225" cy="180" r="22" class="state-pulse-new" id="pulse-up" style="display:none;" />
+                </svg>
+              </div>
+
+              <!-- State metrics panel -->
+              <div class="state-metrics-panel-new">
+                <div class="metric-row-new active" data-state="Maharashtra">
+                  <span class="state-name-new">Maharashtra</span>
+                  <span class="state-val-new">350+ ITIs</span>
+                </div>
+                <div class="metric-row-new" data-state="Gujarat">
+                  <span class="state-name-new">Gujarat</span>
+                  <span class="state-val-new">240+ ITIs</span>
+                </div>
+                <div class="metric-row-new" data-state="Karnataka">
+                  <span class="state-name-new">Karnataka</span>
+                  <span class="state-val-new">180+ ITIs</span>
+                </div>
+                <div class="metric-row-new" data-state="Tamil Nadu">
+                  <span class="state-name-new">Tamil Nadu</span>
+                  <span class="state-val-new">220+ ITIs</span>
+                </div>
+                <div class="metric-row-new" data-state="Uttar Pradesh">
+                  <span class="state-name-new">Uttar Pradesh</span>
+                  <span class="state-val-new">300+ ITIs</span>
+                </div>
+                <div class="metric-row-more-new">
+                  <span class="state-name-new">+ 28 More States</span>
+                </div>
+              </div>
+            </div>
+            
+            <div class="map-card-footer-new">
+              <button class="btn btn-primary btn-sm btn-gradient-new" style="width: 100%; justify-content: center;">
+                View Full Map <span class="arrow-icon-new">→</span>
+              </button>
+            </div>
           </div>
         </div>
       </section>
@@ -415,33 +842,7 @@
         </div>
       </section>
 
-      <!-- Section: National Impact -->
-      <section id="impact" class="section-container" style="border-top: 1px solid var(--border); margin-bottom: 60px;">
-        <div class="section-head">
-          <span class="badge badge-primary">Scale & Progress</span>
-          <h2 style="margin-top: 10px;">Our National Footprint</h2>
-          <p>Helping transform vocational training across Indian states.</p>
-        </div>
-
-        <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; text-align: center;">
-          <div class="card">
-            <h3 style="font-size: 36px; color: var(--primary);" id="impact-students">1,25,000+</h3>
-            <p style="font-size: 13px; font-weight:600; margin-top: 8px;">Students Connected</p>
-          </div>
-          <div class="card">
-            <h3 style="font-size: 36px; color: var(--accent);" id="impact-institutes">550+</h3>
-            <p style="font-size: 13px; font-weight:600; margin-top: 8px;">Institutes Onboarded</p>
-          </div>
-          <div class="card">
-            <h3 style="font-size: 36px; color: var(--primary);" id="impact-companies">1,200+</h3>
-            <p style="font-size: 13px; font-weight:600; margin-top: 8px;">Companies Hiring</p>
-          </div>
-          <div class="card">
-            <h3 style="font-size: 36px; color: var(--accent);" id="impact-placements">32,450+</h3>
-            <p style="font-size: 13px; font-weight:600; margin-top: 8px;">Placements Completed</p>
-          </div>
-        </div>
-      </section>
+      <!-- Cleaned up old national footprint section (replaced by new dual impact map grid) -->
 
       <!-- Footer -->
       <footer class="footer-wrap">
