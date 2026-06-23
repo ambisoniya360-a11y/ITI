@@ -610,104 +610,28 @@ document.addEventListener("DOMContentLoaded", async () => {
   setTimeout(() => {
     initCharts();
   }, 100);
-  // Init new landing map interactivity
-  initNewLandingMap();
+  
+  // Init ecosystem challenges floating particles
+  initEcoParticles();
 });
 
-// --- Dotted India Map Interactivity ---
-function initNewLandingMap() {
-  const stateNodes = document.querySelectorAll(".state-node-new");
-  const stateCards = document.querySelectorAll(".state-card-glass");
-  const allPulses = document.querySelectorAll(".state-pulse-new");
-  const mapDots = document.querySelectorAll(".net-dot");
-
-  function highlightStateDots(stateName) {
-    mapDots.forEach(dot => dot.classList.remove("active-dot"));
-    if (!stateName) return;
-    
-    // Map state names to lower-case dot classes
-    const classMap = {
-      "Maharashtra": "dot-maharashtra",
-      "Gujarat": "dot-gujarat",
-      "Karnataka": "dot-karnataka",
-      "Tamil Nadu": "dot-tamilnadu",
-      "Uttar Pradesh": "dot-up"
-    };
-    
-    const className = classMap[stateName];
-    if (className) {
-      document.querySelectorAll(`.${className}`).forEach(dot => {
-        dot.classList.add("active-dot");
-      });
-    }
+// --- Ecosystem Section Floating Particles ---
+function initEcoParticles() {
+  const container = document.getElementById("eco-particles");
+  if (!container) return;
+  const count = 30;
+  for (let i = 0; i < count; i++) {
+    const p = document.createElement("div");
+    p.className = "eco-particle";
+    p.style.left = Math.random() * 100 + "%";
+    p.style.bottom = Math.random() * 100 + "%";
+    p.style.width = (2 + Math.random() * 4) + "px";
+    p.style.height = p.style.width;
+    p.style.animationDelay = (Math.random() * 8) + "s";
+    p.style.animationDuration = (8 + Math.random() * 10) + "s";
+    container.appendChild(p);
   }
-
-  function activateState(stateName) {
-    stateNodes.forEach(node => node.classList.remove("active"));
-    allPulses.forEach(pulse => pulse.style.display = "none");
-    stateCards.forEach(card => card.classList.remove("active-state-card"));
-
-    if (!stateName) {
-      highlightStateDots(null);
-      return;
-    }
-
-    const activeNode = document.querySelector(`.state-node-new[data-state="${stateName}"]`);
-    if (activeNode) activeNode.classList.add("active");
-
-    const activeCard = document.querySelector(`.state-card-glass[data-state="${stateName}"]`);
-    if (activeCard) activeCard.classList.add("active-state-card");
-
-    const pulseIdMap = {
-      "Maharashtra": "pulse-maharashtra",
-      "Gujarat": "pulse-gujarat",
-      "Karnataka": "pulse-karnataka",
-      "Tamil Nadu": "pulse-tamilnadu",
-      "Uttar Pradesh": "pulse-up"
-    };
-    const activePulse = document.getElementById(pulseIdMap[stateName]);
-    if (activePulse) activePulse.style.display = "block";
-
-    highlightStateDots(stateName);
-  }
-
-  // Set default active state
-  activateState("Maharashtra");
-
-  stateNodes.forEach(node => {
-    node.addEventListener("mouseenter", () => {
-      const stateName = node.getAttribute("data-state");
-      activateState(stateName);
-    });
-  });
-
-  stateCards.forEach(card => {
-    card.addEventListener("mouseenter", () => {
-      const stateName = card.getAttribute("data-state");
-      activateState(stateName);
-    });
-  });
-
-  const mapContainer = document.querySelector(".db-split-layout-futuristic");
-  if (mapContainer) {
-    mapContainer.addEventListener("mouseleave", () => {
-      activateState("Maharashtra");
-    });
-  }
-
-  // Card Hover Glow effect tracking
-  const metricCards = document.querySelectorAll(".card-glass-metric");
-  metricCards.forEach(card => {
-    card.addEventListener("mousemove", (e) => {
-      const rect = card.getBoundingClientRect();
-      const x = e.clientX - rect.left;
-      const y = e.clientY - rect.top;
-      card.style.setProperty("--mouse-x", `${x}px`);
-      card.style.setProperty("--mouse-y", `${y}px`);
-    });
-  });
 }
-
 
 // --- Theme Management ---
 function initTheme() {

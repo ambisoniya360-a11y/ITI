@@ -11,6 +11,9 @@
   
   <!-- Chart.js CDN for beautiful analytics visual dashboards -->
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  
+  <!-- Lucide Icons CDN -->
+  <script src="https://unpkg.com/lucide@latest"></script>
 </head>
 <body>
 
@@ -66,7 +69,6 @@
           <li><a href="#passport" class="nav-link">Skill Passport</a></li>
           <li><a href="#marketplace" class="nav-link">Apprenticeships</a></li>
           <li><a href="#pricing" class="nav-link">Pricing</a></li>
-          <li><a href="#impact" class="nav-link">National Impact</a></li>
         </ul>
         <div style="display: flex; gap: 12px; align-items: center;" id="landing-header-actions">
           <button class="btn btn-secondary btn-sm" onclick="document.getElementById('nav-btn-login').click();">Login</button>
@@ -356,424 +358,365 @@
         </div>
       </section>
 
-      <!-- Section: National Impact & Platform Scale -->
-      <section id="impact" class="impact-section-futuristic section-container-futuristic">
-        <div class="impact-split-futuristic">
+      
+
+      <!-- Section: Ecosystem Challenges -->
+      <section id="problems" class="eco-challenges-section">
+        <!-- Floating Particles Background Container -->
+        <div id="eco-particles" class="eco-particles-container"></div>
+        <div class="eco-mesh-glow-1"></div>
+        <div class="eco-mesh-glow-2"></div>
+        <div class="eco-dotted-grid"></div>
+
+        <div class="eco-container">
           
-          <!-- Left Column (4 white glass metric cards in 2x2 grid) -->
-          <div class="impact-grid-left">
-            
-            <!-- CARD 1 (Blue Theme - Students) -->
-            <div class="card-glass-metric blue-theme-card">
-              <!-- Top Left Icon -->
-              <div class="card-icon-box blue-box">
-                <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c0 2 2 3 6 3s6-1 6-3v-5"/></svg>
-              </div>
-              
-              <!-- Dot Pattern decoration -->
-              <div class="dot-pattern-dec"></div>
-              
-              <!-- Large Metric Number -->
-              <div class="metric-num-box">
-                <h3 id="impact-students" class="metric-value">1.25 Lakh+</h3>
-                <p class="metric-title">Students Registered</p>
-              </div>
-              
-              <p class="metric-desc">Empowering skilled talent across India</p>
-              
-              <!-- Bottom Area Wave Decoration -->
-              <div class="wave-dec-box">
-                <svg viewBox="0 0 100 20" class="wave-svg" preserveAspectRatio="none">
-                  <path d="M0,10 C30,20 60,0 100,10 L100,20 L0,20 Z" fill="rgba(37,99,235,0.08)"></path>
-                  <path d="M0,10 C30,20 60,0 100,10" fill="none" stroke="rgba(37,99,235,0.2)" stroke-width="1.5"></path>
-                </svg>
-              </div>
-              
-              <!-- Floating Arrow button -->
-              <button class="circle-arrow-btn btn-blue" aria-label="View students detail">
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
-              </button>
-            </div>
-
-            <!-- CARD 2 (Orange Theme - Partners) -->
-            <div class="card-glass-metric orange-theme-card">
-              <!-- Top Left Icon -->
-              <div class="card-icon-box orange-box">
-                <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="2" width="16" height="20" rx="2" ry="2"/><line x1="9" y1="22" x2="9" y2="16"/><line x1="15" y1="22" x2="15" y2="16"/><line x1="9" y1="16" x2="15" y2="16"/><path d="M12 2v4"/><path d="M12 10h.01"/></svg>
-              </div>
-              
-              <!-- Dot Pattern decoration -->
-              <div class="dot-pattern-dec"></div>
-              
-              <!-- Large Metric Number -->
-              <div class="metric-num-box">
-                <h3 id="impact-companies" class="metric-value">1,200+</h3>
-                <p class="metric-title">Industry Partners</p>
-              </div>
-              
-              <p class="metric-desc">Connecting companies with skilled workforce</p>
-              
-              <!-- Bottom Area Wave Decoration -->
-              <div class="wave-dec-box">
-                <svg viewBox="0 0 100 20" class="wave-svg" preserveAspectRatio="none">
-                  <path d="M0,12 C30,2 70,22 100,12 L100,20 L0,20 Z" fill="rgba(249,115,22,0.08)"></path>
-                  <path d="M0,12 C30,2 70,22 100,12" fill="none" stroke="rgba(249,115,22,0.2)" stroke-width="1.5"></path>
-                </svg>
-              </div>
-              
-              <!-- Floating Arrow button -->
-              <button class="circle-arrow-btn btn-orange" aria-label="View companies detail">
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
-              </button>
-            </div>
-
-            <!-- CARD 3 (Green Theme - Placements) -->
-            <div class="card-glass-metric green-theme-card">
-              <!-- Top Left Icon -->
-              <div class="card-icon-box green-box">
-                <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-              </div>
-              
-              <!-- Dot Pattern decoration -->
-              <div class="dot-pattern-dec"></div>
-              
-              <!-- Large Metric Number -->
-              <div class="metric-num-box">
-                <h3 id="impact-placements" class="metric-value">32,450+</h3>
-                <p class="metric-title">Successful Placements</p>
-              </div>
-              
-              <p class="metric-desc">Creating meaningful careers every day</p>
-              
-              <!-- Bottom Area Wave Decoration -->
-              <div class="wave-dec-box">
-                <svg viewBox="0 0 100 20" class="wave-svg" preserveAspectRatio="none">
-                  <path d="M0,15 C40,5 60,25 100,15 L100,20 L0,20 Z" fill="rgba(16,185,129,0.08)"></path>
-                  <path d="M0,15 C40,5 60,25 100,15" fill="none" stroke="rgba(16,185,129,0.2)" stroke-width="1.5"></path>
-                </svg>
-              </div>
-              
-              <!-- Floating Arrow button -->
-              <button class="circle-arrow-btn btn-green" aria-label="View placements detail">
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
-              </button>
-            </div>
-
-            <!-- CARD 4 (Purple Theme - Apprenticeships) -->
-            <div class="card-glass-metric purple-theme-card">
-              <!-- Top Left Icon -->
-              <div class="card-icon-box purple-box">
-                <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
-              </div>
-              
-              <!-- Dot Pattern decoration -->
-              <div class="dot-pattern-dec"></div>
-              
-              <!-- Large Metric Number -->
-              <div class="metric-num-box">
-                <h3 id="impact-apprenticeships" class="metric-value">9,250+</h3>
-                <p class="metric-title">Apprenticeships</p>
-              </div>
-              
-              <p class="metric-desc">Building industry-ready professionals</p>
-              
-              <!-- Bottom Area Wave Decoration -->
-              <div class="wave-dec-box">
-                <svg viewBox="0 0 100 20" class="wave-svg" preserveAspectRatio="none">
-                  <path d="M0,8 C20,18 70,-2 100,8 L100,20 L0,20 Z" fill="rgba(139,92,246,0.08)"></path>
-                  <path d="M0,8 C20,18 70,-2 100,8" fill="none" stroke="rgba(139,92,246,0.2)" stroke-width="1.5"></path>
-                </svg>
-              </div>
-              
-              <!-- Floating Arrow button -->
-              <button class="circle-arrow-btn btn-purple" aria-label="View apprenticeships detail">
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
-              </button>
-            </div>
-            
+          <!-- Section Header -->
+          <div class="eco-header">
+            <span class="eco-badge">
+              <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-right: 6px;"><rect width="18" height="11" x="3" y="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+              Ecosystem Challenges
+            </span>
+            <h2 class="eco-heading">
+              India's Skilled Workforce Ecosystem Is Broken.<br>
+              <span class="eco-heading-gradient">We're Rebuilding It From The Ground Up.</span>
+            </h2>
+            <p class="eco-subtext">
+              Disconnected institutions, unverified candidates, slow hiring pipelines, and fragmented workforce data create billions in inefficiencies every year.
+            </p>
           </div>
-          
-          <!-- Right Column (Futuristic Deep Blue Dashboard with Map & States) -->
-          <div class="card-futuristic-dashboard">
-            <!-- Neon blue decorative glow border -->
-            <div class="neon-glow-border"></div>
-            
-            <!-- Dashboard Top Meta -->
-            <div class="db-header-futuristic">
-              <span class="badge-pill-scale">
-                <svg class="badge-icon-trend" xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg>
-                SCALE &amp; IMPACT
-              </span>
-              <h2 class="db-title-futuristic">Nationwide <span class="gradient-text-white-blue">Impact</span></h2>
-              <p class="db-subtext-futuristic">Building a skilled India, one state at a time.</p>
-            </div>
 
-            <!-- Dashboard Split Layout (Map on left, State Stack on right) -->
-            <div class="db-split-layout-futuristic">
-              
-              <!-- India Digital Network Map SVG -->
-              <div class="map-wrapper-futuristic">
-                <!-- Glowing Mesh underlay -->
-                <div class="map-mesh-glow"></div>
-                
-                <svg id="india-network-map" viewBox="0 0 400 450" xmlns="http://www.w3.org/2000/svg">
-                  <!-- AI Dotted Network Grid Silhouette -->
-                  <g class="network-dots">
-                    <circle cx="190" cy="60" r="2" class="net-dot" />
-                    <circle cx="180" cy="70" r="2.5" class="net-dot" />
-                    <circle cx="200" cy="75" r="2" class="net-dot" />
-                    <circle cx="170" cy="90" r="2.5" class="net-dot" />
-                    <circle cx="190" cy="95" r="2" class="net-dot" />
-                    <circle cx="210" cy="90" r="2" class="net-dot" />
-                    <circle cx="160" cy="110" r="2.5" class="net-dot" />
-                    <circle cx="180" cy="115" r="2" class="net-dot" />
-                    <circle cx="200" cy="120" r="2" class="net-dot" />
-                    <circle cx="220" cy="115" r="2.5" class="net-dot" />
-                    <circle cx="140" cy="150" r="2" class="net-dot" />
-                    <circle cx="155" cy="160" r="2.5" class="net-dot" />
-                    <circle cx="175" cy="155" r="2" class="net-dot" />
-                    <circle cx="180" cy="180" r="2" class="net-dot" />
-                    <circle cx="260" cy="190" r="2" class="net-dot" />
-                    <circle cx="280" cy="200" r="2" class="net-dot" />
-                    <circle cx="300" cy="195" r="2.5" class="net-dot" />
-                    <circle cx="240" cy="220" r="2" class="net-dot" />
-                    <circle cx="265" cy="225" r="2" class="net-dot" />
-                    <circle cx="210" cy="240" r="2" class="net-dot" />
-                    <circle cx="230" cy="250" r="2" class="net-dot" />
-                    <circle cx="250" cy="260" r="2.5" class="net-dot" />
-                    <circle cx="205" cy="290" r="2" class="net-dot" />
-                    <circle cx="215" cy="310" r="2.5" class="net-dot" />
-                    <circle cx="225" cy="330" r="2" class="net-dot" />
-                    <circle cx="190" cy="320" r="2" class="net-dot" />
-                    <circle cx="195" cy="345" r="2" class="net-dot" />
-                    <circle cx="185" cy="370" r="2.5" class="net-dot" />
-                    
-                    <!-- Clusters for target states -->
-                    <!-- Uttar Pradesh cluster -->
-                    <circle cx="210" cy="170" r="2.5" class="net-dot dot-up" />
-                    <circle cx="225" cy="175" r="3.5" class="net-dot dot-up" />
-                    <circle cx="240" cy="180" r="2.5" class="net-dot dot-up" />
-                    <circle cx="215" cy="185" r="3" class="net-dot dot-up" />
-                    
-                    <!-- Gujarat cluster -->
-                    <circle cx="105" cy="210" r="2.5" class="net-dot dot-gujarat" />
-                    <circle cx="115" cy="220" r="3" class="net-dot dot-gujarat" />
-                    <circle cx="125" cy="225" r="2.5" class="net-dot dot-gujarat" />
-                    
-                    <!-- Maharashtra cluster -->
-                    <circle cx="150" cy="260" r="2.5" class="net-dot dot-maharashtra" />
-                    <circle cx="165" cy="270" r="3" class="net-dot dot-maharashtra" />
-                    <circle cx="175" cy="265" r="3.5" class="net-dot dot-maharashtra" />
-                    <circle cx="160" cy="285" r="2.5" class="net-dot dot-maharashtra" />
-                    <circle cx="185" cy="280" r="3" class="net-dot dot-maharashtra" />
-                    
-                    <!-- Karnataka cluster -->
-                    <circle cx="145" cy="330" r="2.5" class="net-dot dot-karnataka" />
-                    <circle cx="155" cy="345" r="3" class="net-dot dot-karnataka" />
-                    <circle cx="165" cy="335" r="3.5" class="net-dot dot-karnataka" />
-                    
-                    <!-- Tamil Nadu cluster -->
-                    <circle cx="170" cy="385" r="2.5" class="net-dot dot-tamilnadu" />
-                    <circle cx="180" cy="395" r="3" class="net-dot dot-tamilnadu" />
-                    <circle cx="175" cy="410" r="3.5" class="net-dot dot-tamilnadu" />
-                  </g>
-                  
-                  <!-- Glowing circular boundary contour of India -->
-                  <path d="M120 70 L200 40 L280 80 L300 150 L270 230 L220 320 L190 420 L170 420 L140 330 L110 260 L90 200 L120 120 Z" fill="none" stroke="rgba(79, 140, 255, 0.06)" stroke-width="4" stroke-dasharray="4, 4" />
-                  <path d="M120 70 L200 40 L280 80 L300 150 L270 230 L220 320 L190 420 L170 420 L140 330 L110 260 L90 200 L120 120 Z" fill="none" stroke="rgba(79, 140, 255, 0.25)" stroke-width="1" />
-                  
-                  <!-- Glowing network circular links -->
-                  <circle cx="165" cy="270" r="45" fill="none" stroke="rgba(79, 140, 255, 0.05)" stroke-width="1" />
-                  <circle cx="225" cy="180" r="60" fill="none" stroke="rgba(139, 92, 246, 0.04)" stroke-width="1" stroke-dasharray="3, 3" />
-                  <circle cx="155" cy="340" r="30" fill="none" stroke="rgba(16, 185, 129, 0.05)" stroke-width="1" />
-                  
-                  <!-- Glowing pathways connecting markers -->
-                  <path d="M115 220 C 140 240, 150 250, 165 270" fill="none" stroke="rgba(249, 115, 22, 0.15)" stroke-width="1.5" stroke-dasharray="3, 3" />
-                  <path d="M165 270 C 160 300, 150 320, 155 340" fill="none" stroke="rgba(16, 185, 129, 0.15)" stroke-width="1.5" stroke-dasharray="3, 3" />
-                  <path d="M155 340 C 165 370, 170 380, 175 395" fill="none" stroke="rgba(236, 72, 153, 0.15)" stroke-width="1.5" stroke-dasharray="3, 3" />
-                  <path d="M165 270 C 190 230, 210 200, 225 180" fill="none" stroke="rgba(139, 92, 246, 0.15)" stroke-width="1.5" stroke-dasharray="3, 3" />
-                  
-                  <!-- Glowing Location Pins/Markers -->
-                  <!-- Maharashtra -->
-                  <g class="glow-marker" data-state="Maharashtra">
-                    <circle cx="165" cy="270" r="14" class="state-node-new active" data-state="Maharashtra" />
-                    <circle cx="165" cy="270" r="22" class="state-pulse-new" id="pulse-maharashtra" />
-                    <circle cx="165" cy="270" r="4" fill="#3B82F6" />
-                  </g>
-                  
-                  <!-- Gujarat -->
-                  <g class="glow-marker" data-state="Gujarat">
-                    <circle cx="115" cy="220" r="12" class="state-node-new" data-state="Gujarat" />
-                    <circle cx="115" cy="220" r="18" class="state-pulse-new" id="pulse-gujarat" style="display:none;" />
-                    <circle cx="115" cy="220" r="4" fill="#F97316" />
-                  </g>
-                  
-                  <!-- Karnataka -->
-                  <g class="glow-marker" data-state="Karnataka">
-                    <circle cx="155" cy="340" r="11" class="state-node-new" data-state="Karnataka" />
-                    <circle cx="155" cy="340" r="18" class="state-pulse-new" id="pulse-karnataka" style="display:none;" />
-                    <circle cx="155" cy="340" r="4" fill="#10B981" />
-                  </g>
-                  
-                  <!-- Tamil Nadu -->
-                  <g class="glow-marker" data-state="Tamil Nadu">
-                    <circle cx="175" cy="395" r="11" class="state-node-new" data-state="Tamil Nadu" />
-                    <circle cx="175" cy="395" r="18" class="state-pulse-new" id="pulse-tamilnadu" style="display:none;" />
-                    <circle cx="175" cy="395" r="4" fill="#EC4899" />
-                  </g>
-                  
-                  <!-- Uttar Pradesh -->
-                  <g class="glow-marker" data-state="Uttar Pradesh">
-                    <circle cx="225" cy="180" r="13" class="state-node-new" data-state="Uttar Pradesh" />
-                    <circle cx="225" cy="180" r="20" class="state-pulse-new" id="pulse-up" style="display:none;" />
-                    <circle cx="225" cy="180" r="4" fill="#8B5CF6" />
-                  </g>
-                </svg>
+          <!-- Ecosystem Metrics Row -->
+          <div class="eco-metrics-row">
+            <!-- Metric 1 -->
+            <div class="eco-metric-card">
+              <div class="eco-metric-icon-box" style="--item-color: #3b82f6;">
+                <i data-lucide="school" style="width: 18px; height: 18px; stroke-width: 2;"></i>
               </div>
-
-              <!-- Right-Side State Cards Stack -->
-              <div class="state-cards-stack-futuristic">
-                
-                <!-- Maharashtra -->
-                <div class="state-card-glass active-state-card" data-state="Maharashtra">
-                  <div class="state-card-inner">
-                    <div class="state-logo-box blue-gradient-glow">
-                      <!-- Stylized monument gate vector icon -->
-                      <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18"/><path d="M5 21V7a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v14"/><path d="M9 21v-6a3 3 0 0 1 6 0v6"/></svg>
-                    </div>
-                    <div class="state-card-meta">
-                      <span class="state-card-name">Maharashtra</span>
-                      <span class="state-card-count">350+ ITIs</span>
-                    </div>
-                  </div>
-                  <svg class="state-card-arrow" xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
-                </div>
-
-                <!-- Gujarat -->
-                <div class="state-card-glass" data-state="Gujarat">
-                  <div class="state-card-inner">
-                    <div class="state-logo-box orange-gradient-glow">
-                      <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18"/><path d="M5 21V7a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v14"/><path d="M9 21v-6a3 3 0 0 1 6 0v6"/></svg>
-                    </div>
-                    <div class="state-card-meta">
-                      <span class="state-card-name">Gujarat</span>
-                      <span class="state-card-count">240+ ITIs</span>
-                    </div>
-                  </div>
-                  <svg class="state-card-arrow" xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
-                </div>
-
-                <!-- Karnataka -->
-                <div class="state-card-glass" data-state="Karnataka">
-                  <div class="state-card-inner">
-                    <div class="state-logo-box green-gradient-glow">
-                      <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18"/><path d="M5 21V7a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v14"/><path d="M9 21v-6a3 3 0 0 1 6 0v6"/></svg>
-                    </div>
-                    <div class="state-card-meta">
-                      <span class="state-card-name">Karnataka</span>
-                      <span class="state-card-count">180+ ITIs</span>
-                    </div>
-                  </div>
-                  <svg class="state-card-arrow" xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
-                </div>
-
-                <!-- Tamil Nadu -->
-                <div class="state-card-glass" data-state="Tamil Nadu">
-                  <div class="state-card-inner">
-                    <div class="state-logo-box pink-gradient-glow">
-                      <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18"/><path d="M5 21V7a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v14"/><path d="M9 21v-6a3 3 0 0 1 6 0v6"/></svg>
-                    </div>
-                    <div class="state-card-meta">
-                      <span class="state-card-name">Tamil Nadu</span>
-                      <span class="state-card-count">220+ ITIs</span>
-                    </div>
-                  </div>
-                  <svg class="state-card-arrow" xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
-                </div>
-
-                <!-- Uttar Pradesh -->
-                <div class="state-card-glass" data-state="Uttar Pradesh">
-                  <div class="state-card-inner">
-                    <div class="state-logo-box purple-gradient-glow">
-                      <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18"/><path d="M5 21V7a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v14"/><path d="M9 21v-6a3 3 0 0 1 6 0v6"/></svg>
-                    </div>
-                    <div class="state-card-meta">
-                      <span class="state-card-name">Uttar Pradesh</span>
-                      <span class="state-card-count">300+ ITIs</span>
-                    </div>
-                  </div>
-                  <svg class="state-card-arrow" xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
-                </div>
-                
-                <div class="more-states-text-link">
-                  <span>+ 28 More States</span>
-                </div>
+              <div class="eco-metric-meta">
+                <h3 class="eco-metric-num">50,000+</h3>
+                <p class="eco-metric-label">ITI Institutes</p>
               </div>
             </div>
-
-            <!-- Bottom Full-Width Premium CTA Button (80px tall) -->
-            <div class="db-footer-cta-box-futuristic">
-              <button class="btn-premium-neon-map">
-                <span class="sweep-light-effect"></span>
-                <span class="btn-inner-content">
-                  <svg class="globe-icon-neon" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
-                  View Full Map
-                  <span class="arrow-sweep">→</span>
-                </span>
-              </button>
+            <!-- Metric 2 -->
+            <div class="eco-metric-card">
+              <div class="eco-metric-icon-box" style="--item-color: #3b82f6;">
+                <i data-lucide="users" style="width: 18px; height: 18px; stroke-width: 2;"></i>
+              </div>
+              <div class="eco-metric-meta">
+                <h3 class="eco-metric-num">15M+</h3>
+                <p class="eco-metric-label">Students</p>
+              </div>
             </div>
-            
+            <!-- Metric 3 -->
+            <div class="eco-metric-card">
+              <div class="eco-metric-icon-box" style="--item-color: #8b5cf6;">
+                <i data-lucide="briefcase" style="width: 18px; height: 18px; stroke-width: 2;"></i>
+              </div>
+              <div class="eco-metric-meta">
+                <h3 class="eco-metric-num">1M+</h3>
+                <p class="eco-metric-label">Companies</p>
+              </div>
+            </div>
+            <!-- Metric 4 -->
+            <div class="eco-metric-card">
+              <div class="eco-metric-icon-box" style="--item-color: #3b82f6;">
+                <i data-lucide="landmark" style="width: 18px; height: 18px; stroke-width: 2;"></i>
+              </div>
+              <div class="eco-metric-meta">
+                <h3 class="eco-metric-num">100+</h3>
+                <p class="eco-metric-label">Government Bodies</p>
+              </div>
+            </div>
           </div>
+
+          <!-- Centered Map / Node Diagram -->
+          <div class="eco-map-scroll-wrapper">
+            <div class="eco-system-map">
+              
+              <!-- Animated Glow Connection SVGs -->
+              <svg class="eco-connections-svg" viewBox="0 0 800 480" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <!-- Outer Orbit Ellipse -->
+                <ellipse cx="400" cy="240" rx="220" ry="160" stroke="rgba(255,255,255,0.06)" stroke-width="1.5" stroke-dasharray="6 6" />
+                
+                <!-- Inner Orbit Ellipse -->
+                <ellipse cx="400" cy="240" rx="140" ry="100" stroke="rgba(255,255,255,0.04)" stroke-width="1.5" />
+
+                <!-- Connecting Diagonal Cross Lines -->
+                <line x1="180" y1="240" x2="400" y2="240" stroke="rgba(255,255,255,0.08)" stroke-width="1" stroke-dasharray="4 4" />
+                <line x1="620" y1="240" x2="400" y2="240" stroke="rgba(255,255,255,0.08)" stroke-width="1" stroke-dasharray="4 4" />
+                <line x1="400" y1="80" x2="400" y2="240" stroke="rgba(255,255,255,0.08)" stroke-width="1" stroke-dasharray="4 4" />
+                <line x1="400" y1="400" x2="400" y2="240" stroke="rgba(255,255,255,0.08)" stroke-width="1" stroke-dasharray="4 4" />
+
+                <!-- Animated Flow Packets/Dots along paths -->
+                <!-- Path for Orbit flow (using path to support animation along a path) -->
+                <path id="orbit-flow-path" d="M 180,240 A 220 160 0 1 1 180.1,240" fill="none" stroke="transparent" />
+                
+                <!-- Orbit flow particle 1 -->
+                <circle r="4" fill="#60a5fa">
+                  <animateMotion dur="8s" repeatCount="indefinite">
+                    <mpath href="#orbit-flow-path" />
+                  </animateMotion>
+                </circle>
+                <!-- Orbit flow particle 2 -->
+                <circle r="4" fill="#a78bfa">
+                  <animateMotion dur="8s" begin="2s" repeatCount="indefinite">
+                    <mpath href="#orbit-flow-path" />
+                  </animateMotion>
+                </circle>
+                <!-- Orbit flow particle 3 -->
+                <circle r="4" fill="#34d399">
+                  <animateMotion dur="8s" begin="4s" repeatCount="indefinite">
+                    <mpath href="#orbit-flow-path" />
+                  </animateMotion>
+                </circle>
+                <!-- Orbit flow particle 4 -->
+                <circle r="4" fill="#facc15">
+                  <animateMotion dur="8s" begin="6s" repeatCount="indefinite">
+                    <mpath href="#orbit-flow-path" />
+                  </animateMotion>
+                </circle>
+
+                <!-- Center Node connections -->
+                <!-- Left-Center connection line flow -->
+                <circle r="3" fill="#60a5fa">
+                  <animate attributeName="cx" values="180;400" dur="2s" repeatCount="indefinite" />
+                  <animate attributeName="cy" values="240;240" dur="2s" repeatCount="indefinite" />
+                  <animate attributeName="opacity" values="0;1;0" dur="2s" repeatCount="indefinite" />
+                </circle>
+                <!-- Right-Center connection line flow -->
+                <circle r="3" fill="#34d399">
+                  <animate attributeName="cx" values="620;400" dur="2s" repeatCount="indefinite" />
+                  <animate attributeName="cy" values="240;240" dur="2s" repeatCount="indefinite" />
+                  <animate attributeName="opacity" values="0;1;0" dur="2s" repeatCount="indefinite" />
+                </circle>
+                <!-- Top-Center connection line flow -->
+                <circle r="3" fill="#a78bfa">
+                  <animate attributeName="cx" values="400;400" dur="2s" repeatCount="indefinite" />
+                  <animate attributeName="cy" values="80;240" dur="2s" repeatCount="indefinite" />
+                  <animate attributeName="opacity" values="0;1;0" dur="2s" repeatCount="indefinite" />
+                </circle>
+                <!-- Bottom-Center connection line flow -->
+                <circle r="3" fill="#facc15">
+                  <animate attributeName="cx" values="400;400" dur="2s" repeatCount="indefinite" />
+                  <animate attributeName="cy" values="400;240" dur="2s" repeatCount="indefinite" />
+                  <animate attributeName="opacity" values="0;1;0" dur="2s" repeatCount="indefinite" />
+                </circle>
+              </svg>
+
+              <!-- Center Glowing Circular Hub (SkillOS India) -->
+              <div class="eco-center-hub">
+                <div class="eco-center-hub-glow"></div>
+                <div class="eco-center-hub-content">
+                  <h4 class="eco-center-title">SkillOS<span class="eco-center-tm">™</span></h4>
+                  <p class="eco-center-subtitle">India</p>
+                  <span class="eco-center-tag">Unified. Verified. Connected.</span>
+                </div>
+              </div>
+
+              <!-- Orbiting Stakeholder Nodes -->
+              <!-- Top: Government -->
+              <div class="eco-node-item node-top" style="--node-color: #8b5cf6;">
+                <div class="eco-node-circle">
+                  <i data-lucide="landmark"></i>
+                </div>
+                <div class="eco-node-label">
+                  <span class="eco-node-title">Government</span>
+                  <span class="eco-node-desc">Data, Policies &amp; Compliance</span>
+                </div>
+              </div>
+
+              <!-- Left: ITI Institutes -->
+              <div class="eco-node-item node-left" style="--node-color: #3b82f6;">
+                <div class="eco-node-circle">
+                  <i data-lucide="school"></i>
+                </div>
+                <div class="eco-node-label align-right">
+                  <span class="eco-node-title">ITI Institutes</span>
+                  <span class="eco-node-desc">Training, Placements &amp; Outcomes</span>
+                </div>
+              </div>
+
+              <!-- Right: Companies -->
+              <div class="eco-node-item node-right" style="--node-color: #10b981;">
+                <div class="eco-node-circle">
+                  <i data-lucide="building-2"></i>
+                </div>
+                <div class="eco-node-label">
+                  <span class="eco-node-title">Companies</span>
+                  <span class="eco-node-desc">Hiring, Compliance &amp; Workforce Planning</span>
+                </div>
+              </div>
+
+              <!-- Bottom: Students -->
+              <div class="eco-node-item node-bottom" style="--node-color: #eab308;">
+                <div class="eco-node-circle">
+                  <i data-lucide="graduation-cap"></i>
+                </div>
+                <div class="eco-node-label">
+                  <span class="eco-node-title">Students</span>
+                  <span class="eco-node-desc">Skills, Opportunities &amp; Career Growth</span>
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+          <!-- Glassmorphism Cards Section -->
+          <div class="eco-cards-grid">
+            
+            <!-- Card 1: ITI Institutes -->
+            <div class="eco-glass-card" style="--theme-color: rgba(59, 130, 246, 0.4); --theme-color-solid: #3b82f6;">
+              <div class="eco-card-top">
+                <div class="eco-card-icon-box" style="background: rgba(59, 130, 246, 0.1); border-color: rgba(59, 130, 246, 0.2);">
+                  <i data-lucide="school"></i>
+                </div>
+                <h3 class="eco-card-title">ITI Institutes</h3>
+              </div>
+              <p class="eco-card-desc">Legacy systems and manual processes limit outcomes.</p>
+              <ul class="pain-points-list">
+                <li>
+                  <span class="pain-point-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="pain-icon"><circle cx="12" cy="12" r="10"/><line x1="15" y1="9" x2="9" y2="15"/><line x1="9" y1="9" x2="15" y2="15"/></svg>
+                  </span>
+                  <span>Outdated placement systems</span>
+                </li>
+                <li>
+                  <span class="pain-point-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="pain-icon"><circle cx="12" cy="12" r="10"/><line x1="15" y1="9" x2="9" y2="15"/><line x1="9" y1="9" x2="15" y2="15"/></svg>
+                  </span>
+                  <span>Manual compliance reporting</span>
+                </li>
+                <li>
+                  <span class="pain-point-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="pain-icon"><circle cx="12" cy="12" r="10"/><line x1="15" y1="9" x2="9" y2="15"/><line x1="9" y1="9" x2="15" y2="15"/></svg>
+                  </span>
+                  <span>No direct employer network</span>
+                </li>
+                <li>
+                  <span class="pain-point-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="pain-icon"><circle cx="12" cy="12" r="10"/><line x1="15" y1="9" x2="9" y2="15"/><line x1="9" y1="9" x2="15" y2="15"/></svg>
+                  </span>
+                  <span>Low student visibility</span>
+                </li>
+              </ul>
+            </div>
+
+            <!-- Card 2: Students -->
+            <div class="eco-glass-card" style="--theme-color: rgba(234, 179, 8, 0.4); --theme-color-solid: #eab308;">
+              <div class="eco-card-top">
+                <div class="eco-card-icon-box" style="background: rgba(234, 179, 8, 0.1); border-color: rgba(234, 179, 8, 0.2);">
+                  <i data-lucide="graduation-cap"></i>
+                </div>
+                <h3 class="eco-card-title">Students</h3>
+              </div>
+              <p class="eco-card-desc">Lack of visibility, verification and meaningful opportunities.</p>
+              <ul class="pain-points-list">
+                <li>
+                  <span class="pain-point-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="pain-icon"><circle cx="12" cy="12" r="10"/><line x1="15" y1="9" x2="9" y2="15"/><line x1="9" y1="9" x2="15" y2="15"/></svg>
+                  </span>
+                  <span>No verified skill profile</span>
+                </li>
+                <li>
+                  <span class="pain-point-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="pain-icon"><circle cx="12" cy="12" r="10"/><line x1="15" y1="9" x2="9" y2="15"/><line x1="9" y1="9" x2="15" y2="15"/></svg>
+                  </span>
+                  <span>Limited apprenticeship access</span>
+                </li>
+                <li>
+                  <span class="pain-point-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="pain-icon"><circle cx="12" cy="12" r="10"/><line x1="15" y1="9" x2="9" y2="15"/><line x1="9" y1="9" x2="15" y2="15"/></svg>
+                  </span>
+                  <span>Poor job discovery</span>
+                </li>
+                <li>
+                  <span class="pain-point-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="pain-icon"><circle cx="12" cy="12" r="10"/><line x1="15" y1="9" x2="9" y2="15"/><line x1="9" y1="9" x2="15" y2="15"/></svg>
+                  </span>
+                  <span>Lack of career guidance</span>
+                </li>
+              </ul>
+            </div>
+
+            <!-- Card 3: Companies -->
+            <div class="eco-glass-card" style="--theme-color: rgba(16, 185, 129, 0.4); --theme-color-solid: #10b981;">
+              <div class="eco-card-top">
+                <div class="eco-card-icon-box" style="background: rgba(16, 185, 129, 0.1); border-color: rgba(16, 185, 129, 0.2);">
+                  <i data-lucide="building-2"></i>
+                </div>
+                <h3 class="eco-card-title">Companies</h3>
+              </div>
+              <p class="eco-card-desc">Inefficient hiring and unverified talent increase costs.</p>
+              <ul class="pain-points-list">
+                <li>
+                  <span class="pain-point-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="pain-icon"><circle cx="12" cy="12" r="10"/><line x1="15" y1="9" x2="9" y2="15"/><line x1="9" y1="9" x2="15" y2="15"/></svg>
+                  </span>
+                  <span>Fake certificates</span>
+                </li>
+                <li>
+                  <span class="pain-point-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="pain-icon"><circle cx="12" cy="12" r="10"/><line x1="15" y1="9" x2="9" y2="15"/><line x1="9" y1="9" x2="15" y2="15"/></svg>
+                  </span>
+                  <span>High recruitment costs</span>
+                </li>
+                <li>
+                  <span class="pain-point-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="pain-icon"><circle cx="12" cy="12" r="10"/><line x1="15" y1="9" x2="9" y2="15"/><line x1="9" y1="9" x2="15" y2="15"/></svg>
+                  </span>
+                  <span>Slow bulk hiring</span>
+                </li>
+                <li>
+                  <span class="pain-point-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="pain-icon"><circle cx="12" cy="12" r="10"/><line x1="15" y1="9" x2="9" y2="15"/><line x1="9" y1="9" x2="15" y2="15"/></svg>
+                  </span>
+                  <span>Skill mismatch issues</span>
+                </li>
+              </ul>
+            </div>
+
+            <!-- Card 4: Government -->
+            <div class="eco-glass-card" style="--theme-color: rgba(139, 92, 246, 0.4); --theme-color-solid: #8b5cf6;">
+              <div class="eco-card-top">
+                <div class="eco-card-icon-box" style="background: rgba(139, 92, 246, 0.1); border-color: rgba(139, 92, 246, 0.2);">
+                  <i data-lucide="landmark"></i>
+                </div>
+                <h3 class="eco-card-title">Government</h3>
+              </div>
+              <p class="eco-card-desc">Fragmented data and manual audits slow down progress.</p>
+              <ul class="pain-points-list">
+                <li>
+                  <span class="pain-point-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="pain-icon"><circle cx="12" cy="12" r="10"/><line x1="15" y1="9" x2="9" y2="15"/><line x1="9" y1="9" x2="15" y2="15"/></svg>
+                  </span>
+                  <span>No real-time workforce map</span>
+                </li>
+                <li>
+                  <span class="pain-point-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="pain-icon"><circle cx="12" cy="12" r="10"/><line x1="15" y1="9" x2="9" y2="15"/><line x1="9" y1="9" x2="15" y2="15"/></svg>
+                  </span>
+                  <span>Manual audits</span>
+                </li>
+                <li>
+                  <span class="pain-point-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="pain-icon"><circle cx="12" cy="12" r="10"/><line x1="15" y1="9" x2="9" y2="15"/><line x1="9" y1="9" x2="15" y2="15"/></svg>
+                  </span>
+                  <span>Delayed reporting</span>
+                </li>
+                <li>
+                  <span class="pain-point-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="pain-icon"><circle cx="12" cy="12" r="10"/><line x1="15" y1="9" x2="9" y2="15"/><line x1="9" y1="9" x2="15" y2="15"/></svg>
+                  </span>
+                  <span>Poor policy visibility</span>
+                </li>
+              </ul>
+            </div>
+
+          </div>
+
         </div>
       </section>
-
-      <!-- Section: Problems We Solve -->
-      <section id="problems" class="section-container" style="border-top: 1px solid var(--border);">
-        <div class="section-head">
-          <span class="badge badge-primary">Ecosystem Challenges</span>
-          <h2 style="margin-top: 10px;">The Problems We Solve</h2>
-          <p>Unifying the fragmented skill landscape into a single, high-trust digital network.</p>
-        </div>
-        <div class="problems-grid">
-          <div class="card problem-card">
-            <div class="problem-card-icon"><i data-lucide="school"></i></div>
-            <h3>ITI Institutes</h3>
-            <p>Manual tracking, broken communication with hiring managers, and outdated paper reports.</p>
-            <ul>
-              <li><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg> Unstructured placement trackers</li>
-              <li><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg> Slow compliance reports submission</li>
-            </ul>
-          </div>
-          <div class="card problem-card">
-            <div class="problem-card-icon problem-card-icon-accent"><i data-lucide="user"></i></div>
-            <h3>Students</h3>
-            <p>Lack of verified resumes, opaque applications, and poor discovery of apprenticeship offers.</p>
-            <ul>
-              <li><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg> Hard to prove practical skills</li>
-              <li><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg> Missing interview schedules</li>
-            </ul>
-          </div>
-          <div class="card problem-card">
-            <div class="problem-card-icon"><i data-lucide="building-2"></i></div>
-            <h3>Companies</h3>
-            <p>High recruitment costs, unverified certifications, and tedious compliance operations.</p>
-            <ul>
-              <li><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg> Fake certificates and scores</li>
-              <li><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg> Inefficient bulk hiring pipelines</li>
-            </ul>
-          </div>
-          <div class="card problem-card">
-            <div class="problem-card-icon problem-card-icon-accent"><i data-lucide="shield-check"></i></div>
-            <h3>Government</h3>
-            <p>Broken visibility into regional trade placements, lack of real-time supply maps, and audit limits.</p>
-            <ul>
-              <li><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg> Outdated skill census records</li>
-              <li><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg> Manual grant allocations</li>
-            </ul>
-          </div>
-        </div>
-      </section>
-
+      
       <!-- Section: Digital Skill Passport -->
       <section id="passport" class="section-container" style="border-top: 1px solid var(--border);">
         <div class="passport-showcase-split">
