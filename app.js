@@ -40,240 +40,21 @@ function getSkillsForTrade(trade) {
   return tradeSkillsMap[trade] || ['Industrial Safety', 'Basic Tools', 'Workshop Practice', 'Technical Drawing'];
 }
 
-// Initialize Data Store (Mock database)
+// Initialize Data Store (Live database - loads from Supabase)
 const db = {
-  students: [
-    {
-      id: "SB-2026-081",
-      name: "Rahul Verma",
-      trade: "Electrician",
-      institute: "Government ITI Pune",
-      attendance: 94,
-      practicalScore: 96,
-      theoryScore: 88,
-      safetyScore: 98,
-      employabilityScore: 92,
-      skills: ["Industrial Wiring", "Control Panels", "Solar PV Install", "Safety Protocols"],
-      certifications: ["NCVT Level-4 Electrician", "SECI Solar Technician"],
-      status: "Available",
-      appliedJobs: []
-    },
-    {
-      id: "SB-2026-102",
-      name: "Priya Patel",
-      trade: "CNC Operator",
-      institute: "Government ITI Nashik",
-      attendance: 98,
-      practicalScore: 94,
-      theoryScore: 90,
-      safetyScore: 95,
-      employabilityScore: 95,
-      skills: ["CNC Programming", "Precision Milling", "Metrology", "G-Code & M-Code"],
-      certifications: ["Siemens CNC Specialist", "National Trade Certificate (NTC)"],
-      status: "Interviewing",
-      appliedJobs: ["JOB-002"]
-    },
-    {
-      id: "SB-2026-045",
-      name: "Amit Sharma",
-      trade: "Fitter",
-      institute: "Government ITI Kolhapur",
-      attendance: 91,
-      practicalScore: 92,
-      theoryScore: 82,
-      safetyScore: 96,
-      employabilityScore: 87,
-      skills: ["Lathe Operations", "Technical Drawing", "Pneumatics & Hydraulics", "Precision Assembly"],
-      certifications: ["NCVT Fitter Certificate"],
-      status: "Available",
-      appliedJobs: []
-    },
-    {
-      id: "SB-2026-119",
-      name: "Karan Singh",
-      trade: "Welder",
-      institute: "Government ITI Aurangabad",
-      attendance: 89,
-      practicalScore: 95,
-      theoryScore: 80,
-      safetyScore: 99,
-      employabilityScore: 89,
-      skills: ["TIG Welding", "MIG Welding", "Structural Fabrication", "Gas Cutting"],
-      certifications: ["AWS Certified Welder (Level I)", "NTC Welder"],
-      status: "Placed",
-      appliedJobs: ["JOB-003"]
-    },
-    {
-      id: "SB-2026-210",
-      name: "Sneha Reddy",
-      trade: "Solar Technician",
-      institute: "Government ITI Pune",
-      attendance: 96,
-      practicalScore: 97,
-      theoryScore: 86,
-      safetyScore: 97,
-      employabilityScore: 93,
-      skills: ["Solar Panel Alignment", "Inverter Commissioning", "Battery Bank Setup", "AC/DC Troubleshooting"],
-      certifications: ["GERMI Solar Installer", "NCVT Solar Tradesman"],
-      status: "Available",
-      appliedJobs: []
-    }
-  ],
-  jobs: [
-    {
-      id: "JOB-001",
-      title: "Assistant Electrician Apprentice",
-      company: "Tata Motors",
-      trade: "Electrician",
-      location: "Pune, Maharashtra",
-      salary: "₹18,000 - ₹22,000",
-      duration: "12 Months",
-      type: "Apprenticeship",
-      skillsRequired: ["Industrial Wiring", "Control Panels"],
-      applicantsCount: 15
-    },
-    {
-      id: "JOB-002",
-      title: "CNC Operator Specialist",
-      company: "Mahindra & Mahindra",
-      trade: "CNC Operator",
-      location: "Nashik, Maharashtra",
-      salary: "₹20,000 - ₹25,000",
-      duration: "Full-Time Job",
-      type: "Placement",
-      skillsRequired: ["CNC Programming", "Precision Milling"],
-      applicantsCount: 9
-    },
-    {
-      id: "JOB-003",
-      title: "Structural Welder (TIG/MIG)",
-      company: "Larsen & Toubro (L&T)",
-      trade: "Welder",
-      location: "Mumbai, Maharashtra",
-      salary: "₹22,000 - ₹28,000",
-      duration: "Full-Time Job",
-      type: "Placement",
-      skillsRequired: ["TIG Welding", "Structural Fabrication"],
-      applicantsCount: 22
-    },
-    {
-      id: "JOB-004",
-      title: "Junior Solar Installer",
-      company: "Adani Green Energy",
-      trade: "Solar Technician",
-      location: "Kutch, Gujarat",
-      salary: "₹19,000 - ₹23,000",
-      duration: "12 Months",
-      type: "Apprenticeship",
-      skillsRequired: ["Solar Panel Alignment", "AC/DC Troubleshooting"],
-      applicantsCount: 5
-    },
-    {
-      id: "JOB-005",
-      title: "Maintenance Fitter",
-      company: "Siemens India",
-      trade: "Fitter",
-      location: "Pune, Maharashtra",
-      salary: "₹21,000 - ₹26,000",
-      duration: "Full-Time Job",
-      type: "Placement",
-      skillsRequired: ["Lathe Operations", "Pneumatics & Hydraulics"],
-      applicantsCount: 18
-    }
-  ],
-  applications: [
-    {
-      id: "APP-001",
-      studentId: "SB-2026-102",
-      jobId: "JOB-002",
-      status: "Shortlisted",
-      appliedOn: "2026-06-15"
-    },
-    {
-      id: "APP-002",
-      studentId: "SB-2026-119",
-      jobId: "JOB-003",
-      status: "Offered",
-      appliedOn: "2026-06-18"
-    }
-  ],
+  students: [],
+  jobs: [],
+  applications: [],
   stats: {
-    totalStudents: 125000,
-    activeCompanies: 1200,
-    apprenticeships: 9250,
-    placementsCompleted: 32450,
-    institutesOnboarded: 550
+    totalStudents: 0,
+    activeCompanies: 0,
+    apprenticeships: 0,
+    placementsCompleted: 0,
+    institutesOnboarded: 0
   },
-  institutes: [
-    { id: "INST-001", name: "Government ITI Pune", state: "Maharashtra", district: "Pune", rating: "A+", verified: true, studentsCount: 450, tpoName: "Amit Patel" },
-    { id: "INST-002", name: "Government ITI Nashik", state: "Maharashtra", district: "Nashik", rating: "A", verified: true, studentsCount: 380, tpoName: "Kiran Deshmukh" },
-    { id: "INST-003", name: "Government ITI Kolhapur", state: "Maharashtra", district: "Kolhapur", rating: "A", verified: true, studentsCount: 310, tpoName: "Rajesh Shinde" },
-    { id: "INST-004", name: "Government ITI Aurangabad", state: "Maharashtra", district: "Aurangabad", rating: "B+", verified: true, studentsCount: 290, tpoName: "Sanjay Joshi" },
-    { id: "INST-005", name: "Government ITI Nagpur", state: "Maharashtra", district: "Nagpur", rating: "A", verified: true, studentsCount: 420, tpoName: "Vikram Sen" },
-    { id: "INST-006", name: "Government ITI Mumbai", state: "Maharashtra", district: "Mumbai City", rating: "A+", verified: true, studentsCount: 500, tpoName: "Sunil Mehta" },
-    { id: "INST-007", name: "Government ITI Thane", state: "Maharashtra", district: "Thane", rating: "B", verified: false, studentsCount: 220, tpoName: "Prakash Rane" },
-    { id: "INST-008", name: "Government ITI Solapur", state: "Maharashtra", district: "Solapur", rating: "B+", verified: true, studentsCount: 260, tpoName: "Anil Kamble" }
-  ],
-  notifications: [
-    {
-      id: "MSG-001",
-      senderId: "SB-ADMIN-01",
-      senderName: "System Admin",
-      senderRole: "Admin",
-      receiverId: "SB-2026-081",
-      receiverName: "Rahul Verma",
-      receiverRole: "Student",
-      message: "Greetings! Your NCVT Skill Passport has been verified successfully on the National Blockchain Registry.",
-      timestamp: "2026-06-23T10:00:00Z",
-      read: false
-    },
-    {
-      id: "MSG-002",
-      senderId: "SB-COMP-01",
-      senderName: "Tata Motors Recruiter",
-      senderRole: "Company",
-      receiverId: "INST-001",
-      receiverName: "Government ITI Pune",
-      receiverRole: "Institute",
-      message: "Apprenticeship Request: We are looking to host an on-campus placement drive for CNC Operators at your institute on 28th June. Please confirm TPO schedule availability.",
-      timestamp: "2026-06-23T10:30:00Z",
-      read: false
-    },
-    {
-      id: "MSG-003",
-      senderId: "INST-001",
-      senderName: "Government ITI Pune ERP",
-      senderRole: "Institute",
-      receiverId: "SB-2026-081",
-      receiverName: "Rahul Verma",
-      receiverRole: "Student",
-      message: "Dear Rahul, please make sure to update your solar PV inverter project details inside the new Resume Builder tab for the Tata Motors application.",
-      timestamp: "2026-06-23T11:00:00Z",
-      read: true
-    },
-    {
-      id: "MSG-004",
-      senderId: "SB-COMP-01",
-      senderName: "Tata Motors Recruiter",
-      senderRole: "Company",
-      receiverId: "SB-2026-081",
-      receiverName: "Rahul Verma",
-      receiverRole: "Student",
-      message: "Hi Rahul, we have reviewed your Skill Passport credentials and shortlisted your profile. We scheduled a virtual technical interview on 24th June.",
-      timestamp: "2026-06-23T11:45:00Z",
-      read: false
-    }
-  ],
-  companies: [
-    { id: "COMP-001", name: "Tata Motors", industry: "Automotive", location: "Pune, Maharashtra", activeRoles: 3, verified: true },
-    { id: "COMP-002", name: "Mahindra & Mahindra", industry: "Automotive", location: "Nashik, Maharashtra", activeRoles: 2, verified: true },
-    { id: "COMP-003", name: "Larsen & Toubro (L&T)", industry: "Infrastructure", location: "Mumbai, Maharashtra", activeRoles: 5, verified: true },
-    { id: "COMP-004", name: "Adani Green Energy", industry: "Renewables", location: "Kutch, Gujarat", activeRoles: 1, verified: true },
-    { id: "COMP-005", name: "Siemens India", industry: "Engineering", location: "Pune, Maharashtra", activeRoles: 2, verified: true },
-    { id: "COMP-006", name: "Reliance Industries", industry: "Conglomerate", location: "Jamnagar, Gujarat", activeRoles: 4, verified: true },
-    { id: "COMP-007", name: "Infosys", industry: "IT Services", location: "Bangalore, Karnataka", activeRoles: 1, verified: false },
-    { id: "COMP-008", name: "Maruti Suzuki", industry: "Automotive", location: "Gurugram, Haryana", activeRoles: 3, verified: true }
-  ]
+  institutes: [],
+  notifications: [],
+  companies: []
 };
 
 // Session State Initialization
@@ -475,11 +256,11 @@ async function syncFromSupabase() {
     if (instsData) db.institutes = instsData.map(mapInstituteFromDb);
     if (compsData) db.companies = compsData.map(mapCompanyFromDb);
 
-    db.stats.totalStudents = db.students.length + 125000 - 5;
-    db.stats.activeCompanies = db.companies.length + 1200 - 8;
-    db.stats.apprenticeships = db.jobs.filter(j => j.type === 'Apprenticeship').length + 9250 - 2;
-    db.stats.placementsCompleted = db.students.filter(s => s.status === 'Placed').length + 32450 - 1;
-    db.stats.institutesOnboarded = db.institutes.length + 550 - 8;
+    db.stats.totalStudents = db.students.length;
+    db.stats.activeCompanies = db.companies.length;
+    db.stats.apprenticeships = db.jobs.filter(j => j.type === 'Apprenticeship').length;
+    db.stats.placementsCompleted = db.students.filter(s => s.status === 'Placed').length;
+    db.stats.institutesOnboarded = db.institutes.length;
 
     console.log("Successfully synchronized datasets with live Supabase database.");
   } catch (error) {
