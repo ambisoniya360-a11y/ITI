@@ -26,13 +26,25 @@ export const db = {
     { id: 'c2', name: 'L&T', logo: 'L', industry: 'Construction', activeRoles: 8 },
     { id: 'c3', name: 'Reliance', logo: 'R', industry: 'Energy', activeRoles: 15 }
   ],
-  savedJobs: [],
-  jobAlerts: [],
-  interviews: [
-    { id: 1, company: 'Tata Motors', role: 'Electrician - Plant', date: 'Tomorrow, 10:00 AM', mode: 'In-person' },
-    { id: 2, company: 'L&T Construction', role: 'Site Supervisor', date: 'Jul 2, 2:00 PM', mode: 'Video Call' }
+  savedJobs: ['j1', 'j3'],
+  jobAlerts: [
+    { id: 1, title: 'Mega Campus Drive at Govt ITI Pune', type: 'Campus Drive', date: 'Jul 15, 2026' },
+    { id: 2, title: 'Railway Recruitment for Electricians', type: 'Government Jobs', date: 'Aug 01, 2026' },
+    { id: 3, title: '5 New Jobs matching your trade', type: 'New Jobs', date: 'Today' }
   ],
-  skillCourses: [],
+  apprenticeships: [
+    { id: 'a1', title: 'Electrical Maintenance Apprentice', company: 'Tata Power', stipend: '₹12,000/mo', duration: '1 Year', location: 'Pune' },
+    { id: 'a2', title: 'Solar Technician Trainee', company: 'Adani Green', stipend: '₹14,000/mo', duration: '6 Months', location: 'Mumbai' }
+  ],
+  interviews: [
+    { id: 1, company: 'Tata Motors', role: 'Electrician - Plant', date: 'Tomorrow, 10:00 AM', mode: 'In-person', link: null },
+    { id: 2, company: 'L&T Construction', role: 'Site Supervisor', date: 'Jul 2, 2:00 PM', mode: 'Video Call', link: 'meet.google.com/abc-xyz' }
+  ],
+  skillCourses: [
+    { id: 'c1', title: 'Advanced Motor Rewinding', provider: 'Skill India', type: 'Trade Upgrade', progress: 0 },
+    { id: 'c2', title: 'Workplace Communication', provider: 'TCS iON', type: 'Soft Skills', progress: 45 },
+    { id: 'c3', title: 'Solar PV Installer Certification', provider: 'SCVT', type: 'Certification Programs', progress: 100 }
+  ],
   courseEnrollments: []
 };
 
@@ -51,7 +63,8 @@ export function mapStudentFromDb(s) {
     skills: s.skills || [],
     certifications: s.certifications || [],
     status: s.status,
-    appliedJobs: []
+    appliedJobs: [],
+    photoUrl: s.photo || ""
   };
 }
 
@@ -68,7 +81,8 @@ export function mapStudentToDb(s) {
     employability_score: s.employabilityScore,
     skills: s.skills,
     certifications: s.certifications,
-    status: s.status
+    status: s.status,
+    photo: s.photoUrl || null
   };
 }
 

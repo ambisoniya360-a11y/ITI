@@ -1,4 +1,4 @@
-import { db, dbUpdateApplication, dbInsertApplication } from '../api/db.js';
+import { db, dbUpdateApplication, dbInsertApplication, dbUpdateStudent } from '../api/db.js';
 import { showToast, openModal } from '../utils/ui.js';
 
 export function renderStudentPortal() {
@@ -16,6 +16,60 @@ export function renderStudentPortal() {
   if (passTrade) passTrade.textContent = student.trade + " Trade";
   if (passId) passId.textContent = student.id;
   if (passInst) passInst.textContent = student.institute;
+
+  // Render initials helper
+  const getInitials = (name) => {
+    if (!name) return "S";
+    const parts = name.split(' ');
+    if (parts.length > 1) {
+      return (parts[0][0] + parts[1][0]).toUpperCase();
+    }
+    return name[0].toUpperCase();
+  };
+
+  const initials = getInitials(student.name);
+
+  // Update Header Avatar
+  const headerAvatar = document.getElementById("student-header-avatar");
+  if (headerAvatar) {
+    if (student.photoUrl) {
+      headerAvatar.innerHTML = `<img src="${student.photoUrl}" style="width: 100%; height: 100%; object-fit: cover; border-radius: 50%;">`;
+    } else {
+      headerAvatar.innerHTML = initials;
+    }
+  }
+
+  // Update Passport Avatar
+  const passportAvatar = document.getElementById("student-passport-avatar");
+  if (passportAvatar) {
+    if (student.photoUrl) {
+      passportAvatar.style.backgroundImage = `url('${student.photoUrl}')`;
+      passportAvatar.style.backgroundSize = "cover";
+      passportAvatar.style.backgroundPosition = "center";
+    } else {
+      passportAvatar.style.backgroundImage = "url('https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?auto=format&fit=crop&w=150&h=150')";
+    }
+  }
+
+  // Update Mobile Passport Avatar
+  const mobilePassAvatar = document.getElementById("student-mobile-passport-avatar");
+  if (mobilePassAvatar) {
+    if (student.photoUrl) {
+      mobilePassAvatar.innerHTML = `<img src="${student.photoUrl}" style="width: 100%; height: 100%; object-fit: cover; border-radius: 50%;">`;
+    } else {
+      mobilePassAvatar.innerHTML = initials;
+    }
+  }
+
+  // Update Settings Avatar Preview
+  const settingsAvatar = document.getElementById("settings-avatar-preview");
+  if (settingsAvatar) {
+    if (student.photoUrl) {
+      settingsAvatar.innerHTML = `<img src="${student.photoUrl}" style="width: 100%; height: 100%; object-fit: cover; border-radius: 50%;">`;
+    } else {
+      settingsAvatar.innerHTML = initials;
+    }
+  }
 
   // Draw radial score background in SVG
   const scoreRadial = document.getElementById("student-score-radial");
@@ -84,6 +138,9 @@ export function renderStudentPortal() {
 
   // Render new dashboard widgets
   renderStudentDashboardWidgets(student);
+  
+  // Render new full dashboard 14 tabs content
+  renderStudentFullDashboard(student);
 }
 
 export function renderStudentApplicationsList() {
@@ -273,3 +330,212 @@ export function renderStudentDashboardWidgets(student) {
   }
 }
 
+export function renderStudentFullDashboard(student) {
+  // 1. Find Jobs (student-jobs-list)
+  const jobsList = document.getElementById("student-jobs-list");
+  if (jobsList && db.jobs) {
+    jobsList.innerHTML = db.jobs.map(job => {
+      const isApplied = db.applications.some(app => app.studentId === student.id && app.jobId === job.id);
+      const isMatched = job.trade === student.trade;
+      return `
+        <div class="card" style="padding: 20px; display: flex; justify-content: space-between; align-items: center; border-color: ${isMatched ? 'rgba(var(--primary-rgb), 0.3)' : 'var(--border)'}">
+          <div>
+            <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 8px;">
+              <h5 style="font-size: 16px; font-weight: 700;">${job.title}</h5>
+              ${isMatched ? '<span class="badge badge-success" style="font-size: 10px; padding: 2px 8px;">Trade Match</span>' : ''}
+              <span class="badge badge-secondary" style="font-size: 10px;">${job.type}</span>
+            </div>
+            <p style="font-size: 13px; color: var(--text-muted); display: flex; align-items: center; gap: 12px;">
+              <span><i data-lucide="building" style="width: 14px; height: 14px; display: inline-block; vertical-align: text-bottom; margin-right: 4px;"></i>${job.company}</span>
+              <span><i data-lucide="map-pin" style="width: 14px; height: 14px; display: inline-block; vertical-align: text-bottom; margin-right: 4px;"></i>${job.location}</span>
+              <span style="font-weight: 700; color: var(--text-main);">${job.salary}</span>
+            </p>
+          </div>
+          <button class="btn ${isApplied ? 'btn-secondary' : 'btn-primary'}" onclick="applyForJob('${job.id}')" ${isApplied ? 'disabled' : ''}>
+            ${isApplied ? 'Applied' : 'Apply Now'}
+          </button>
+        </div>
+      `;
+    }).join('');
+  }
+
+  // 2. Recommended Jobs (student-recommended-jobs-list)
+  const recommendedList = document.getElementById("student-recommended-jobs-list");
+  if (recommendedList && db.jobs) {
+    const recommended = db.jobs.filter(job => job.trade === student.trade);
+    recommendedList.innerHTML = recommended.map(job => `
+      <div class="card" style="padding: 20px; display: flex; justify-content: space-between; align-items: center; background: linear-gradient(to right, rgba(var(--primary-rgb), 0.05), transparent);">
+        <div>
+          <h5 style="font-size: 16px; font-weight: 700; margin-bottom: 8px;">${job.title}</h5>
+          <p style="font-size: 13px; color: var(--text-muted);">${job.company} &bull; ${job.location} &bull; <strong style="color: var(--primary);">${job.salary}</strong></p>
+          <div style="margin-top: 12px; font-size: 11px; color: var(--success); font-weight: 600;">
+            ✓ Matches your ${student.trade} trade skills
+          </div>
+        </div>
+        <button class="btn btn-primary">Apply Now</button>
+      </div>
+    `).join('');
+  }
+
+  // 3. Job Alerts (student-alerts-list)
+  const alertsList = document.getElementById("student-alerts-list");
+  if (alertsList && db.jobAlerts) {
+    alertsList.innerHTML = db.jobAlerts.map(alert => `
+      <div class="card" style="padding: 16px; display: flex; align-items: flex-start; gap: 16px;">
+        <div style="background: rgba(var(--primary-rgb), 0.1); color: var(--primary); padding: 12px; border-radius: 50%;">
+          <i data-lucide="bell" style="width: 20px; height: 20px;"></i>
+        </div>
+        <div style="flex-grow: 1;">
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 4px;">
+            <h5 style="font-size: 15px; font-weight: 700;">${alert.title}</h5>
+            <span style="font-size: 11px; color: var(--text-light);">${alert.date}</span>
+          </div>
+          <span class="badge badge-secondary" style="font-size: 10px;">${alert.type}</span>
+        </div>
+      </div>
+    `).join('');
+  }
+
+  // 4. Apprenticeships (student-apprenticeships-list)
+  const appList = document.getElementById("student-apprenticeships-list");
+  if (appList && db.apprenticeships) {
+    appList.innerHTML = db.apprenticeships.map(app => `
+      <div class="card" style="padding: 20px; display: flex; justify-content: space-between; align-items: center; border-left: 4px solid var(--accent);">
+        <div>
+          <h5 style="font-size: 16px; font-weight: 700; margin-bottom: 8px;">${app.title}</h5>
+          <p style="font-size: 13px; color: var(--text-muted);">
+            ${app.company} &bull; ${app.location}
+          </p>
+          <div style="display: flex; gap: 16px; margin-top: 12px;">
+            <span style="font-size: 12px; font-weight: 600;"><span style="color: var(--text-light);">Stipend:</span> ${app.stipend}</span>
+            <span style="font-size: 12px; font-weight: 600;"><span style="color: var(--text-light);">Duration:</span> ${app.duration}</span>
+          </div>
+        </div>
+        <button class="btn btn-primary">Apply Now</button>
+      </div>
+    `).join('');
+  }
+
+  // 5. Interviews (student-interviews-list-full)
+  const interviewsList = document.getElementById("student-interviews-list-full");
+  if (interviewsList && db.interviews) {
+    if (db.interviews.length === 0) {
+       interviewsList.innerHTML = `<div class="card" style="padding: 32px; text-align: center; color: var(--text-muted);">No upcoming interviews. Keep applying!</div>`;
+    } else {
+       interviewsList.innerHTML = db.interviews.map(inv => `
+        <div class="card" style="padding: 20px; border: 1px solid rgba(var(--primary-rgb), 0.2);">
+          <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 16px;">
+            <div>
+              <h5 style="font-size: 18px; font-weight: 800;">${inv.company}</h5>
+              <div style="font-size: 14px; color: var(--text-muted); margin-top: 4px;">${inv.role}</div>
+            </div>
+            <span class="badge badge-primary">${inv.mode}</span>
+          </div>
+          <div style="background: var(--background); padding: 12px; border-radius: var(--radius-sm); display: flex; justify-content: space-between; align-items: center;">
+            <div style="font-weight: 700; color: var(--primary);">${inv.date}</div>
+            ${inv.link ? `<a href="https://${inv.link}" target="_blank" class="btn btn-sm btn-primary">Join Meeting</a>` : '<span style="font-size: 12px; color: var(--text-muted);">Check email for location</span>'}
+          </div>
+        </div>
+      `).join('');
+    }
+  }
+
+  // 6. Skill Development (student-learning-list)
+  const learningList = document.getElementById("student-learning-list");
+  if (learningList && db.skillCourses) {
+    learningList.innerHTML = db.skillCourses.map(course => `
+      <div class="card" style="padding: 0; overflow: hidden; display: flex; flex-direction: column;">
+        <div style="height: 100px; background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%); position: relative;">
+          <span class="badge badge-secondary" style="position: absolute; top: 12px; right: 12px; background: rgba(255,255,255,0.9); color: #000;">${course.type}</span>
+        </div>
+        <div style="padding: 16px; flex-grow: 1; display: flex; flex-direction: column;">
+          <h5 style="font-size: 15px; font-weight: 700; margin-bottom: 4px; line-height: 1.3;">${course.title}</h5>
+          <div style="font-size: 12px; color: var(--text-muted); margin-bottom: 16px;">by ${course.provider}</div>
+          <div style="margin-top: auto;">
+            ${course.progress > 0 ? `
+              <div style="display: flex; justify-content: space-between; font-size: 11px; margin-bottom: 4px; font-weight: 600;">
+                <span>Progress</span>
+                <span>${course.progress}%</span>
+              </div>
+              <div style="width: 100%; height: 6px; background: var(--border); border-radius: 3px; overflow: hidden; margin-bottom: 12px;">
+                <div style="height: 100%; width: ${course.progress}%; background: var(--primary);"></div>
+              </div>
+              <button class="btn btn-sm btn-secondary" style="width: 100%;">${course.progress === 100 ? 'View Certificate' : 'Continue Course'}</button>
+            ` : `
+              <button class="btn btn-sm btn-primary" style="width: 100%;">Enroll for Free</button>
+            `}
+          </div>
+        </div>
+      </div>
+    `).join('');
+  }
+
+  // 7. Saved Jobs (student-saved-jobs-list)
+  const savedList = document.getElementById("student-saved-jobs-list");
+  if (savedList && db.savedJobs) {
+    if (db.savedJobs.length === 0) {
+      savedList.innerHTML = `<div class="card" style="padding: 32px; text-align: center; color: var(--text-muted);">You have no saved jobs.</div>`;
+    } else {
+      const sJobs = db.jobs.filter(j => db.savedJobs.includes(j.id));
+      savedList.innerHTML = sJobs.map(job => `
+        <div class="card" style="padding: 16px; display: flex; justify-content: space-between; align-items: center;">
+          <div>
+            <h5 style="font-size: 15px; font-weight: 700; margin-bottom: 4px;">${job.title}</h5>
+            <div style="font-size: 12px; color: var(--text-muted);">${job.company} &bull; ${job.location}</div>
+          </div>
+          <div style="display: flex; gap: 8px;">
+            <button class="btn btn-sm btn-secondary" style="padding: 8px;">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color: #ef4444;"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/></svg>
+            </button>
+            <button class="btn btn-sm btn-primary">Apply Now</button>
+          </div>
+        </div>
+      `).join('');
+    }
+  }
+
+  // Reload lucide icons after rendering new dynamic content
+  if (window.lucide) {
+    window.lucide.createIcons();
+  }
+}
+
+window.handleAvatarUpload = function(event) {
+  const file = event.target.files[0];
+  if (!file) return;
+
+  if (file.size > 2 * 1024 * 1024) {
+    showToast("File Too Large", "Please select an image smaller than 2MB.", "warning");
+    return;
+  }
+
+  const reader = new FileReader();
+  reader.onload = async function() {
+    const student = db.students.find(s => s.id === "SB-2026-081");
+    if (!student) return;
+
+    student.photoUrl = reader.result;
+    
+    // Save to Supabase (if configured)
+    await dbUpdateStudent(student);
+    
+    // Re-render
+    renderStudentPortal();
+    showToast("Profile Picture Updated", "Your profile photo has been updated successfully.", "success");
+  };
+  reader.readAsDataURL(file);
+};
+
+window.handleRemoveAvatar = async function() {
+  const student = db.students.find(s => s.id === "SB-2026-081");
+  if (!student) return;
+
+  student.photoUrl = "";
+  
+  // Save to Supabase (if configured)
+  await dbUpdateStudent(student);
+  
+  // Re-render
+  renderStudentPortal();
+  showToast("Profile Picture Removed", "Your profile photo has been removed.", "info");
+};

@@ -446,7 +446,11 @@ window.switchCompTab = function(tabName, event) {
 window.switchStudentTab = function(tabName, event) {
   if (event) event.preventDefault();
 
-  const tabs = ["dashboard", "passport", "applications", "certs", "resume", "inbox"];
+  const tabs = [
+    "dashboard", "passport", "jobs", "recommended", "applications", 
+    "alerts", "apprenticeships", "resume", "interviews", "learning", 
+    "certs", "inbox", "saved", "settings"
+  ];
   
   tabs.forEach(tab => {
     const el = document.getElementById(`student-view-${tab}`);
@@ -462,10 +466,18 @@ window.switchStudentTab = function(tabName, event) {
   const sidebarLinks = {
     "dashboard": document.getElementById("student-side-link-dashboard"),
     "passport": document.getElementById("student-side-link-passport"),
+    "jobs": document.getElementById("student-side-link-jobs"),
+    "recommended": document.getElementById("student-side-link-recommended"),
     "applications": document.getElementById("student-side-link-applications"),
-    "certs": document.getElementById("student-side-link-certs"),
+    "alerts": document.getElementById("student-side-link-alerts"),
+    "apprenticeships": document.getElementById("student-side-link-apprenticeships"),
     "resume": document.getElementById("student-side-link-resume"),
-    "inbox": document.getElementById("student-side-link-inbox")
+    "interviews": document.getElementById("student-side-link-interviews"),
+    "learning": document.getElementById("student-side-link-learning"),
+    "certs": document.getElementById("student-side-link-certs"),
+    "inbox": document.getElementById("student-side-link-inbox"),
+    "saved": document.getElementById("student-side-link-saved"),
+    "settings": document.getElementById("student-side-link-settings")
   };
 
   Object.keys(sidebarLinks).forEach(key => {

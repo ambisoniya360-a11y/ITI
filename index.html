@@ -922,7 +922,7 @@
           <ul class="dash-sidebar-menu">
             <li class="dash-menu-item">
               <a href="#" class="dash-menu-link active" id="student-side-link-dashboard" onclick="switchStudentTab('dashboard', event)">
-                <i data-lucide="home"></i> Career Hub
+                <i data-lucide="home"></i> Dashboard
               </a>
             </li>
             <li class="dash-menu-item">
@@ -931,33 +931,48 @@
               </a>
             </li>
             <li class="dash-menu-item">
-              <a href="#" class="dash-menu-link" id="student-side-link-opportunities" onclick="switchStudentTab('opportunities', event)">
-                <i data-lucide="briefcase"></i> Opportunities
+              <a href="#" class="dash-menu-link" id="student-side-link-jobs" onclick="switchStudentTab('jobs', event)">
+                <i data-lucide="search"></i> Find Jobs
+              </a>
+            </li>
+            <li class="dash-menu-item">
+              <a href="#" class="dash-menu-link" id="student-side-link-recommended" onclick="switchStudentTab('recommended', event)">
+                <i data-lucide="target"></i> Recommended Jobs
               </a>
             </li>
             <li class="dash-menu-item">
               <a href="#" class="dash-menu-link" id="student-side-link-applications" onclick="switchStudentTab('applications', event)">
-                <i data-lucide="file-text"></i> Applications
+                <i data-lucide="file-text"></i> Applied Jobs
               </a>
             </li>
             <li class="dash-menu-item">
-              <a href="#" class="dash-menu-link" id="student-side-link-interviews" onclick="switchStudentTab('interviews', event)">
-                <i data-lucide="calendar"></i> Interviews
+              <a href="#" class="dash-menu-link" id="student-side-link-alerts" onclick="switchStudentTab('alerts', event)">
+                <i data-lucide="bell"></i> Job Alerts
               </a>
             </li>
             <li class="dash-menu-item">
               <a href="#" class="dash-menu-link" id="student-side-link-apprenticeships" onclick="switchStudentTab('apprenticeships', event)">
-                <i data-lucide="building"></i> Apprenticeships
+                <i data-lucide="building"></i> Apprenticeship
+              </a>
+            </li>
+            <li class="dash-menu-item">
+              <a href="#" class="dash-menu-link" id="student-side-link-resume" onclick="switchStudentTab('resume', event)">
+                <i data-lucide="file-edit"></i> Resume Builder
+              </a>
+            </li>
+            <li class="dash-menu-item">
+              <a href="#" class="dash-menu-link" id="student-side-link-interviews" onclick="switchStudentTab('interviews', event)">
+                <i data-lucide="mic"></i> Interviews
               </a>
             </li>
             <li class="dash-menu-item">
               <a href="#" class="dash-menu-link" id="student-side-link-learning" onclick="switchStudentTab('learning', event)">
-                <i data-lucide="graduation-cap"></i> Learning Center
+                <i data-lucide="graduation-cap"></i> Skill Development
               </a>
             </li>
             <li class="dash-menu-item">
               <a href="#" class="dash-menu-link" id="student-side-link-certs" onclick="switchStudentTab('certs', event)">
-                <i data-lucide="award"></i> Achievements
+                <i data-lucide="folder"></i> Certificates
               </a>
             </li>
             <li class="dash-menu-item">
@@ -966,13 +981,8 @@
               </a>
             </li>
             <li class="dash-menu-item">
-              <a href="#" class="dash-menu-link" id="student-side-link-analytics" onclick="switchStudentTab('analytics', event)">
-                <i data-lucide="pie-chart"></i> Career Analytics
-              </a>
-            </li>
-            <li class="dash-menu-item">
-              <a href="#" class="dash-menu-link" id="student-side-link-notifications" onclick="switchStudentTab('notifications', event)">
-                <i data-lucide="bell"></i> Notifications
+              <a href="#" class="dash-menu-link" id="student-side-link-saved" onclick="switchStudentTab('saved', event)">
+                <i data-lucide="heart"></i> Saved Jobs
               </a>
             </li>
             <li class="dash-menu-item" style="margin-top: auto;">
@@ -1000,7 +1010,7 @@
                 <i data-lucide="share-2" style="width:14px; height:14px;"></i> Share Passport Link
               </button>
               <div class="dash-user-pill">
-                <div class="dash-user-avatar">RV</div>
+                <div class="dash-user-avatar" id="student-header-avatar">RV</div>
                 <span style="font-size: 13px; font-weight:600;">Rahul Verma</span>
               </div>
             </div>
@@ -1187,7 +1197,7 @@
 
                       <!-- Profile Avatar Right Side -->
                       <div class="passport-avatar-container">
-                        <div class="passport-avatar-mock" style="background-image: url('https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?auto=format&fit=crop&w=150&h=150');"></div>
+                        <div class="passport-avatar-mock" id="student-passport-avatar" style="background-image: url('https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?auto=format&fit=crop&w=150&h=150');"></div>
                         <div class="passport-security-seal">
                           <svg viewBox="0 0 100 100" width="100%" height="100%">
                             <circle cx="50" cy="50" r="45" fill="none" stroke="gold" stroke-width="1.5" stroke-dasharray="4 2"></circle>
@@ -1225,22 +1235,86 @@
                   </div>
                 </div>
 
-                <!-- Verified Skills details -->
-                <div class="card" style="padding: 24px;">
-                  <h4 style="font-family: var(--font-display); font-size: 18px; font-weight: 800; margin-bottom: 12px;">Verified Trade Skills</h4>
-                  <p style="font-size: 13px; color: var(--text-muted); margin-bottom: 20px;">Skills listed here are dynamically synchronized with the NCVT database registry and signed by your instructors. Add skills below to boost your Employability Score.</p>
-                  
-                  <div class="skills-tags-wrap" id="student-skills-list" style="margin-bottom: 24px;">
-                    <!-- Rendered via app.js -->
+                <!-- Detailed Profile Information -->
+                <div class="card" style="padding: 24px; display: flex; flex-direction: column; gap: 20px;">
+                  <div style="display: flex; justify-content: space-between; align-items: flex-start; border-bottom: 1px solid var(--border); padding-bottom: 16px;">
+                    <div>
+                      <h4 style="font-family: var(--font-display); font-size: 20px; font-weight: 800; color: var(--text-main); margin-bottom: 4px;">🪪 Skill Passport</h4>
+                      <div style="font-size: 12px; color: var(--text-muted);">Verified Credentials</div>
+                    </div>
+                    <div style="text-align: right; display: flex; flex-direction: column; gap: 6px;">
+                      <div style="font-size: 13px; font-weight: 700; color: var(--success); display: flex; align-items: center; gap: 6px; justify-content: flex-end;">Verified by Institute ✅</div>
+                      <div style="font-size: 12px; font-weight: 600; color: var(--text-muted); display: flex; align-items: center; gap: 6px; justify-content: flex-end;">Verified Documents ✅</div>
+                    </div>
                   </div>
 
-                  <div style="border-top: 1px solid var(--border); padding-top: 20px; display:flex; justify-content:space-between; align-items:center;">
-                    <span style="font-size:12px; color:var(--text-light); font-weight:600;">Need a new skill evaluation?</span>
-                    <button class="btn btn-primary btn-sm" onclick="showAddSkillModal()">Request Practical Test</button>
+                  <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+                    <div>
+                      <span style="font-size: 11px; color: var(--text-muted); text-transform: uppercase; font-weight: 700;">Name</span>
+                      <div style="font-size: 16px; font-weight: 700; color: var(--text-main); margin-top: 2px;">Rahul Patil</div>
+                    </div>
+                    <div>
+                      <span style="font-size: 11px; color: var(--text-muted); text-transform: uppercase; font-weight: 700;">Trade</span>
+                      <div style="font-size: 16px; font-weight: 700; color: var(--text-main); margin-top: 2px;">Electrician</div>
+                    </div>
+                    <div>
+                      <span style="font-size: 11px; color: var(--text-muted); text-transform: uppercase; font-weight: 700;">Qualification</span>
+                      <div style="font-size: 16px; font-weight: 700; color: var(--text-main); margin-top: 2px;">NCVT</div>
+                    </div>
+                    <div>
+                      <span style="font-size: 11px; color: var(--text-muted); text-transform: uppercase; font-weight: 700;">Experience</span>
+                      <div style="font-size: 16px; font-weight: 700; color: var(--text-main); margin-top: 2px;">1 Year</div>
+                    </div>
+                  </div>
+
+                  <div style="margin-top: 8px;">
+                    <span style="font-size: 11px; color: var(--text-muted); text-transform: uppercase; font-weight: 700; margin-bottom: 12px; display: block;">Skills Breakdown</span>
+                    <div style="display: flex; flex-direction: column; gap: 8px;">
+                      <div style="display: flex; justify-content: space-between; align-items: center; background: var(--surface-hover); padding: 12px 16px; border-radius: var(--radius-sm);">
+                        <span style="font-size: 14px; font-weight: 600; color: var(--text-main);">Electrical Wiring</span>
+                        <span style="color: #F59E0B; letter-spacing: 2px; font-size: 14px;">★★★★★</span>
+                      </div>
+                      <div style="display: flex; justify-content: space-between; align-items: center; background: var(--surface-hover); padding: 12px 16px; border-radius: var(--radius-sm);">
+                        <span style="font-size: 14px; font-weight: 600; color: var(--text-main);">Motor Repair</span>
+                        <span style="color: #F59E0B; letter-spacing: 2px; font-size: 14px;">★★★★<span style="color: var(--border-strong);">☆</span></span>
+                      </div>
+                      <div style="display: flex; justify-content: space-between; align-items: center; background: var(--surface-hover); padding: 12px 16px; border-radius: var(--radius-sm);">
+                        <span style="font-size: 14px; font-weight: 600; color: var(--text-main);">House Wiring</span>
+                        <span style="color: #F59E0B; letter-spacing: 2px; font-size: 14px;">★★★★★</span>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div style="display: flex; justify-content: space-between; align-items: center; background: linear-gradient(135deg, rgba(var(--primary-rgb), 0.1) 0%, rgba(var(--accent-rgb), 0.1) 100%); padding: 20px; border-radius: var(--radius-md); border: 1px solid rgba(var(--primary-rgb), 0.2); margin-top: 8px;">
+                    <span style="font-size: 16px; font-weight: 800; color: var(--text-main);">Profile Score</span>
+                    <span style="font-size: 24px; font-weight: 900; color: var(--primary); font-family: var(--font-display);">94/100</span>
                   </div>
                 </div>
 
               </div>
+
+              <!-- Documents Uploads -->
+              <div class="card" style="padding: 24px; margin-top: 32px;">
+                <h4 style="font-family: var(--font-display); font-size: 20px; font-weight: 800; color: var(--text-main); margin-bottom: 16px;">📄 Documents Upload</h4>
+                <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 16px;">
+                  <div style="border: 1px dashed var(--border-strong); border-radius: var(--radius-md); padding: 20px; text-align: center; background: var(--surface-hover);">
+                    <i data-lucide="file-text" style="width: 32px; height: 32px; color: var(--text-muted); margin-bottom: 8px;"></i>
+                    <h5 style="font-weight: 700; margin-bottom: 4px;">Resume (PDF)</h5>
+                    <button class="btn btn-sm btn-secondary" style="margin-top: 8px;">Upload File</button>
+                  </div>
+                  <div style="border: 1px dashed var(--border-strong); border-radius: var(--radius-md); padding: 20px; text-align: center; background: var(--surface-hover);">
+                    <i data-lucide="credit-card" style="width: 32px; height: 32px; color: var(--text-muted); margin-bottom: 8px;"></i>
+                    <h5 style="font-weight: 700; margin-bottom: 4px;">Aadhar Card</h5>
+                    <span style="font-size: 11px; color: var(--success); font-weight: 600; display: block; margin-top: 4px;">✅ Verified</span>
+                  </div>
+                  <div style="border: 1px dashed var(--border-strong); border-radius: var(--radius-md); padding: 20px; text-align: center; background: var(--surface-hover);">
+                    <i data-lucide="file-badge" style="width: 32px; height: 32px; color: var(--text-muted); margin-bottom: 8px;"></i>
+                    <h5 style="font-weight: 700; margin-bottom: 4px;">Trade Certificates</h5>
+                    <button class="btn btn-sm btn-secondary" style="margin-top: 8px;">Upload File</button>
+                  </div>
+                </div>
+              </div>
+
             </div>
 
             <!-- STUDENT TAB 3: JOB APPLICATIONS -->
@@ -1441,7 +1515,7 @@
               </div>
             </div>
 
-            <!-- STUDENT TAB 6: INBOX -->
+            <!-- STUDENT TAB: INBOX -->
             <div id="student-view-inbox" class="student-tab-content" style="display: none;">
               <div class="card" style="padding: 0; overflow: hidden; border-radius: var(--radius-md);">
                 <div class="whatsapp-container">
@@ -1470,6 +1544,157 @@
                       </button>
                     </div>
                   </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- STUDENT TAB: FIND JOBS -->
+            <div id="student-view-jobs" class="student-tab-content" style="display: none;">
+              <h2 style="font-family: var(--font-display); font-size: 24px; font-weight: 800; margin-bottom: 24px;">💼 Find Jobs</h2>
+              <div class="card" style="padding: 16px; margin-bottom: 24px; display: flex; gap: 12px; flex-wrap: wrap;">
+                <input type="text" placeholder="Search Jobs..." class="form-input" style="flex-grow: 1; min-width: 200px;">
+                <select class="form-input" style="width: auto;">
+                  <option>Any Trade</option>
+                  <option>Electrician</option>
+                  <option>Fitter</option>
+                </select>
+                <select class="form-input" style="width: auto;">
+                  <option>Location</option>
+                  <option>Pune</option>
+                  <option>Mumbai</option>
+                </select>
+                <select class="form-input" style="width: auto;">
+                  <option>Type</option>
+                  <option>Full Time</option>
+                  <option>Apprenticeship</option>
+                </select>
+                <button class="btn btn-primary">Search</button>
+              </div>
+              <div id="student-jobs-list" style="display: flex; flex-direction: column; gap: 16px;">
+                <!-- Populated via JS -->
+              </div>
+            </div>
+
+            <!-- STUDENT TAB: RECOMMENDED JOBS -->
+            <div id="student-view-recommended" class="student-tab-content" style="display: none;">
+              <h2 style="font-family: var(--font-display); font-size: 24px; font-weight: 800; margin-bottom: 24px;">🎯 Recommended Jobs</h2>
+              <p style="color: var(--text-muted); margin-bottom: 24px;">AI-based matching according to your ITI Trade, Skills, Location Preference, and Experience Level.</p>
+              <div id="student-recommended-jobs-list" style="display: flex; flex-direction: column; gap: 16px;">
+                <!-- Populated via JS -->
+              </div>
+            </div>
+
+            <!-- STUDENT TAB: JOB ALERTS -->
+            <div id="student-view-alerts" class="student-tab-content" style="display: none;">
+              <h2 style="font-family: var(--font-display); font-size: 24px; font-weight: 800; margin-bottom: 24px;">🔔 Job Alerts</h2>
+              <div style="display: flex; gap: 16px; margin-bottom: 24px;">
+                <span class="badge badge-primary">New Jobs</span>
+                <span class="badge badge-secondary">Government Jobs</span>
+                <span class="badge badge-secondary">Campus Drives</span>
+              </div>
+              <div id="student-alerts-list" style="display: flex; flex-direction: column; gap: 16px;">
+                <!-- Populated via JS -->
+              </div>
+            </div>
+
+            <!-- STUDENT TAB: APPRENTICESHIP -->
+            <div id="student-view-apprenticeships" class="student-tab-content" style="display: none;">
+              <h2 style="font-family: var(--font-display); font-size: 24px; font-weight: 800; margin-bottom: 24px;">🏭 Apprenticeship Opportunities</h2>
+              <div id="student-apprenticeships-list" style="display: flex; flex-direction: column; gap: 16px;">
+                <!-- Populated via JS -->
+              </div>
+            </div>
+
+            <!-- STUDENT TAB: INTERVIEWS -->
+            <div id="student-view-interviews" class="student-tab-content" style="display: none;">
+              <h2 style="font-family: var(--font-display); font-size: 24px; font-weight: 800; margin-bottom: 24px;">🎤 Interview Center</h2>
+              <div style="display: grid; grid-template-columns: 2fr 1fr; gap: 24px;">
+                <div id="student-interviews-list-full" style="display: flex; flex-direction: column; gap: 16px;">
+                  <!-- Populated via JS -->
+                </div>
+                <div class="card" style="padding: 24px; height: fit-content;">
+                  <h4 style="font-weight: 700; margin-bottom: 16px;">💡 Preparation Tips</h4>
+                  <ul style="font-size: 13px; color: var(--text-muted); display: flex; flex-direction: column; gap: 8px; padding-left: 16px;">
+                    <li>Research the company beforehand.</li>
+                    <li>Ensure your internet connection is stable for online interviews.</li>
+                    <li>Dress professionally.</li>
+                    <li>Keep your digital Skill Passport link handy.</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+
+            <!-- STUDENT TAB: SKILL DEVELOPMENT -->
+            <div id="student-view-learning" class="student-tab-content" style="display: none;">
+              <h2 style="font-family: var(--font-display); font-size: 24px; font-weight: 800; margin-bottom: 24px;">🎓 Skill Development & Courses</h2>
+              <div style="display: flex; gap: 16px; margin-bottom: 24px;">
+                <span class="badge badge-primary">Free Courses</span>
+                <span class="badge badge-secondary">Certification Programs</span>
+                <span class="badge badge-secondary">Trade Upgrade</span>
+                <span class="badge badge-secondary">Soft Skills</span>
+              </div>
+              <div id="student-learning-list" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 20px;">
+                <!-- Populated via JS -->
+              </div>
+            </div>
+
+            <!-- STUDENT TAB: SAVED JOBS -->
+            <div id="student-view-saved" class="student-tab-content" style="display: none;">
+              <h2 style="font-family: var(--font-display); font-size: 24px; font-weight: 800; margin-bottom: 24px;">❤️ Saved Jobs</h2>
+              <div id="student-saved-jobs-list" style="display: flex; flex-direction: column; gap: 16px;">
+                <!-- Populated via JS -->
+              </div>
+            </div>
+
+            <!-- STUDENT TAB: SETTINGS -->
+            <div id="student-view-settings" class="student-tab-content" style="display: none;">
+              <h2 style="font-family: var(--font-display); font-size: 24px; font-weight: 800; margin-bottom: 24px;">⚙️ Settings</h2>
+              
+              <!-- Profile Picture Update Card -->
+              <div class="card" style="padding: 24px; max-width: 600px; margin-bottom: 24px;">
+                <h4 style="font-weight: 700; margin-bottom: 16px;">Profile Picture</h4>
+                <div style="display: flex; align-items: center; gap: 24px;">
+                  <div id="settings-avatar-preview" style="width: 80px; height: 80px; border-radius: 50%; background: var(--primary); display: flex; align-items: center; justify-content: center; color: #FFF; font-weight: bold; font-size: 24px; overflow: hidden; border: 2px solid var(--border-strong); background-size: cover; background-position: center;">
+                    RV
+                  </div>
+                  <div style="display: flex; flex-direction: column; gap: 8px;">
+                    <div style="display: flex; gap: 12px;">
+                      <label class="btn btn-primary btn-sm" style="cursor: pointer; display: inline-flex; align-items: center; gap: 6px; margin: 0;">
+                        <i data-lucide="upload" style="width: 14px; height: 14px;"></i> Upload Photo
+                        <input type="file" id="settings-avatar-upload" accept="image/*" style="display: none;" onchange="handleAvatarUpload(event)">
+                      </label>
+                      <button class="btn btn-secondary btn-sm" onclick="handleRemoveAvatar()">Remove</button>
+                    </div>
+                    <span style="font-size: 11px; color: var(--text-muted);">Supports JPG, PNG or WebP. Max size 2MB.</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="card" style="padding: 24px; max-width: 600px;">
+                <h4 style="font-weight: 700; margin-bottom: 16px;">Account Preferences</h4>
+                <div style="display: flex; flex-direction: column; gap: 16px;">
+                  <div style="display: flex; justify-content: space-between; align-items: center;">
+                    <div>
+                      <div style="font-weight: 600; font-size: 14px;">Email Notifications</div>
+                      <div style="font-size: 12px; color: var(--text-muted);">Receive job alerts via email</div>
+                    </div>
+                    <input type="checkbox" checked>
+                  </div>
+                  <div style="display: flex; justify-content: space-between; align-items: center;">
+                    <div>
+                      <div style="font-weight: 600; font-size: 14px;">SMS Alerts</div>
+                      <div style="font-size: 12px; color: var(--text-muted);">Receive interview reminders via SMS</div>
+                    </div>
+                    <input type="checkbox" checked>
+                  </div>
+                  <div style="display: flex; justify-content: space-between; align-items: center;">
+                    <div>
+                      <div style="font-weight: 600; font-size: 14px;">Profile Visibility</div>
+                      <div style="font-size: 12px; color: var(--text-muted);">Allow recruiters to find your passport</div>
+                    </div>
+                    <input type="checkbox" checked>
+                  </div>
+                  <button class="btn btn-primary" style="margin-top: 16px;">Save Changes</button>
                 </div>
               </div>
             </div>
@@ -2757,7 +2982,7 @@
                 <div id="mobile-section-passport" class="mobile-app-section" style="display:none;">
                   <h4 style="font-size:15px; margin-bottom:12px;">Verified Passport Badge</h4>
                   <div class="card" style="padding: 16px; text-align:center; background: radial-gradient(circle at top right, rgba(var(--primary-rgb), 0.1), transparent 60%), var(--surface);">
-                    <div style="width:60px; height:60px; border-radius:50%; background:var(--primary); margin:0 auto 12px auto; display:flex; align-items:center; justify-content:center; color:#FFF; font-weight:bold; font-size:18px;">RV</div>
+                    <div id="student-mobile-passport-avatar" style="width:60px; height:60px; border-radius:50%; background:var(--primary); margin:0 auto 12px auto; display:flex; align-items:center; justify-content:center; color:#FFF; font-weight:bold; font-size:18px;">RV</div>
                     <h5 style="font-size: 14px;">Rahul Verma</h5>
                     <p style="font-size: 10px; color:var(--text-light);" id="mobile-pass-id">SB-2026-081</p>
                     <div style="border-top:1px solid var(--border); margin-top:12px; padding-top:12px; text-align:left;">
